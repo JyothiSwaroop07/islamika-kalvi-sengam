@@ -54,6 +54,7 @@ const Navbar = () => {
     try{
       await new Promise(resolve => setTimeout(resolve, 1000));
 
+      await router.push(`/Home`);
       await router.push(`Departments/${depName}`);
       setIsDepartmentOpen(false);
     } catch(error) {

@@ -13,9 +13,55 @@ import img9 from '../images/img1 (4).jpg'
 
 import Navbar from "@/components/Navbar/Navbar";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const educationdevelopment = () => {
     const router = useRouter();
+
+    const images = [img3, img4, img5, img6, img7, img8, img9];
+    const [currentPage, setCurrentPage] = useState(0);
+    const [imagesPerPage, setImagesPerPage] = useState(3);
+    
+
+    useEffect(() => {
+        const handleResize = () => {
+            // Adjust images per page based on device width
+            if (window.innerWidth < 660) {
+                setImagesPerPage(2); // xs devices
+            } else {
+                setImagesPerPage(3); // sm, md, lg, xl devices
+            }
+        };
+
+        // Listen for window resize events
+        window.addEventListener('resize', handleResize);
+
+        // Initial call to set initial images per page
+        handleResize();
+
+        // Clean up event listener on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const totalPages = Math.ceil(images.length / imagesPerPage);
+
+    const handlePrevious = () => {
+        setCurrentPage(currentPage - 1);
+    };
+
+    const handleNext = () => {
+        setCurrentPage(currentPage + 1);
+    };
+
+    const displayImages = () => {
+        const startIndex = currentPage * imagesPerPage;
+        const endIndex = startIndex + imagesPerPage;
+        return images.slice(startIndex, endIndex).map((imgSrc, index) => (
+            <Image key={index} src={imgSrc} height={100} width={100} className="w-[200px] h-[250px]" alt="image"/>
+        ));
+    };
+
     return (
         <div>
 
@@ -24,10 +70,10 @@ const educationdevelopment = () => {
             </div>
 
             <div className="flex flex-col gap-6 justify-center p-4 items-center">
-                <h1 className="text-black text-2xl text-semibold">Department of Education Development</h1>
+                <h1 className="text-[#2dad5c] text-2xl font-bold">Department of Education Development</h1>
                 <div className="flex flex-col justify-center items-center">
                     <div>
-                        <h1>It was established in 2013 to work for the betterment of the minorities giving top 
+                        <h1 className="mx-8">It was established in 2013 to work for the betterment of the minorities giving top 
                             priority to education in its objectives. Since its inception, the AIE is on the march 
                             with absolute dedication to bring about social and educational change in the present 
                             condition of the community by awarding scholarships to needy students in pursuit of 
@@ -73,7 +119,7 @@ const educationdevelopment = () => {
                     </div>
 
                     <h1 className="text-center my-6 text-[#2dad5c] text-2xl text-bold">Our Gallery</h1>
-                    <div className="flex flex-wrap justify-center items-center gap-6">
+                    {/* <div className="flex flex-wrap justify-center items-center gap-6">
                         <Image src={img3} height={100} width={100} className="w-[200px] h-[250px]" />
                         <Image src={img4} height={100} width={100} className="w-[200px] h-[250px]" />
                         <Image src={img5} height={100} width={100} className="w-[200px] h-[250px]" />
@@ -83,13 +129,54 @@ const educationdevelopment = () => {
                         <Image src={img9} height={100} width={100} className="w-[200px] h-[250px]" />
                         
                         
-                    </div>
+                    </div> */}
+                        <div className="w-[100vw] flex flex-col justify-center items-center">
+            <div className="flex flex-wrap justify-center items-center gap-6">{displayImages()}</div>
+            <div class="flex items-center gap-4">
+                <button
+                    onClick={handlePrevious}
+                    disabled={currentPage === 0}
+                    class="flex my-5 items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    aria-hidden="true" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+                    </svg>
+                    Previous
+                </button>
+                <div class="flex my-5 items-center gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentPage(i)}
+                            class={`relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all ${
+                                currentPage === i ? 'bg-[#2dad5c] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none' : 'text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20'
+                            }`}
+                            type="button">
+                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">{i + 1}</span>
+                        </button>
+                    ))}
+                </div>
+                <button
+                    onClick={handleNext}
+                    disabled={currentPage === totalPages - 1}
+                    class="flex my-5 items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button">
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    aria-hidden="true" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
                     <button className="bg-[#2dad5c] w-[145px] h-[42px] text-white text-md rounded-md my-4" onClick={() => {router.push("/Home")}}>Go Back</button>
                 </div>
             </div>
 
         </div>
     )
+
 }
 
 export default educationdevelopment;
