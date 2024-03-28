@@ -8,6 +8,7 @@ import img3 from '../images/law (3).jpg'
 import img4 from '../images/law (4).jpg'
 import img5 from '../images/law (5).jpg'
 import img6 from '../images/law (6).jpg'
+
 import img7 from '../images/law (7).jpg'
 import img8 from '../images/law (8).jpg'
 import img9 from '../images/law (9).jpg'
