@@ -214,9 +214,9 @@ const Home = () => {
 <div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-70 "></div>
     
   {/* Overlay div for background image */}
-  <div className="absolute z-20  lg:py-10 px-8 ">
+  <div className="absolute z-20  lg:py-10 lg:px-8 ">
 
-  <div className="flex items-center justify-center inset-0 outline-none z-50 gap-5 mt-3 logos md:justify-end">
+  <div className="flex items-center justify-center  inset-0 outline-none z-50 gap-5 mt-3 logos lg:justify-end">
                     <a href="https://wa.me/9976346062" target="_blank" >
                     <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
