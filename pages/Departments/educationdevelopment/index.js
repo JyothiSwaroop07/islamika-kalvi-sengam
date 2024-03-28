@@ -11,7 +11,7 @@ import img7 from '../images/img1 (2).jpg'
 import img8 from '../images/img1 (3).jpg'
 import img9 from '../images/img1 (4).jpg'
 
-import cordinator from './edCoordinator.jpg';
+import cordinator from './edCoordinator.JPG';
 import head from './edHead.jpg';
 
 import Navbar from "@/components/Navbar/Navbar";

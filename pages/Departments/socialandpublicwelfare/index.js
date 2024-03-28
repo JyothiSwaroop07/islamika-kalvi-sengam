@@ -30,7 +30,7 @@ import img25 from '../images/pbw (25).jpg'
 import img26 from '../images/pbw (26).jpg'
 import img27 from '../images/pbw (27).jpg'
 
-import cordinator from './Coordinator - saifullah.jpg';
+import cordinator from './Coordinator - saifullah.JPG';
 import head from './Head (1).jpg';
 
 import Navbar from "@/components/Navbar/Navbar";

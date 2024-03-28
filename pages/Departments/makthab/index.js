@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 
 
-import img1 from '../images/makthab (1).jpg';
-import img2 from '../images/makthab (2).jpg';
-import img3 from '../images/makthab (3).jpg';
+import img1 from '../images/makthab (1).JPG';
+import img2 from '../images/makthab (2).JPG';
+import img3 from '../images/makthab (3).JPG';
 import img4 from '../images/makthab (4).jpg';
 import img5 from '../images/makthab (5).jpg';
 import img6 from '../images/makthab (6).jpg';
