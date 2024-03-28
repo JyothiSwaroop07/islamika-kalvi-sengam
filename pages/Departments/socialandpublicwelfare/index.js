@@ -31,7 +31,7 @@ import img26 from '../images/pbw (26).jpg'
 import img27 from '../images/pbw (27).jpg'
 
 import cordinator from './Coordinator - saifullah.JPG';
-import head from './Head (1).jpg';
+import head from './Head (1).JPG';
 
 import Navbar from "@/components/Navbar/Navbar";
 import { useRouter } from "next/router";
