@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const bookPublication = () => {
+const BookPublication = () => {
 
     const router = useRouter();
     const images = [book1, book2, book3, book4, book5];
@@ -147,4 +147,4 @@ const bookPublication = () => {
     )
 }
 
-export default bookPublication;
+export default BookPublication;

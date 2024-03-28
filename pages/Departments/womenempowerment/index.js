@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const womenempowerment = () => {
+const Womenempowerment = () => {
     const router = useRouter();
 
     const images = [img1, img2, img3, img4, img5, img6];
@@ -73,7 +73,7 @@ const womenempowerment = () => {
                 <div className="flex flex-col justify-center items-center">
                     <div>
                         <h1 className="mx-8">
-                        To overcome these situations and to have an independent role in society, women's empowerment is needed. Empowering women is the fundamental right of women. They can have equal rights to participate in education, society, economics, They are allowed to have higher education. TheOur mostmore important thing for thisby this department is Widows. Older, Older peoples makepeoples are make theirthier life up by their own hands by providing capital fundsfund and training to make money. 
+                        To overcome these situations and to have an independent role in society, women&#39;s empowerment is needed. Empowering women is the fundamental right of women. They can have equal rights to participate in education, society, economics, They are allowed to have higher education. TheOur mostmore important thing for thisby this department is Widows. Older, Older peoples makepeoples are make theirthier life up by their own hands by providing capital fundsfund and training to make money. 
 
 
                     </h1>
@@ -201,4 +201,4 @@ const womenempowerment = () => {
 
 }
 
-export default womenempowerment;
+export default Womenempowerment;

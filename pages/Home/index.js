@@ -11,7 +11,7 @@ import AdPopup from "@/components/AdPopup/AdPopup";
 import Footer from "@/components/Footer/Footer";
 // import Ramadan from "@/components/Ramadan/Ramadan";
 import WhoWeAre from '@/components/WhoWeAre/WhoWeAre'
-import { Image } from "next/image";
+import Image from "next/image";
 import Ramadan from "@/components/Ramadan/Ramadan";
 import BannerCard from "@/components/BannerCard/BannerCard";
 import DonatePopup from "@/components/DonatePopup/DonatePopup";
@@ -85,10 +85,11 @@ const Home = () => {
         setAdPopupVisible(false);
       };
 
-      let adsDuplicate = [];
+      
     useEffect(() => {
         const fetchAds = async() => {
             try{
+                let adsDuplicate = [];
             let adsContent = [];
             const adsCollection = collection(db, "Ads");
             const adsDoc = doc(adsCollection, "adsDetails");
@@ -114,7 +115,7 @@ const Home = () => {
     }
 
     fetchAds();
-    }, []);
+    }, [adsDetails]);
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -179,7 +180,7 @@ const Home = () => {
         }, 180 * 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, []); 
+    }, [adCount, adNumber]); 
 
     return (
         <div className="bg-gray-100 overflow-x-hidden">
@@ -213,10 +214,10 @@ const Home = () => {
 <div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-60 "></div>
     
   {/* Overlay div for background image */}
-  <div className="absolute inset-1 z-20 bg-[#222226] py-10 px-8 opacity-60 ">
+  <div className="absolute inset-0 z-20 bg-[#222226] py-10 px-8 opacity-60 ">
 
   <div className="flex items-center justify-center inset-0 outline-none z-50 gap-5 mt-3 logos md:justify-end">
-                    <a href="https://www.instagram.com/swaroop134" target="_blank" >
+                    <a href="https://wa.me/9976346062" target="_blank" >
                     <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
                     </button>
@@ -244,10 +245,10 @@ const Home = () => {
 
   <div className=" lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center h-[100%] relative z-10">
   <div className="flex justify-start top-[calc(60vh)]">
-  <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[190px] mt-4 mb-45" />
+  <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[190px] mt-4 mb-45" width={100} height={100} alt="img" />
   </div>
   <div className="flex flex-col justif-center items-center">
-    <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[150px] w-[150px] mt-4" />
+    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[150px] w-[150px] mt-4" width={100} height={100} alt="img" />
     <p className="text-4xl text-white font-extrabold mb-4 mt-8">Nurturing Hope, Transforming Lives.</p>
     <p className="text-xltext-white">
       Join us on our mission for a better world through Islamic values and humanitarian initiatives.
@@ -325,7 +326,7 @@ const Home = () => {
 
             {sponsors.map((each, idx) => (
                 <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8" key={idx}>
-                <img src={each.img_url} alt={each.name} className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200}/>
+                <Image src={each.img_url} alt={each.name} className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
                 <p className="text-gray-700 text-center text-2xl">{each.name}</p>
             </div>
             ))}

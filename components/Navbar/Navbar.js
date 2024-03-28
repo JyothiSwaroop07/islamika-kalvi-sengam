@@ -95,7 +95,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="text-black flex flex-col items-center  font-bold text-xl">
           <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
-          <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg"  className='h-[55px] w-[63px]'/>
+          
+
+          {/* <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg"  className='h-[55px] w-[63px]'/> */}
+
           </div>
 
           {/* Desktop menu */}

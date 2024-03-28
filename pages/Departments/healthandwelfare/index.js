@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import cordinator from './Coordinator .jpg';
 import head from './Head.jpg';
 
-const healthandwelfare = () => {
+const Healthandwelfare = () => {
     const router = useRouter();
 
     const images = [img3, img4, img5, img6, img7, img8];
@@ -209,4 +209,4 @@ const healthandwelfare = () => {
 
 }
 
-export default healthandwelfare;
+export default Healthandwelfare;

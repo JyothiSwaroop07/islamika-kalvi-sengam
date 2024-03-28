@@ -38,7 +38,7 @@ const Ramadan = () => {
           THE MONTH OF BLESSINGS. RAMADHAN 2022.
         </p>
         <p className="text-xl mb-8">
-          Assalamu'alaikum Warahmatullahi Wabarakatuh, Dear brothers and sisters,
+          Assalamu&#39;alaikum Warahmatullahi Wabarakatuh, Dear brothers and sisters,
         </p>
 
             <div className='flex flex-col md:flex-row justify-center items-center m-8 mb-12'>

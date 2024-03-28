@@ -12,8 +12,13 @@ import YouTube, { YouTubeProps } from 'react-youtube';
 var getYouTubeID = require('get-youtube-id');
 import { googleFormsToJson } from 'react-google-forms-hooks'
 import { useRef } from "react";
-import { Image } from "next/image";
+import  Image  from "next/image";
 import Footer from "@/components/Footer/Footer";
+
+
+
+
+
 
 const ads = [
     {
@@ -57,11 +62,12 @@ const Contest1 = () => {
         setAdPopupVisible(false);
       };
 
-      let adsDuplicate = []
+      
       useEffect(() => {
         const fetchAds = async() => {
             try{
             let adsContent = [];
+            let adsDuplicate = []
             const adsCollection = collection(db, "Ads");
             const adsDoc = doc(adsCollection, "adsDetails");
 
@@ -69,12 +75,12 @@ const Contest1 = () => {
 
             if(docSnapshot.exists()){
                 const adsData = docSnapshot.data();
-                console.log(adsData, "hello");
+              
                 adsContent = adsData.ads;
                 adsDuplicate = adsData.ads;
-                console.log(adsContent);
+             
                 setAdsDetails(adsContent);
-                console.log(adsDetails)
+               
             }
             else{
                 console.log("No ads Data available")
@@ -86,7 +92,7 @@ const Contest1 = () => {
     }
 
     fetchAds();
-    }, []);
+    }, [adsDetails]);
 
 
     useEffect(() => {
@@ -102,7 +108,7 @@ const Contest1 = () => {
         }, 180 * 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, []); 
+    }, [adCount, adNumber]); 
 
     useEffect(() => {
         const fetchBannerImages = async () => {
@@ -118,7 +124,7 @@ const Contest1 = () => {
                 if(docSnapshot.exists()){
                     const  imagesData = docSnapshot.data();
                     data = imagesData.BannerImages;
-                    console.log(data);
+                   
                     console.log("set images");
                     
                     setBannerImages(data);
@@ -204,7 +210,7 @@ const Contest1 = () => {
             currentDate.setMinutes(currentDate.getMinutes());
             const currentDateString = currentDate.toISOString().split('T')[0];
             const currentTime = currentDate.getHours();
-            console.log(currentTime);
+           
             
 
 
@@ -233,7 +239,7 @@ const Contest1 = () => {
             } else if (currentTime >= 17) { // If current time is after 5:00 PM
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
-                    console.log(contestData);
+                  
                     const contestDetails = contestData.contestDetails;
                    
                     if (contestDetails.date == currentDateString) { // Check if document exists for previous day
@@ -241,7 +247,7 @@ const Contest1 = () => {
         
                       // Extract form questions
                       setForm(contestDetails);
-                      console.log(contestDetails, "hehe");
+                  
                       
                         
                       setShouldDisplayTodayForm(true);
@@ -255,7 +261,7 @@ const Contest1 = () => {
     
         fetchContestDetails();
        
-      }, []);
+      }, [form]);
 
 
       const handleChange = (e, index) => {
@@ -393,8 +399,8 @@ const Contest1 = () => {
             {giveSelectContestOption && (
                 <div className="flex justify-around items-center mx-auto text-center my-8  mx-auto p-6  shadow-md rounded-md">
                     {/* <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button> */}
-
-                    <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" />
+ 
+                    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png"  height={200} width={200} alt="img" className="h-[60px] w-[60px]" />
 
                     <button className="bg-[#2dad5c] h-[48px] w-[145px] border-1 rounded-md text-white" onClick={handlePrevContClick}>முந்திய நாள் கேள்விகள்</button>
                 
@@ -414,7 +420,7 @@ const Contest1 = () => {
                     </div>
                     <hr className="tect-blue-500 my-8 border-2   border-[#2dad5c] border-t w-[100%]" />
                 
-                <h1 className="text-2xl font-bold mb-4">Today's Contest</h1>
+                <h1 className="text-2xl font-bold mb-4">Today&#39;s Contest</h1>
                 <form onSubmit={handleSubmit}>
                     
 

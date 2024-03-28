@@ -26,7 +26,7 @@ import { useEffect } from "react";
 import cordinator from './Coordinator.jpeg';
 import head from './Head (1).jpg';
 
-const itdepartment
+const Itdepartment
  = () => {
     const router = useRouter();
 
@@ -215,4 +215,4 @@ const itdepartment
 
 }
 
-export default itdepartment;
+export default Itdepartment;

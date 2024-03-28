@@ -5,6 +5,7 @@ import ContestCard from "@/components/ContestCard/ContestCard";
 import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
 import Footer from "@/components/Footer/Footer";
+import Image from 'next/image';
 
 const PreviousContest1 = () => {
     const [allFormsData, setAllFormsData] = useState([]);
@@ -81,13 +82,13 @@ const PreviousContest1 = () => {
                 
                 <div className="flex justify-between items-center mt-5 w-[90vw]">
 
-                <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" />
+                <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" width={100} height={100} alt="img" />
 
-                <button className="bg-[#2dad5c] w-[155px] h-[55px] p-1    text-md text-white rounded-md" onClick={handleBackonCards}>← Go Back to Today's Contest</button>
+                <button className="bg-[#2dad5c] w-[155px] h-[55px] p-1    text-md text-white rounded-md" onClick={handleBackonCards}>← Go Back to Today&#39;s Contest</button>
 
                 <div className="text-black flex flex-col -mt-5 items-center  font-bold text-xl">
           <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
-          <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg"  className='h-[55px] w-[63px]'/>
+          <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg"  className='h-[55px] w-[63px]' width={100} height={100} alt="img" />
           </div>
 
                 </div>

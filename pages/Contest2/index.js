@@ -8,7 +8,7 @@ import AdPopup from "@/components/AdPopup/AdPopup";
 import ContestCard from "@/components/ContestCard/ContestCard";
 import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
-import { Image } from "next/image";
+import Image  from "next/image";
 import Footer from "@/components/Footer/Footer";
 
 const ads = [
@@ -56,12 +56,13 @@ const Contest2 = () => {
       };
 
 
-      let adsDuplicate = []
+      
 
       useEffect(() => {
         const fetchAds = async() => {
             try{
             let adsContent = [];
+            let adsDuplicate = []
             const adsCollection = collection(db, "Ads");
             const adsDoc = doc(adsCollection, "adsDetails");
 
@@ -86,7 +87,7 @@ const Contest2 = () => {
     }
 
     fetchAds();
-    }, []);
+    }, [adsDetails]);
 
 
     useEffect(() => {
@@ -102,7 +103,7 @@ const Contest2 = () => {
         }, 180 * 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, []); 
+    }, [adCount, adNumber]); 
 
     useEffect(() => {
         const fetchBannerImages = async () => {
@@ -254,7 +255,7 @@ const Contest2 = () => {
     
         fetchContestDetails();
        
-      }, []);
+      }, [form]);
 
 
       const handleChange = (e, index) => {
@@ -353,7 +354,7 @@ const Contest2 = () => {
 
 
 <h1 className="text-red-500 mt-4 text-center">{errorMessage}</h1>
-<script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+
             </div>
 
             {/* {giveSelectContestOption && (
@@ -372,7 +373,7 @@ const Contest2 = () => {
                 <div className="flex justify-around items-center mx-auto text-center my-8 w-[100vw] mx-auto p-6 bg-white shadow-md rounded-md">
                     {/* <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button> */}
                     
-                    <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" />
+                    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" height={100} width={100} alt="img" />
                     
                     <button className="bg-[#2dad5c] text-white  w-[145px] h-[45px] rounded-md p-1 h-[48px] text-sm" onClick={handlePrevContClick}>முந்திய நாள் கேள்விகள்</button>
                 
@@ -382,7 +383,7 @@ const Contest2 = () => {
             )}
 
             {shouldDisplayTodayForm && <div className="flex flex-col items-center  text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
-                <h1 className="text-2xl font-bold mb-4">Today's Contest</h1>
+                <h1 className="text-2xl font-bold mb-4">Today&#39;s Contest</h1>
                 <form onSubmit={handleSubmit}>
                     
 

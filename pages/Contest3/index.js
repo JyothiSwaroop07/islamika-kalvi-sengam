@@ -18,7 +18,7 @@ const Contest3 = () => {
             </div>
 
                 <div className="banner flex justify-center my-5">
-                    <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" /> 
+                    <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" alt="img" /> 
                 </div>
 
         </div>

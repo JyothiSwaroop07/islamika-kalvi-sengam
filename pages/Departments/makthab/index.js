@@ -26,7 +26,7 @@ import { useEffect } from "react";
 import cordinator from './Coordinator .jpg';
 import head from './Head (1).jpg';
 
-const healthandwelfare = () => {
+const Makthab = () => {
     const router = useRouter();
 
     const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15];
@@ -106,7 +106,7 @@ const healthandwelfare = () => {
                         <h1 className="mx-8">
                         An overview of all the topics under each subject for the full syllabus of 4 years. 
                         This can be used by Maktab madrasas to plan the year and create a long term plan for their lessons.
-                         Fully revised by scholars and updating every year. Makthab syllabus is  named as "Manavarkalukana Islamiya vazhikatti" with 4 parts specially designed for Makthab students. This syllabus used by madrasas which are under our associations academic scheme
+                         Fully revised by scholars and updating every year. Makthab syllabus is  named as &#34;Manavarkalukana Islamiya vazhikatti&#34; with 4 parts specially designed for Makthab students. This syllabus used by madrasas which are under our associations academic scheme
     
                          </h1>
                     </div>
@@ -219,4 +219,4 @@ const healthandwelfare = () => {
 
 }
 
-export default healthandwelfare;
+export default Makthab;

@@ -19,7 +19,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const educationdevelopment = () => {
+const Educationdevelopment = () => {
     const router = useRouter();
 
     const images = [img3, img4, img5, img6, img7, img8, img9];
@@ -203,4 +203,4 @@ const educationdevelopment = () => {
 
 }
 
-export default educationdevelopment;
+export default Educationdevelopment;
