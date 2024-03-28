@@ -204,17 +204,17 @@ const Home = () => {
             {/* <ResponsiveAppBar /> */}
             
             <div
-  className="bg-cover bg-center h-[90vh] relative flex items-start relative p-16 justify-end text-white"
+  className="bg-cover bg-center  relative flex items-start relative p-16 justify-end text-white"
   style={{
     backgroundImage: 'url("https://res.cloudinary.com/dchbfnlct/image/upload/v1711042512/mosque-615415_1280_vamdua.jpg")',
   }}
 >
 
 
-<div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-60 "></div>
+<div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-70 "></div>
     
   {/* Overlay div for background image */}
-  <div className="absolute inset-0 z-20 bg-[#222226] py-10 px-8 opacity-60 ">
+  <div className="absolute z-20  lg:py-10 px-8 ">
 
   <div className="flex items-center justify-center inset-0 outline-none z-50 gap-5 mt-3 logos md:justify-end">
                     <a href="https://wa.me/9976346062" target="_blank" >
@@ -243,8 +243,8 @@ const Home = () => {
 
   
 
-  <div className=" lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center h-[100%] relative z-10">
-  <div className="flex justify-start top-[calc(60vh)]">
+  <div className="absolute lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center relative ">
+  <div className="flex justify-start relative mt-24">
   <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[190px] mt-4 mb-45" width={100} height={100} alt="img" />
   </div>
   <div className="flex flex-col justif-center items-center">
