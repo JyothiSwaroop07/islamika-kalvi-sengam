@@ -15,6 +15,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 
+import cordinator from './Coordinator .jpg';
+import head from './Head.jpg';
+
 const healthandwelfare = () => {
     const router = useRouter();
 
@@ -70,6 +73,27 @@ const healthandwelfare = () => {
 
             <div className="flex flex-col gap-6 justify-center p-4 items-center">
                 <h1 className="text-[#2dad5c] text-2xl font-bold">Department of Health and Welfare Aids</h1>
+
+                <div className='flex gap-4 my-4 justify-center'>
+
+                <div className='card h-[350px] text-center w-[200px] shadow-md md:mx-5'>
+                        <Image src={head} height={200} width={200} className="w-[200px] h-[200px] bg-fit" alt="person"/>
+                        <div className='details flex flex-col gap-3 justify-center items-center p-4'>
+                            <h1 className='text-lg font-bold'>Mohammed Thowheed Jamali bin Seyed  Ibrahim</h1>
+                            <h1 className='text-md font-bold text-[#2dad5c]'>Head</h1>
+                        </div>
+                    </div>
+
+                    <div className='card h-[350px] text-center w-[200px] shadow-md'>
+                        <Image src={cordinator} height={200} width={200} alt="person"/>
+                        <div className='details flex flex-col gap-3 justify-center items-center p-4'>
+                            <h1 className='text-lg font-bold'>Seyed Althaf</h1>
+                            <h1 className='text-md font-bold text-[#2dad5c]'>Coordinator</h1>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div className="flex flex-col justify-center items-center">
                     <div>
                         <h1 className="mx-8">Our Health and Welfare Aids Department  programmes save and protect lives across the Keelakarai. Key priorities of our healthcare intervention is the promotion of good health and well-being of children and mothers with a focus on combating the major causes of childhood deaths and diseases.

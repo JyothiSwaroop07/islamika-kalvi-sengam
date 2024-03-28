@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { TailSpin } from 'react-loader-spinner';
+import DonatePopup from '../DonatePopup/DonatePopup';
 
 
 const Navbar = () => {
@@ -8,6 +9,11 @@ const Navbar = () => {
   const [isContestsMenuOpen, setIsConstestMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDepartmentOpen, setIsDepartmentOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
 
   const toggleMenu = () => {
@@ -96,20 +102,20 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <ul className="flex items-center space-x-8">
               <li><a href="#" className="text-black hover:text-[#2dad5c]" onClick={() => {router.push('/Home')}}>Home</a></li>
-              <li><a href="#" className="text-black hover:text-[#2dad5c]">About</a></li>
+              <li><a href="#about" className="text-black hover:text-[#2dad5c]">About</a></li>
 
               <div className='flex flex-col justify-center items-center'>
-              <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
+              <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="absolute top-16 ml-16 bg-white border border-gray-300 w-36">
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>Contest 1</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>Contest 2</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>Contest 3</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2 </a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>Program 3 </a></li>
                 </ul>
                 )}
                 </div>
 
-              <li><a href="#" className="text-black">Contact</a></li>
+              <li><a href="#footer" className="text-black">Contact</a></li>
               
 
               <div className='flex flex-col justify-center items-center'>
@@ -123,20 +129,19 @@ const Navbar = () => {
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("makthab")}>Makthab</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("it")}>Information Technology</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("law")}>Department of Law</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("specialinitiative")}>Special Initiative and Planning</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("womenempowerment")}>Women Empowerment</a></li>
                 </ul>
                 )}
                 </div>
 
-                <li><a href="#" className="text-black hover:text-[#2dad5c]">Board Members</a></li>
+                <li><a href="#" className="text-black hover:text-[#2dad5c]" onClick={() => router.push("/Board")}>Board Members</a></li>
 
             </ul>
           </div>
 
           {/* Donate button for desktop */}
           <div className="hidden lg:block">
-            <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white">Donate</button>
+            <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white" onClick={togglePopup}>Donate</button>
           </div>
 
           {/* Mobile menu button */}
@@ -160,17 +165,17 @@ const Navbar = () => {
           <ul className="mt-8 w-[40vw] space-y-4 mx-0 m-auto">
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => {router.push('/Home')}}>Home</a></li>
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded">About</a></li>
-            <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
+            <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="left-0 bg-white border border-gray-300 w-36">
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>Contest 1</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>Contest 2</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>Contest 3</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2 </a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>Program 3 </a></li>
                 </ul>
                 )}
 
 
-<li><a href="#" className="text-black hover:text-[#2dad5c]">Board Members</a></li>
+<li><a href="#" className="text-black hover:text-[#2dad5c]" onClick={() => router.push("/Board")}>Board Members</a></li>
            
 
               <div className=''>
@@ -184,7 +189,6 @@ const Navbar = () => {
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("makthab")}>Makthab</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("it")}>Information Technology</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("law")}>Department of Law</a></li>
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("specialinitiative")}>Special Initiative and Planning</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleDepartmentSelect("womenempowerment")}>Women Empowerment</a></li>
                 </ul>
                 )}
@@ -194,7 +198,10 @@ const Navbar = () => {
           </ul>
          
         </div>
+
+        {showPopup && <DonatePopup onClosePopup={togglePopup} />}
       </nav>
+      
     </header>}
     </> 
   );

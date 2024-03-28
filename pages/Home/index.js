@@ -14,8 +14,9 @@ import WhoWeAre from '@/components/WhoWeAre/WhoWeAre'
 import { Image } from "next/image";
 import Ramadan from "@/components/Ramadan/Ramadan";
 import BannerCard from "@/components/BannerCard/BannerCard";
-
-
+import DonatePopup from "@/components/DonatePopup/DonatePopup";
+import { CiMail } from "react-icons/ci";
+import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 const values = [
     {
         img: '',
@@ -73,6 +74,12 @@ const Home = () => {
     const [adNumber, setAdNumber] = useState(0);
     const [adCount, setAdCount] = useState(0);
     const [adsDetails, setAdsDetails] = useState([])
+    const [showPopup, setShowPopup] = useState(false);
+
+    const togglePopup = () => {
+      setShowPopup(!showPopup);
+    };
+  
 
     const closeAdPopup = () => {
         setAdPopupVisible(false);
@@ -175,7 +182,7 @@ const Home = () => {
     }, []); 
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-100 overflow-x-hidden">
             <Navbar />
 <div className="bg-gray-100">
 
@@ -191,7 +198,7 @@ const Home = () => {
       )}
     </div>
 
-        <div className="text-center">
+    <div className="text-center overflow-y-auto">
             
             {/* <ResponsiveAppBar /> */}
             
@@ -201,15 +208,46 @@ const Home = () => {
     backgroundImage: 'url("https://res.cloudinary.com/dchbfnlct/image/upload/v1711042512/mosque-615415_1280_vamdua.jpg")',
   }}
 >
+
+
+<div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-60 "></div>
+    
   {/* Overlay div for background image */}
-  <div className="absolute inset-0 bg-[#222226] opacity-60 "></div>
+  <div className="absolute inset-1 z-20 bg-[#222226] py-10 px-8 opacity-60 ">
+
+  <div className="flex items-center justify-center inset-0 outline-none z-50 gap-5 mt-3 logos md:justify-end">
+                    <a href="https://www.instagram.com/swaroop134" target="_blank" >
+                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                        <FaWhatsapp />
+                    </button>
+                    </a>
+                    <a href="mailto:islamiakalvisangam@gmail.com" target="_blank" >
+                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer ">
+                        <CiMail />
+                    </button>
+                    </a>
+                    <a href="https://www.instagram.com/islamiya_kalvi_sangam" target="_blank" >
+                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                        <FaInstagram />
+                    </button>
+                    </a> 
+                    <a href="https://www.facebook.com/islamiya.kalvi.sangam" target="_blank" >
+                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                        <FaFacebook />
+                    </button>
+                 </a>
+                </div>
+
+  </div>
+
+  
 
   <div className=" lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center h-[100%] relative z-10">
   <div className="flex justify-start top-[calc(60vh)]">
-  <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[150px] mt-4 mb-45" />
+  <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[190px] mt-4 mb-45" />
   </div>
   <div className="flex flex-col justif-center items-center">
-    <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[110px] w-[120px] mt-4" />
+    <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[150px] w-[150px] mt-4" />
     <p className="text-4xl text-white font-extrabold mb-4 mt-8">Nurturing Hope, Transforming Lives.</p>
     <p className="text-xltext-white">
       Join us on our mission for a better world through Islamic values and humanitarian initiatives.
@@ -299,7 +337,9 @@ const Home = () => {
 ‘The believers, in their love, mutual kindness, and close ties, are like one body; when any part complains, the whole body responds to it with wakefulness and fever.‘ 
 </h3>
 
+<div id="footer">
 <Footer />
+</div>
     </div>
     )
 }

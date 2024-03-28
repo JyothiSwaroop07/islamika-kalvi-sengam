@@ -1,7 +1,7 @@
 import React from "react";
 
 import PeopleCard from "../PeopleCard/PeopleCard";
-
+import { useRouter } from "next/router";
 
 const Trustees = [
     {
@@ -17,7 +17,7 @@ const Trustees = [
         des: 'Board of Trustees',
     },
     {
-        title: 'Hameed Salman Khan bin Zulfikar Ali bin Hasan Ibrahim Mohideen Adumai ',
+        title: 'Hameed Salman Khan bin Zulfikar Ali bin Hasan Ibrahim Mohideen',
         des: 'Board of Trustees',
     },
     {
@@ -91,10 +91,17 @@ const islamicAdvisory = [
 ]
 
 const PeopleSection = () => {
+
+    const router = useRouter();
+
+
     return (
     <section id="people">
         <div className="container mx-auto">
-        <h1 className="text-center font-bold text-white text-3xl my-12">Board Of Trustees</h1>
+            <div className="flex justify-center items-center">
+            <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Home")}>Go Back</button>
+            </div>
+        <h1 className="text-center font-bold text-[#2dad5c] text-3xl my-12">Board Of Trustees</h1>
         <div className="flex flex-row justify-center items-center flex-wrap">
             {Trustees.map((each, idx) => (
                 <PeopleCard title={each.title} des = {each.des} key={idx}/>
@@ -103,7 +110,7 @@ const PeopleSection = () => {
         </div>
 
         <div className="container mx-auto">
-        <h1 className="text-center font-bold text-white text-3xl my-12">Board Of Directors</h1>
+        <h1 className="text-center font-bold text-[#2dad5c] text-3xl my-12">Board Of Directors</h1>
         <div className="flex flex-row justify-center items-center flex-wrap">
             {Directors.map((each, idx) => (
                 <PeopleCard title={each.title} des = {each.des} key={idx}/>
@@ -112,7 +119,7 @@ const PeopleSection = () => {
         </div>
 
         <div className="container mx-auto">
-        <h1 className="text-center font-bold text-white text-3xl my-12">Board Of Islamic Advisory</h1>
+        <h1 className="text-center font-bold text-[#2dad5c] text-3xl my-12">Board Of Islamic Advisory</h1>
         <div className="flex flex-row justify-center items-center flex-wrap">
             {islamicAdvisory.map((each, idx) => (
                 <PeopleCard title={each.title} des = {each.des} key={idx}/>

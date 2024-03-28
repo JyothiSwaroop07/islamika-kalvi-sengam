@@ -7,6 +7,9 @@ import book5 from '../images/book5.jpg';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar/Navbar';
 
+import cordinator from './Coordinator - Safwan.jpg';
+import head from './Head.jpg';
+
 
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -18,8 +21,8 @@ const bookPublication = () => {
     const images = [book1, book2, book3, book4, book5];
     const [currentPage, setCurrentPage] = useState(0);
     const [imagesPerPage, setImagesPerPage] = useState(3);
-    
 
+    
     useEffect(() => {
         const handleResize = () => {
             
@@ -65,8 +68,30 @@ const bookPublication = () => {
             </div>
            
 
-            <h1 className='text-black text-semibold text-2xl my-2'>Islamic book publications</h1>
-            <h1 className='text-[#2dad5c] text-semibold text-xl my-4'>View Our Gallery here</h1>
+            <h1 className='text-[#2dad5c] font-semibold text-2xl my-2'>Islamic book publications</h1>
+
+
+            <div className='flex gap-4 my-4 justify-center'>
+
+            <div className='card h-[350px] text-center w-[200px] shadow-md md:mx-5'>
+                    <Image src={head} height={200} width={200} alt="person"/>
+                    <div className='details flex flex-col gap-3 justify-center items-center p-4'>
+                        <h1 className='text-lg font-bold'>Zulfikar Ali bin Hasan Ibrahim</h1>
+                        <h1 className='text-md font-bold text-[#2dad5c]'>Head</h1>
+                    </div>
+                </div>
+
+                <div className='card h-[350px] text-center w-[200px] shadow-md'>
+                    <Image src={cordinator} height={200} width={200} alt="person"/>
+                    <div className='details flex flex-col gap-3 justify-center items-center p-4'>
+                        <h1 className='text-lg font-bold'>Mohamed Safwan bin Mohideen Adumai</h1>
+                        <h1 className='text-md font-bold text-[#2dad5c]'>Coordinator</h1>
+                    </div>
+                </div>
+
+            </div>
+
+            <h1 className='text-[#2dad5c] font-semibold text-xl my-4'>View Our Gallery here</h1>
 
        {/* <div className='flex flex-wrap justify-center items-center gap-5'>
         <Image src={book1} className='' width={200} height={200} alt="books"/>

@@ -386,13 +386,17 @@ const Contest1 = () => {
                 </div>
             )} */}
 
+            <div className="">
+                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 2 | தினம் ஒரு கேள்வி</h1>
+            </div>
+
             {giveSelectContestOption && (
                 <div className="flex justify-around items-center mx-auto text-center my-8  mx-auto p-6  shadow-md rounded-md">
                     {/* <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button> */}
 
                     <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" />
 
-                    <button className="bg-[#2dad5c] h-[48px] w-[145px] border-1 rounded-md text-white" onClick={handlePrevContClick}>View Previous Contests</button>
+                    <button className="bg-[#2dad5c] h-[48px] w-[145px] border-1 rounded-md text-white" onClick={handlePrevContClick}>முந்திய நாள் கேள்விகள்</button>
                 
                    
                 </div> 
@@ -420,7 +424,7 @@ const Contest1 = () => {
 
                    
                     <h1>{form.date}</h1>
-                    <iframe src={form.formLink} width="900" className="w-[92vw] min-h-[900px] max-h-[2200px] bg-white" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <iframe src={form.formLink} width="900" className="w-[90vw] min-h-[900px] max-h-[2200px] bg-white" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
                     </form>
                 </div>}
