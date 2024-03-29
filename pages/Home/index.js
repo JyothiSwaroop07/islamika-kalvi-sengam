@@ -254,6 +254,7 @@ const Home = () => {
         Seeking Excellence In Islamic Knowledge and Practice.
     </p>
     <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white" onClick={togglePopup}>Donate</button>
+    {showPopup && <DonatePopup onClosePopup={togglePopup} />}
     </div>
 
   
