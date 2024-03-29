@@ -19,25 +19,25 @@ import { CiMail } from "react-icons/ci";
 import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 const values = [
     {
-        img: '',
+        img: '/assets/Logo3.jpg',
         title: 'Emergency Relief',
         des: 'We issue rescue and relief services to those in danger and at immediate risk of harm. We also focus on developing and upgrading our capacity to link relief and rehabilitation with long term development.',
         id: 1,
     },
     {
-        img: '',
+        img: '/assets/Logo1.jpg',
         id: 2,
         title: 'Sustainable livelihoods',
         des: 'Our long-term development programmes build independent, brighter futures. We enable marginalised communities to live with dignity through restoring livelihood opportunities, improving agriculture '
     },
     {
-        img: '',
+        img: '/assets/Logo2.jpg',
         id:3,
         title: 'Education',
         des: 'We believe in providing everyone with access to education to all. In particular, our focus is to enable girls to attend school – thereby creating opportunities to break out of the cycle of poverty for future generations.'
     },
     {
-        img: '',
+        img: '/assets/Logo4.jpg',
         id: 4,
         title: 'Healthcare',
         des: 'Ur medical and health care programmes save and protect lives across the world. Key priorities of our healthcare intervention is the promotion of good health and well-being of children and mothers with a focus on combating the major causes of childhood deaths and diseases.'
@@ -217,7 +217,7 @@ const Home = () => {
   <div className="absolute z-20  lg:py-10 lg:px-8 ">
 
   <div className="flex items-center justify-center  inset-0 outline-none z-50 gap-5 mt-3 logos lg:justify-end">
-                    <a href="https://wa.me/9976346062" target="_blank" >
+                    <a href="https://wa.me/919487044247" target="_blank" >
                     <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
                     </button>
@@ -245,15 +245,15 @@ const Home = () => {
 
   <div className="absolute lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center relative ">
   <div className="flex justify-start relative mt-24">
-  <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188557/pngwing.com_ddfpox.png" className="h-[100px] align-start w-[190px] mt-4 mb-45" width={100} height={100} alt="img" />
+  <Image src="/assets/Logo8.png" className="h-[100px] align-start w-[300px] mt-4 mb-45" width={100} height={100} alt="img" />
   </div>
   <div className="flex flex-col justif-center items-center">
-    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[150px] w-[150px] mt-4" width={100} height={100} alt="img" />
-    <p className="text-4xl text-white font-extrabold mb-4 mt-8">Nurturing Hope, Transforming Lives.</p>
+    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[250px] w-[250px] mt-4" width={150} height={100} alt="img" />
+    <p className="text-4xl text-white font-extrabold mb-4 mt-8">Islamiya Kalvi Sangam</p>
     <p className="text-xltext-white">
-      Join us on our mission for a better world through Islamic values and humanitarian initiatives.
+        Seeking Excellence In Islamic Knowledge and Practice.
     </p>
-    <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white">Donate</button>
+    <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white" onClick={togglePopup}>Donate</button>
     </div>
 
   
@@ -326,8 +326,7 @@ const Home = () => {
 
             {sponsors.map((each, idx) => (
                 <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8" key={idx}>
-                <Image src={each.img_url} alt={each.name} className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
-                <p className="text-gray-700 text-center text-2xl">{each.name}</p>
+                <Image src="/" alt='Image' className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
             </div>
             ))}
         </div>

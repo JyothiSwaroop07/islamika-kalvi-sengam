@@ -18,7 +18,7 @@ const Footer = () => {
                         <Image
                             width={63}
                             height={55}
-                            src='https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg'
+                            src='/'
                             alt="Main Logo"
                             className="logo"
                         />
