@@ -167,7 +167,7 @@ const Navbar = () => {
         <div className={`mobile-menu lg:hidden ${menuVisible ? 'block' : 'hidden'} flex justify-start z-10 overflow-y-auto h-[100vh] transform ${menuVisible ? '-translate-x--10 ease-out' : 'translate-x-full ease-in'} transition-transform duration-300`}>
           <ul className="mt-8 w-[40vw] space-y-4 mx-0 m-auto">
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => {router.push('/Home')}}>Home</a></li>
-            <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded">About</a></li>
+            <li><a href="#about" className="block py-2 text-black hover:text-[#2dad5c] rounded">About</a></li>
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="left-0 bg-white border border-gray-300 w-36">
@@ -197,7 +197,7 @@ const Navbar = () => {
                 )}
                 </div>
 
-                <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded">Contact</a></li>
+                <li><a href="#footer" className="block py-2 text-black hover:text-[#2dad5c] rounded">Contact</a></li>
           </ul>
          
         </div>
