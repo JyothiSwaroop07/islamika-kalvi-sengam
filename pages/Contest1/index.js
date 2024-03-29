@@ -393,7 +393,7 @@ const Contest1 = () => {
             )} */}
 
             <div className="">
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 2 | தினம் ஒரு கேள்வி</h1>
+                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 1 | தொடர் பயான்</h1>
             </div>
 
             {giveSelectContestOption && (
