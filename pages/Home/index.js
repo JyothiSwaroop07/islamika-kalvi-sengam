@@ -325,11 +325,17 @@ const Home = () => {
         {/* <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-x-auto"> */}
         <div className="flex justify-center overflow-x-auto">
 
-            {sponsors.map((each, idx) => (
-                <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8" key={idx}>
-                <Image src="/" alt='Image' className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
-            </div>
-            ))}
+        {sponsors.length === 0 ? (
+                <p className="text-center text-[#696855] text-2xl lg:text-4xl font-semibold w-[80vw] mx-auto mb-8">
+                    For Sponsorship/Ads: Contact 9500489492
+                </p>
+                ) : (
+                sponsors.map((each, idx) => (
+                    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8" key={idx}>
+                    <Image src="/" alt='Image' className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
+                    </div>
+                ))
+                )}
         </div>
     </div>
 </section>
