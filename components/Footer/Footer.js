@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import PeopleSection from "../PeopleSection/PeopleSection";
-import { FaWhatsapp, FaInstagram, FaFacebook, FaGmail } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaFacebook, FaYoutube, FaSearch } from 'react-icons/fa';
 import { CiMail } from "react-icons/ci";
+
 
 const Footer = () => {
 
@@ -14,7 +15,7 @@ const Footer = () => {
 
             <div className="container flex flex-col items-center p-6 text-gray-200 md:p-10 md:flex-row md:justify-between md:items-start">
                 <div className="mb-6 w-[300px] md:w-[300px] md:mr-8 text-center md:text-left md:flex flex-col ">
-                    <div className="w-full md:w-[80%] mx-auto flex justify-center md:justify-start md:mx-0">
+                    <div className="w-full md:w-[80%] mx-auto flex justify-center md:justi</div>fy-start md:mx-0">
                         <Image
                             width={63}
                             height={55}
@@ -30,11 +31,7 @@ const Footer = () => {
                         <FaWhatsapp />
                     </button>
                     </a>
-                    <a href="mailto:islamiakalvisangam@gmail.com" target="_blank" >
-                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer ">
-                        <CiMail />
-                    </button>
-                    </a>
+                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://youtube.com/@islamiyakalvisangam" target="_blank"><FaYoutube/></Link></button>
                     <a href="https://www.instagram.com/islamiya_kalvi_sangam" target="_blank" >
                     <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
                         <FaInstagram />
@@ -49,19 +46,18 @@ const Footer = () => {
                 </div>
 
                 <div className="mb-6 text-center md:w-1/4 md:text-left">
-                    <h1 className="mb-2 text-2xl">Contact No</h1>
+                    <h1 className="mb-2 text-2xl">Contact Us</h1>
                     <p><a href="#">9976346062</a></p>
                     <p><a href="#">9092437232</a></p>
                     <p><Link href="/Jobs">6382273264</Link></p>
+                    <div className="mb-6 text-center md:w-1/4 md:text-left flex flex-row gap-5 mt-5">
+                        <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="mailto:islamiyakalvisangam@gmail.com"><CiMail/></Link></button>
+                        <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank"><FaSearch/></Link></button>
+                    </div>
                     {/* <p><Link href="/About">About Us</Link></p> */}
                 </div>
 
-                <div className="mb-6 text-center md:w-1/4 md:text-left">
-                    <h1 className="mb-2 text-2xl">Know About Us</h1>
-                    <p><Link href="https://youtube.com/@islamiyakalvisangam" target="_blank">Youtube</Link></p>
-                    <p><Link href="">islamiyakalvisangam@gmail.com</Link></p>
-                    <p><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank">Google search</Link></p>
-                </div>
+               
 
 
                 {/* <div className="text-center md:w-1/4 md:text-left">
@@ -74,7 +70,7 @@ const Footer = () => {
             </div>
 
             <div className="mt-8 text-xs text-center">
-                <p>Name/ Copyright 20234/ All Rights Reserved</p>
+                <p>Islamiya Kalvi Sangam/Copyright 2024/ All Rights Reserved</p>
             </div>
         </div>
     );

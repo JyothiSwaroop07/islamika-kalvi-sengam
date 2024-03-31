@@ -17,7 +17,11 @@ const Trustees = [
         des: 'Board of Trustees',
     },
     {
-        title: 'Hameed Salman Khan bin Zulfikar Ali bin Hasan Ibrahim Mohideen',
+        title: 'Hameed Salman Khan bin Mohideen',
+        des: 'Board of Trustees',
+    },
+    {
+        title: 'Zulfikar Ali bin Hasan Ibrahim',
         des: 'Board of Trustees',
     },
     {
