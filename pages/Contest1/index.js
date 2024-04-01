@@ -14,6 +14,7 @@ import { googleFormsToJson } from 'react-google-forms-hooks'
 import { useRef } from "react";
 import  Image  from "next/image";
 import Footer from "@/components/Footer/Footer";
+import { useCallback } from "react";
 
 
 
@@ -24,22 +25,30 @@ const ads = [
     {
         id: 1,
         description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        video: 'link1',
+        title: 'Title 1',
+        image: 'img1',
     },
     {
         id: 2,
         description: "This is Ad two. Content goes here",
-        adLink: 'link2',
+        video: 'link1',
+        title: 'Title 2',
+        image: 'img2',
     },
     {
         id: 3,
         description: "This is Ad three. Content goes here",
-        adLink: 'link3',
+        video: 'link1',
+        title: 'Title 3',
+        image: 'img1',
     },
     {
         id: 4,
         description: "This is Ad four. Content goes here",
-        adLink: 'link4',
+        video: 'link1',
+        title: 'Title 4',
+        image: 'img1',
     },
 ]
 
@@ -63,52 +72,50 @@ const Contest1 = () => {
       };
 
       
-      useEffect(() => {
-        const fetchAds = async() => {
-            try{
-            let adsContent = [];
-            let adsDuplicate = []
-            const adsCollection = collection(db, "Ads");
-            const adsDoc = doc(adsCollection, "adsDetails");
+      const fetchAds = async() => {
+        try{
+           
+        let adsContent = [];
+        const adsCollection = collection(db, "Ads");
+        const adsDoc = doc(adsCollection, "adsDetails");
 
-            const docSnapshot = await getDoc(adsDoc);
+        const docSnapshot = await getDoc(adsDoc);
 
-            if(docSnapshot.exists()){
-                const adsData = docSnapshot.data();
-              
-                adsContent = adsData.ads;
-                adsDuplicate = adsData.ads;
-             
-                setAdsDetails(adsContent);
-               
-            }
-            else{
-                console.log("No ads Data available")
-            }
+        if(docSnapshot.exists()){
+            const adsData = docSnapshot.data();
+            console.log(adsData, "hello");
+            adsContent = adsData.ads;
+            
+            console.log(adsContent);
+            setAdsDetails(adsContent);
+            console.log(adsDetails)
         }
-        catch (error){
-            console.log("error fetching ads data", error);
+        else{
+            console.log("No ads Data available")
         }
     }
+    catch (error){
+        console.log("error fetching ads data", error);
+    }
+    }
 
-    fetchAds();
-    }, [adsDetails]);
 
 
     useEffect(() => {
         const adPopupInterval = setInterval(() => {
-            if (adCount < adsDuplicate.length) {
+            if (ads.length > 0) {
                 setAdPopupVisible(true);
-                setAdCount(prevCount => prevCount + 1);
-                setAdNumber(prevNumber => (prevNumber + 1) % adsDuplicate.length);
-                console.log(adCount, adNumber);
+                // setAdCount(prevCount => prevCount + 1);
+                setAdNumber(prevNumber => (prevNumber + 1) % ads.length);
+                console.log(adNumber);
             } else {
                 clearInterval(adPopupInterval); // Clear the interval after showing the ad popup three times
+                console.log("xero")
             }
-        }, 180 * 1000);
+        }, 60* 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, [adCount, adNumber]); 
+    }, [adNumber]); 
 
     useEffect(() => {
         const fetchBannerImages = async () => {
@@ -198,9 +205,8 @@ const Contest1 = () => {
     // }
 
     
-    useEffect(() => {
-        const fetchContestDetails = async () => {
-          try {
+    const fetchContestDetails = useCallback(async () => {
+        try {
             // Fetch all documents in the Contest1 collection
             const contestRef = collection(db, 'Contest1');
             const q = query(contestRef);
@@ -210,59 +216,46 @@ const Contest1 = () => {
             currentDate.setMinutes(currentDate.getMinutes());
             const currentDateString = currentDate.toISOString().split('T')[0];
             const currentTime = currentDate.getHours();
-           
-            
-
-
     
             if (currentTime < 17) { // If current time is before 5:00 PM
-              const previousDay = new Date(currentDate);
-              previousDay.setDate(currentDate.getDate() - 1   );
-              const previousDayString = previousDay.toISOString().split('T')[0];
-              console.log(previousDayString, "check")
-              
+                const previousDay = new Date(currentDate);
+                previousDay.setDate(currentDate.getDate() - 1);
+                const previousDayString = previousDay.toISOString().split('T')[0];
+                console.log(previousDayString, "check")
     
-              querySnapshot.forEach((doc) => {
-                const contestData = doc.data();
-                const contestDetails = contestData.contestDetails;
-                console.log(contestDetails);
-               
-                if (contestDetails.date == previousDayString) { // Check if document exists for previous day
-                  
+                querySnapshot.forEach((doc) => {
+                    const contestData = doc.data();
+                    const contestDetails = contestData.contestDetails;
+                    console.log(contestDetails);
     
-                  // Extract form questions
-                 setForm(contestDetails);
-                 console.log(form) 
-                  setShouldDisplayTodayForm(true);
-                 }
-              });
+                    if (contestDetails.date == previousDayString) { // Check if document exists for previous day
+                        // Extract form questions
+                        setForm(contestDetails);
+                        console.log(form);
+                        setShouldDisplayTodayForm(true);
+                    }
+                });
             } else if (currentTime >= 17) { // If current time is after 5:00 PM
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
-                  
                     const contestDetails = contestData.contestDetails;
-                   
-                    if (contestDetails.date == currentDateString) { // Check if document exists for previous day
-                      
-        
-                      // Extract form questions
-                      setForm(contestDetails);
-                  
-                      
-                        
-                      setShouldDisplayTodayForm(true);
-                     }
-              });
-            }
-          } catch (error) {
-            console.error('Error fetching contest details:', error);
-          }
-        };
     
+                    if (contestDetails.date == currentDateString) { // Check if document exists for previous day
+                        // Extract form questions
+                        setForm(contestDetails);
+                        setShouldDisplayTodayForm(true);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching contest details:', error);
+        }
+    }, [form]); // Include form as a dependency here
+    
+    useEffect(() => {
         fetchContestDetails();
-       
-      }, [form]);
-
+    }, [fetchContestDetails]);
+    
 
       const handleChange = (e, index) => {
         setAnswers({ ...answers, [index]: e.target.value });
@@ -329,11 +322,11 @@ const Contest1 = () => {
       {/* Ad Popup */}
       {adPopupVisible && (
         <AdPopup
-          title={adsDetails[adNumber].title}
-          description={adsDetails[adNumber].description}
+          title={ads[adNumber].title}
+          description={ads[adNumber].description}
           onClose={closeAdPopup}
-          adLink={adsDetails[adNumber].image}
-          videoLink={adsDetails[adNumber].video}
+          adLink={ads[adNumber].image}
+          videoLink={ads[adNumber].video}
         />
       )}
     </div>

@@ -10,27 +10,36 @@ import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
 import Image  from "next/image";
 import Footer from "@/components/Footer/Footer";
+import { useCallback } from "react";
 
 const ads = [
     {
         id: 1,
         description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        video: 'link1',
+        title: 'Title 1',
+        image: 'img1',
     },
     {
         id: 2,
         description: "This is Ad two. Content goes here",
-        adLink: 'link2',
+        video: 'link1',
+        title: 'Title 2',
+        image: 'img2',
     },
     {
         id: 3,
         description: "This is Ad three. Content goes here",
-        adLink: 'link3',
+        video: 'link1',
+        title: 'Title 3',
+        image: 'img1',
     },
     {
         id: 4,
         description: "This is Ad four. Content goes here",
-        adLink: 'link4',
+        video: 'link1',
+        title: 'Title 4',
+        image: 'img1',
     },
 ]
 
@@ -58,52 +67,51 @@ const Contest2 = () => {
 
       
 
-      useEffect(() => {
-        const fetchAds = async() => {
-            try{
-            let adsContent = [];
-            let adsDuplicate = []
-            const adsCollection = collection(db, "Ads");
-            const adsDoc = doc(adsCollection, "adsDetails");
+      const fetchAds = async() => {
+        try{
+           
+        let adsContent = [];
+        const adsCollection = collection(db, "Ads");
+        const adsDoc = doc(adsCollection, "adsDetails");
 
-            const docSnapshot = await getDoc(adsDoc);
+        const docSnapshot = await getDoc(adsDoc);
 
-            if(docSnapshot.exists()){
-                const adsData = docSnapshot.data();
-                console.log(adsData, "hello");
-                adsContent = adsData.ads;
-                adsDuplicate = adsData.ads;
-                console.log(adsContent);
-                setAdsDetails(adsContent);
-                console.log(adsDetails)
-            }
-            else{
-                console.log("No ads Data available")
-            }
+        if(docSnapshot.exists()){
+            const adsData = docSnapshot.data();
+            console.log(adsData, "hello");
+            adsContent = adsData.ads;
+            
+            console.log(adsContent);
+            setAdsDetails(adsContent);
+            console.log(adsDetails)
         }
-        catch (error){
-            console.log("error fetching ads data", error);
+        else{
+            console.log("No ads Data available")
         }
     }
+    catch (error){
+        console.log("error fetching ads data", error);
+    }
+    }
 
-    fetchAds();
-    }, [adsDetails]);
 
 
     useEffect(() => {
         const adPopupInterval = setInterval(() => {
-            if (adCount < adsDuplicate.length) {
+            if (ads.length > 0) {
                 setAdPopupVisible(true);
-                setAdCount(prevCount => prevCount + 1);
-                setAdNumber(prevNumber => (prevNumber + 1) % adsDuplicate.length);
-                console.log(adCount, adNumber);
+                // setAdCount(prevCount => prevCount + 1);
+                setAdNumber(prevNumber => (prevNumber + 1) % ads.length);
+                console.log(adNumber);
             } else {
                 clearInterval(adPopupInterval); // Clear the interval after showing the ad popup three times
+                console.log("xero")
             }
-        }, 180 * 1000);
+        }, 60* 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, [adCount, adNumber]); 
+    }, [adNumber]); 
+
 
     useEffect(() => {
         const fetchBannerImages = async () => {
@@ -192,8 +200,8 @@ const Contest2 = () => {
     //       }
     // }
 
-    useEffect(() => {
-        const fetchContestDetails = async () => {
+    
+        const fetchContestDetails = useCallback(async () => {
           try {
             // Fetch all documents in the Contest1 collection
             const contestRef = collection(db, 'Contest2');
@@ -251,11 +259,13 @@ const Contest2 = () => {
             console.error('Error fetching contest details:', error);
             setErrorMessage("No Contests available for Today");
           }
-        };
+        }, [form]);
     
-        fetchContestDetails();
-       
-      }, [form]);
+     
+        useEffect(() => {
+            fetchContestDetails();
+        }, [fetchContestDetails]);
+    
 
 
       const handleChange = (e, index) => {
@@ -303,11 +313,11 @@ const Contest2 = () => {
       {/* Ad Popup */}
       {adPopupVisible && (
         <AdPopup
-          title={adsDetails[adNumber].title}
-          description={adsDetails[adNumber].description}
+          title={ads[adNumber].title}
+          description={ads[adNumber].description}
           onClose={closeAdPopup}
-          adLink={adsDetails[adNumber].image}
-          videoLink={adsDetails[adNumber].video}
+          adLink={ads[adNumber].image}
+          videoLink={ads[adNumber].video}
         />
       )}
     </div>

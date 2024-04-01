@@ -48,22 +48,30 @@ const ads = [
     {
         id: 1,
         description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        video: 'link1',
+        title: 'Title 1',
+        image: 'img1',
     },
     {
         id: 2,
-        description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        description: "This is Ad two. Content goes here",
+        video: 'link1',
+        title: 'Title 2',
+        image: 'img2',
     },
     {
         id: 3,
-        description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        description: "This is Ad three. Content goes here",
+        video: 'link1',
+        title: 'Title 3',
+        image: 'img1',
     },
     {
         id: 4,
-        description: "This is Ad one. Content goes here",
-        adLink: 'link1',
+        description: "This is Ad four. Content goes here",
+        video: 'link1',
+        title: 'Title 4',
+        image: 'img1',
     },
 ]
 
@@ -86,10 +94,10 @@ const Home = () => {
       };
 
       
-    useEffect(() => {
+
         const fetchAds = async() => {
             try{
-                let adsDuplicate = [];
+               
             let adsContent = [];
             const adsCollection = collection(db, "Ads");
             const adsDoc = doc(adsCollection, "adsDetails");
@@ -100,7 +108,7 @@ const Home = () => {
                 const adsData = docSnapshot.data();
                 console.log(adsData, "hello");
                 adsContent = adsData.ads;
-                adsDuplicate = adsData.ads;
+                
                 console.log(adsContent);
                 setAdsDetails(adsContent);
                 console.log(adsDetails)
@@ -112,10 +120,8 @@ const Home = () => {
         catch (error){
             console.log("error fetching ads data", error);
         }
-    }
+        }
 
-    fetchAds();
-    }, [adsDetails]);
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -149,10 +155,13 @@ const Home = () => {
                 if(docSnapshot.exists()){
                     const sponsorsData = docSnapshot.data();
                     data = sponsorsData.sponsors_list;
+                    if(data.length>0){
                     console.log(data);
                     console.log("hello");
                     console.log(data[0].img_url)
                     setSponsors(data);
+                    }
+                    
                     
                 }else{
                     console.log("No data available");
@@ -169,18 +178,19 @@ const Home = () => {
 
     useEffect(() => {
         const adPopupInterval = setInterval(() => {
-            if (adCount < adsDuplicate.length) {
+            if (ads.length > 0) {
                 setAdPopupVisible(true);
-                setAdCount(prevCount => prevCount + 1);
-                setAdNumber(prevNumber => (prevNumber + 1) % adsDuplicate.length);
-                console.log(adCount, adNumber);
+                // setAdCount(prevCount => prevCount + 1);
+                setAdNumber(prevNumber => (prevNumber + 1) % ads.length);
+                console.log(adNumber);
             } else {
                 clearInterval(adPopupInterval); // Clear the interval after showing the ad popup three times
+                console.log("xero")
             }
-        }, 180 * 1000);
+        }, 60* 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
-    }, [adCount, adNumber]); 
+    }, [adNumber]); 
 
     return (
         <div className="bg-gray-100 overflow-x-hidden">
@@ -190,11 +200,11 @@ const Home = () => {
       
       {(adPopupVisible && adsDetails) && (
         <AdPopup
-          title={adsDetails[adNumber].title}
-          description={adsDetails[adNumber].description}
+          title={ads[adNumber].title}
+          description={ads[adNumber].description}
           onClose={closeAdPopup}
-          adLink={adsDetails[adNumber].image}
-          videoLink={adsDetails[adNumber].video}
+          adLink={ads[adNumber].image}
+          videoLink={ads[adNumber].video}
         />
       )}
     </div>
