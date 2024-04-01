@@ -250,7 +250,7 @@ const Contest1 = () => {
         } catch (error) {
             console.error('Error fetching contest details:', error);
         }
-    }, [form]); // Include form as a dependency here
+    }, []); // Include form as a dependency here
     
     useEffect(() => {
         fetchContestDetails();

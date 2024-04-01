@@ -259,7 +259,7 @@ const Contest2 = () => {
             console.error('Error fetching contest details:', error);
             setErrorMessage("No Contests available for Today");
           }
-        }, [form]);
+        }, []);
     
      
         useEffect(() => {
