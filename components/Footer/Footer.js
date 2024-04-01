@@ -47,9 +47,9 @@ const Footer = () => {
 
                 <div className="mb-6 text-center md:w-1/4 md:text-left">
                     <h1 className="mb-2 text-2xl">Contact Us</h1>
-                    <p><a href="#">9976346062</a></p>
-                    <p><a href="#">9092437232</a></p>
-                    <p><Link href="/Jobs">6382273264</Link></p>
+                    <p><a href="tel:+919976346062">9976346062</a></p>
+                    <p><a href="tel:+919092437232">9092437232</a></p>
+                    <p><Link href="tel:+916382273264">6382273264</Link></p>
                     <div className="mb-6 text-center md:w-1/4 md:text-left flex flex-row gap-5 mt-5">
                         <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="mailto:islamiyakalvisangam@gmail.com"><CiMail/></Link></button>
                         <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank"><FaSearch/></Link></button>
