@@ -107,7 +107,7 @@ const Socialwelfare = () => {
                     <div className='card h-[350px] text-center w-[200px] shadow-md'>
                         <Image src={cordinator} height={200} width={200} alt="person" className="h-[200px]"/>
                         <div className='details flex flex-col gap-3 justify-center items-center p-4'>
-                            <h1 className='text-lg font-bold'></h1>
+                            <h1 className='text-lg font-bold'>Saibullah Khan bin Abdul Azeez</h1>
                             <h1 className='text-md font-bold text-[#2dad5c]'>Coordinator</h1>
                         </div>
                     </div>

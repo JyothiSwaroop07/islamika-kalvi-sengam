@@ -24,33 +24,34 @@ import { useCallback } from "react";
 const ads = [
     {
         id: 1,
-        description: "This is Ad one. Content goes here",
+        description: "For Sponsorship / Ads Please contact 9500489492",
         video: 'link1',
-        title: 'Title 1',
+        title: 'Ads / Sponsors',
         image: 'img1',
     },
     {
         id: 2,
-        description: "This is Ad two. Content goes here",
+        description: "For Sponsorship / Ads Please contact 9500489492",
         video: 'link1',
-        title: 'Title 2',
+        title: 'Ads / Sponsors',
         image: 'img2',
     },
     {
         id: 3,
-        description: "This is Ad three. Content goes here",
+        description: "For Sponsorship / Ads Please contact 9500489492",
         video: 'link1',
-        title: 'Title 3',
+        title: 'Ads / Sponsors',
         image: 'img1',
     },
     {
         id: 4,
-        description: "This is Ad four. Content goes here",
+        description: "For Sponsorship / Ads Please contact 9500489492",
         video: 'link1',
-        title: 'Title 4',
+        title: 'Ads / Sponsors',
         image: 'img1',
     },
 ]
+
 
 const Contest1 = () => {
     const [bannerImages, setBannerImages] = useState(['https://flowbite.com/docs/images/carousel/carousel-1.svg', 'https://flowbite.com/docs/images/carousel/carousel-2.svg', 'https://flowbite.com/docs/images/carousel/carousel-3.svg']);
