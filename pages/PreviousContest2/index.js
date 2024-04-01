@@ -34,6 +34,9 @@ const PreviousContest2 = () => {
                         formsData.push(contestDetails); // Push only if contest date is less than today's date
                     }
                 });
+
+                formsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
                 setAllFormsData(formsData);
             } catch (error) {
                 console.error('Error fetching contest details:', error);

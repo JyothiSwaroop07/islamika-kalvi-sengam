@@ -34,6 +34,9 @@ const PreviousContest1 = () => {
                     }
                 });
                 console.log(formsData)
+
+                formsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
                 setAllFormsData(formsData);
 
             } catch (error) {
