@@ -111,7 +111,7 @@ const Navbar = () => {
               <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="absolute top-16 ml-16 bg-white border border-gray-300 w-36">
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1 - தொடர் பாயான்</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1 - தொடர் பயான்</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2 - தினம் ஒரு கேள்வி</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 3 - Arabic Calligraphy </a></li>
                 </ul>
@@ -171,7 +171,7 @@ const Navbar = () => {
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="left-0 bg-white border border-gray-300 w-36">
-                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1 - தொடர் பாயான்</a></li>
+                  <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1 - தொடர் பயான்</a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2 - தினம் ஒரு கேள்வி </a></li>
                   <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c]" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 3 - Arabic Calligraphy </a></li>
                 </ul>
