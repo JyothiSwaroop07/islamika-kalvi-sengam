@@ -13,19 +13,32 @@ const Footer = () => {
 
             
 
-            <div className="container flex flex-col items-center p-6 text-gray-200 md:p-10 md:flex-row md:justify-between md:items-start">
-                <div className="mb-6 w-[300px] md:w-[300px] md:mr-8 text-center md:text-left md:flex flex-col ">
-                    <div className="w-full md:w-[80%] mx-auto flex justify-center md:justi</div>fy-start md:mx-0">
+            <div className="container flex flex-col items-center justify-center p-6 text-gray-200">
+                <div className="mb-6 w-[300px] text-center  flex-col ">
+                    <div className="w-full mx-auto flex justify-center ">
                         <Image
                             width={63}
                             height={55}
-                            src='/'
+                            src='https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png'
                             alt="Main Logo"
                             className="logo"
                         />
                     </div>
+                    <h1 className="mb-2 text-2xl mt-2">Contact Us</h1>
                     <p className="mt-3">Islamiya Kalvi sangam, 11/69, PSM Memorial Hall, Vallal seethakathi salai, kilakarai Ramnathapuram, 623517</p>
-                    <div className="flex items-center justify-center gap-5 mt-3 logos md:justify-start">
+                   
+                </div>
+
+                <div className="mb-6 text-center ">
+                    
+                    <p><a href="tel:+919976346062">9976346062</a></p>
+                    <p><a href="tel:+919092437232">9092437232</a></p>
+                    <p><Link href="tel:+916382273264">6382273264</Link></p>
+                    
+                    {/* <p><Link href="/About">About Us</Link></p> */}
+                </div>
+
+                <div className="flex items-center justify-center gap-5 mt-3 logos">
                     <a href="https://wa.me/9976346062" target="_blank" >
                     <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
@@ -43,20 +56,11 @@ const Footer = () => {
                     </button>
                  </a>
                 </div>
-                </div>
 
-                <div className="mb-6 text-center md:w-1/4 md:text-left">
-                    <h1 className="mb-2 text-2xl">Contact Us</h1>
-                    <p><a href="tel:+919976346062">9976346062</a></p>
-                    <p><a href="tel:+919092437232">9092437232</a></p>
-                    <p><Link href="tel:+916382273264">6382273264</Link></p>
-                    <div className="mb-6 text-center md:w-1/4 md:text-left flex flex-row gap-5 mt-5">
+                <div className="mb-6 text-center  flex flex-row gap-5 mt-5">
                         <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="mailto:islamiyakalvisangam@gmail.com"><CiMail/></Link></button>
                         <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank"><FaSearch/></Link></button>
                     </div>
-                    {/* <p><Link href="/About">About Us</Link></p> */}
-                </div>
-
                
 
 

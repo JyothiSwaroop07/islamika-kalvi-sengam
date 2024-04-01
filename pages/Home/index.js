@@ -253,7 +253,7 @@ const Home = () => {
 
   
 
-  <div className="absolute lg:text-center lg:w-[100vw] flex flex-col justify-center  items-center relative ">
+  <div className="absolute sm:text-center sm:w-[100vw] flex flex-col justify-center  items-center relative ">
   <div className="flex justify-start relative mt-24">
   <Image src="/assets/Logo8.png" className="h-[100px] align-start w-[300px] mt-4 mb-45" width={100} height={100} alt="img" />
   </div>

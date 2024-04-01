@@ -9,10 +9,8 @@ const AdPopup = ({title, image, video, description, onClose, adLink }) => {
       <p className="text-xl font-bold text-center mb-4">{title}</p>
         <p className="text-xl font-bold mb-4">{description}</p>
         <Image src={image} width={200} height={200} alt="spnsor image" className='m-auto mt-5' />
-        <div className="flex justify-between">
-          <button href="link1" target="_blank" className="text-blue-500 underline">
-            See More
-          </button>
+        <div className="flex justify-center">
+        
           <button onClick={onClose} className="text-red-500">
             Close
           </button>
