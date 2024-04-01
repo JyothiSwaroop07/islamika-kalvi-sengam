@@ -216,9 +216,10 @@ const Contest1 = () => {
             const currentDate = new Date();
             currentDate.setMinutes(currentDate.getMinutes());
             const currentDateString = currentDate.toISOString().split('T')[0];
-            const currentTime = currentDate.getHours();
+            const currentTime = currentDate.getHours() + (currentDate.getMinutes() / 60) ;
+            console.log(currentTime)
     
-            if (currentTime < 17) { // If current time is before 5:00 PM
+            if (currentTime < 22.5) { // If current time is before 5:00 PM
                 const previousDay = new Date(currentDate);
                 previousDay.setDate(currentDate.getDate() - 1);
                 const previousDayString = previousDay.toISOString().split('T')[0];
@@ -236,7 +237,7 @@ const Contest1 = () => {
                         setShouldDisplayTodayForm(true);
                     }
                 });
-            } else if (currentTime >= 17) { // If current time is after 5:00 PM
+            } else if (currentTime >= 22.5) { // If current time is after 5:00 PM
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
                     const contestDetails = contestData.contestDetails;
@@ -414,7 +415,9 @@ const Contest1 = () => {
                     </div>
                     <hr className="tect-blue-500 my-8 border-2   border-[#2dad5c] border-t w-[100%]" />
                 
-                <h1 className="text-2xl font-bold mb-4">Today&#39;s Contest</h1>
+                <h1 className="text-2xl font-semibold mb-4">Today&#39;s Contest</h1>
+                <h1 className="text-2xl text-[#2dad5c] font-semibold mb-4">contest Day: {form.contestDay}</h1>
+                
                 <form onSubmit={handleSubmit}>
                     
 

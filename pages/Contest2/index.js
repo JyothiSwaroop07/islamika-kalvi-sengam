@@ -394,7 +394,8 @@ const Contest2 = () => {
             )}
 
             {shouldDisplayTodayForm && <div className="flex flex-col items-center  text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
-                <h1 className="text-2xl font-bold mb-4">Today&#39;s Contest</h1>
+            <h1 className="text-2xl font-semibold mb-4">Today&#39;s Contest</h1>
+                <h1 className="text-2xl text-[#2dad5c] font-semibold mb-4">contest Day: {form.contestDay}</h1>
                 <form onSubmit={handleSubmit}>
                     
 
