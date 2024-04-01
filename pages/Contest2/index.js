@@ -201,71 +201,63 @@ const Contest2 = () => {
     //       }
     // }
 
-    
-        const fetchContestDetails = useCallback(async () => {
-          try {
+    const fetchContestDetails = useCallback(async () => {
+        try {
             // Fetch all documents in the Contest1 collection
             const contestRef = collection(db, 'Contest2');
             const q = query(contestRef);
             const querySnapshot = await getDocs(q);
     
             const currentDate = new Date();
-            currentDate.setMinutes(currentDate.getMinutes());
+            currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
             const currentDateString = currentDate.toISOString().split('T')[0];
-            const currentTime = currentDate.getHours();
+            const currentTime = currentDate.getUTCHours();
+    
             console.log(currentDateString);
-           
-            
-
-
+            console.log(currentTime);
     
-            if (currentTime < 17) { // If current time is before 5:00 PM
-              const previousDay = new Date(currentDate);
-              previousDay.setDate(currentDate.getDate() - 1   );
-              const previousDayString = previousDay.toISOString().split('T')[0];
-              console.log(previousDayString, "check")
-              
+            if (currentTime < 17) { // If current time is before 5:00 PM IST
+                const previousDay = new Date(currentDate);
+                previousDay.setUTCDate(currentDate.getUTCDate() - 1);
+                const previousDayString = previousDay.toISOString().split('T')[0];
+                console.log(previousDayString, "check")
     
-              querySnapshot.forEach((doc) => {
-                const contestData = doc.data();
-                const contestDetails = contestData.contestDetails;
-                console.log(contestDetails);
-               
-                if (contestDetails.date == previousDayString) { // Check if document exists for previous day
-                  
-    
-                  // Extract form questions
-                 setForm(contestDetails);
-                 console.log(form) 
-                  setShouldDisplayTodayForm(true);
-                 }
-              });
-            } else if (currentTime >= 17) { // If current time is after 5:00 PM
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
                     const contestDetails = contestData.contestDetails;
                     console.log(contestDetails);
-                   
-                    if (contestDetails.date == currentDateString) { // Check if document exists for previous day
-                      
-        
-                      // Extract form questions
-                     setForm(contestDetails);
-                     console.log(form) 
-                      setShouldDisplayTodayForm(true);
-                     }
-              });
+    
+                    if (contestDetails.date == previousDayString) { // Check if document exists for previous day
+                        // Extract form questions
+                        setForm(contestDetails);
+                        console.log(form);
+                        setShouldDisplayTodayForm(true);
+                    }
+                });
+            } else { // If current time is after 5:00 PM IST
+                querySnapshot.forEach((doc) => {
+                    const contestData = doc.data();
+                    const contestDetails = contestData.contestDetails;
+                    console.log(contestDetails);
+    
+                    if (contestDetails.date == currentDateString) { // Check if document exists for current day
+                        // Extract form questions
+                        setForm(contestDetails);
+                        console.log(form);
+                        setShouldDisplayTodayForm(true);
+                    }
+                });
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Error fetching contest details:', error);
             setErrorMessage("No Contests available for Today");
-          }
-        }, []);
+        }
+    }, []);
     
-     
-        useEffect(() => {
-            fetchContestDetails();
-        }, [fetchContestDetails]);
+    useEffect(() => {
+        fetchContestDetails();
+    }, [fetchContestDetails]);
+    
     
 
 
