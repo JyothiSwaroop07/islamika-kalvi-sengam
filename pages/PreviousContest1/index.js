@@ -91,7 +91,7 @@ const PreviousContest1 = () => {
 
                 <div className="text-black flex flex-col -mt-5 items-center  font-bold text-xl">
           <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
-          <Image src="/"  className='h-[55px] w-[63px]' width={100} height={100} alt="For Sponsorship/Ads: Contact 9500489492" />
+          <Image src="/"  className='h-[55px] w-[63px]' width={100} height={100} alt="Image" />
           </div>
 
                 </div>

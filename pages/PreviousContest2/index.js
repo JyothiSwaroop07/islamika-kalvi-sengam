@@ -90,7 +90,7 @@ const PreviousContest2 = () => {
  
                  <div className="text-black flex flex-col -mt-5 items-center  font-bold text-xl">
            <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
-           <Image src="/"  className='h-[55px] w-[63px]' width={100} height={100} alt="For Sponsorship/Ads: Contact 9500489492"/>
+           <Image src="/"  className='h-[55px] w-[63px]' width={100} height={100} alt="image"/>
            </div>
  
                  </div>
@@ -101,6 +101,7 @@ const PreviousContest2 = () => {
                             date={formData.date}
                             formLink={formData.formLink}
                             handleClick={handleCardClick}
+                            day={formData.contestDay}
                         />
                     ))}
 
@@ -113,7 +114,7 @@ const PreviousContest2 = () => {
             {displayForm && (
                 <>
                 <div className="flex flex-col items-center text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
-                    <button className="bg-blue-800 w-[145px] h-[45px] mr-auto ml-8 text-white rounded-md" onClick={handleBack}>← Go Back</button>
+                    <button className="bg-[#2dad5c] w-[145px] h-[45px] mr-auto ml-8 text-white rounded-md" onClick={handleBack}>← Go Back</button>
                     <h1 className="text-2xl font-bold mb-4">{displayFormLink.date}</h1>
                     <form>
                         <hr className="tect-blue-500 my-8 border-1 border-[#222222] border-t w-[100%]" />
