@@ -22,30 +22,32 @@ const PreviousContest1 = () => {
                 const contestRef = collection(db, 'Contest1');
                 const q = query(contestRef);
                 const querySnapshot = await getDocs(q);
-
+    
+                const currentDate = new Date();
+                currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
+                const currentDateString = currentDate.toISOString().split('T')[0];
+    
                 const formsData = [];
-                const today = new Date().toISOString().split('T')[0]; // Get today's date in yyyy-mm-dd format
-
                 querySnapshot.forEach((doc) => {
                     const contestDetails = doc.data().contestDetails;
                     const contestDate = contestDetails.date;
-                    if (contestDate < today) {
+                    if (contestDate < currentDateString) {
                         formsData.push(contestDetails); // Push only if contest date is less than today's date
                     }
                 });
-                console.log(formsData)
-
+    
                 formsData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
+    
                 setAllFormsData(formsData);
-
+    
             } catch (error) {
                 console.error('Error fetching contest details:', error);
             }
         };
-
+    
         fetchContestDetails();
     }, []);
+    
 
     const handleCardClick = (link, date, video) => {
         setDisplayFormLink({ link, date,  video});

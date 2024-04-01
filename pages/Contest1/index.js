@@ -214,35 +214,36 @@ const Contest1 = () => {
             const querySnapshot = await getDocs(q);
     
             const currentDate = new Date();
-            currentDate.setMinutes(currentDate.getMinutes());
+            const currentUTCTime = currentDate.getUTCHours() + (currentDate.getUTCMinutes() / 60); // Current UTC time in hours with fractions
+            const currentTime = currentUTCTime + 5.5; // Convert UTC time to IST (UTC +5:30)
             const currentDateString = currentDate.toISOString().split('T')[0];
-            const currentTime = currentDate.getHours() + (currentDate.getMinutes() / 60) ;
-            console.log(currentTime)
     
-            if (currentTime < 22.5) { // If current time is before 5:00 PM
+            console.log(currentTime);
+    
+            if (currentTime < 22.5) { // If current time is before 10:30 PM IST
                 const previousDay = new Date(currentDate);
-                previousDay.setDate(currentDate.getDate() - 1);
+                previousDay.setUTCDate(currentDate.getUTCDate() - 1);
                 const previousDayString = previousDay.toISOString().split('T')[0];
-                console.log(previousDayString, "check")
+                console.log(previousDayString, "check");
     
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
                     const contestDetails = contestData.contestDetails;
                     console.log(contestDetails);
     
-                    if (contestDetails.date == previousDayString) { // Check if document exists for previous day
+                    if (contestDetails.date === previousDayString) { // Check if document exists for previous day
                         // Extract form questions
                         setForm(contestDetails);
                         console.log(form);
                         setShouldDisplayTodayForm(true);
                     }
                 });
-            } else if (currentTime >= 22.5) { // If current time is after 5:00 PM
+            } else { // If current time is after or at 10:30 PM IST
                 querySnapshot.forEach((doc) => {
                     const contestData = doc.data();
                     const contestDetails = contestData.contestDetails;
     
-                    if (contestDetails.date == currentDateString) { // Check if document exists for previous day
+                    if (contestDetails.date === currentDateString) { // Check if document exists for current day
                         // Extract form questions
                         setForm(contestDetails);
                         setShouldDisplayTodayForm(true);
@@ -257,6 +258,7 @@ const Contest1 = () => {
     useEffect(() => {
         fetchContestDetails();
     }, [fetchContestDetails]);
+    
     
 
       const handleChange = (e, index) => {
