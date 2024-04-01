@@ -90,8 +90,7 @@ const PreviousContest1 = () => {
                 <button className="bg-[#2dad5c] w-[155px] h-[55px] p-1    text-md text-white rounded-md" onClick={handleBackonCards}>← Go Back to Today&#39;s Contest</button>
 
                 <div className="text-black flex flex-col -mt-5 items-center  font-bold text-xl">
-          <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
-          <Image src="/"  className='h-[55px] w-[63px]' width={100} height={100} alt="Image" />
+                <h1 className='text-[7px]  text-black font-normal leading-snug'>For ads/sponsorship <br/> contact 9500489492</h1>
           </div>
 
                 </div>
