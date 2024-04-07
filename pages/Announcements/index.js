@@ -70,74 +70,7 @@ const Announcements = () => {
                 ></iframe>
             </div>
 
-            <div className="flex flex-col items-center md:items-start">
-                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
-                    தொடர் பயான் நிகழ்ச்சி
-                    </h1> */}
-                    <h2 className="text-center text-[#2dad5c] font-semibold  ">
-                    Winners list - வெற்றியாளர்கள் பட்டியல்
-                    </h2>
-            </div>
-
-            <div className="iframe1 flex justify-center">
-            
-            </div>
-
-
-            <div className="flex flex-col items-center md:items-start">
-                    <h1 className="text-center text-[#2c5c2d] font-bold ">
-                    தினம் ஒரு கேள்வி 
-                    </h1>
-                    <h2 className="text-center text-[#2dad5c] font-normal ">
-                        Correct answers list - சரியான பதில்களின் பட்டியல்
-                    </h2>
-            </div>
-
-            <div className="iframe1 flex justify-center">
-            
-            </div>
-
-            <div className="flex flex-col items-center md:items-start">
-                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
-                    தொடர் பயான் நிகழ்ச்சி
-                    </h1> */}
-                    <h2 className="text-center text-[#2dad5c] font-semibold  ">
-                    Winners list - வெற்றியாளர்கள் பட்டியல்
-                    </h2>
-            </div>
-
-            <div className="iframe1 flex justify-center">
-           
-            </div>
-
-
-            <div className="flex flex-col items-center md:items-start">
-                    <h1 className="text-center text-[#2c5c2d] font-bold ">
-                    Arabic calligraphy
-                    </h1>
-                    <h2 className="text-center text-[#2dad5c] font-normal ">
-                    All participants Calligraphy slide
-                    </h2>
-            </div>
-
-            <div className="iframe1 flex justify-center">
-           
-            </div>
-
-            <div className="flex flex-col items-center md:items-start">
-                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
-                    தொடர் பயான் நிகழ்ச்சி
-                    </h1> */}
-                    <h2 className="text-center text-[#2dad5c] font-semibold  ">
-                    Winners list 
-                    </h2>
-            </div>
-
-            <div className="iframe1 flex justify-center">
-            
-            </div>
-
-            </div>
+           </div>
 
 
         </div>
