@@ -44,7 +44,7 @@ const Announcements = () => {
 
            <div className="px-3 md:px-8">
             <div className="flex justify-center my-8 md:my-14">
-                <h1 className="text-center text-[#2dad5c] font-bold text-[18px]">
+                <h1 className="text-center text-[#2dad5c] font-bold text-[22px] font-serif">
                  Announcement - அறிவிப்பு 
                 </h1>
 
@@ -52,17 +52,17 @@ const Announcements = () => {
             </div>
 
             <div className="flex flex-col items-center md:items-start">
-                    <h1 className="text-center text-[#2c5c2d] font-bold ">
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-3 font-serif text-[22px]">
                     தொடர் பயான் நிகழ்ச்சி
                     </h1>
-                    <h2 className="text-center text-[#2dad5c] font-normal ">
+                    <h2 className="text-center text-[#2dad5c] font-normal my-3 font-serif text-[22px]">
                         Correct answers list - சரியான பதில்களின் பட்டியல்
                     </h2>
             </div>
 
             <div className="iframe1 flex justify-center">
             <iframe
-                    className="w-[90vw] h-[50vh] my-6"
+                    className="h-[40vh] sm:h-[50vh] w-[95vh] my-6"
                     src={`https://www.youtube.com/embed/TpHorJYoaEc`}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -70,7 +70,94 @@ const Announcements = () => {
                 ></iframe>
             </div>
 
-           </div>
+            <div className="flex flex-col items-center md:items-start my-8">
+                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
+                    தொடர் பயான் நிகழ்ச்சி
+                    </h1> */}
+                    <h2 className="text-center text-[#2dad5c] font-semibold  my-3 font-serif text-[20px] ">
+                    Winners list - வெற்றியாளர்கள் பட்டியல்
+                    </h2>
+
+                    <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                    Stay Tuned... Will be updated very soon...
+                    </h1>
+            </div>
+
+            <div className="iframe1 flex justify-center">
+            
+            </div>
+
+
+            <div className="flex flex-col items-center md:items-start my-8">
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-3 font-serif text-[20px]">
+                    தினம் ஒரு கேள்வி 
+                    </h1>
+                    <h2 className="text-center text-[#2dad5c] font-normal my-3 font-serif text-[20px]">
+                        Correct answers list - சரியான பதில்களின் பட்டியல்
+                    </h2>
+
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
+                    Stay Tuned... Will be updated very soon...
+                    </h1>
+            </div>
+
+            <div className="iframe1 flex justify-center">
+            
+            </div>
+
+            <div className="flex flex-col items-center md:items-start my-8">
+                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
+                    தொடர் பயான் நிகழ்ச்சி
+                    </h1> */}
+                    <h2 className="text-center text-[#2dad5c] font-semibold  my-3 font-serif text-[20px]">
+                    Winners list - வெற்றியாளர்கள் பட்டியல்
+                    </h2>
+
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
+                    Stay Tuned... Will be updated very soon...
+                    </h1>
+            </div>
+
+            <div className="iframe1 flex justify-center">
+           
+            </div>
+
+
+            <div className="flex flex-col items-center md:items-start my-8">
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-3 font-serif text-[20px]">
+                    Arabic calligraphy
+                    </h1>
+                    <h2 className="text-center text-[#2dad5c] font-normal my-3 font-serif text-[20px]">
+                    All participants Calligraphy slide
+                    </h2>
+
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
+                    Stay Tuned... Will be updated very soon...
+                    </h1>
+            </div>
+
+            <div className="iframe1 flex justify-center">
+           
+            </div>
+
+            <div className="flex flex-col items-center md:items-start my-8">
+                    {/* <h1 className="text-center text-[#2c5c2d] font-bold ">
+                    தொடர் பயான் நிகழ்ச்சி
+                    </h1> */}
+                    <h2 className="text-center text-[#2dad5c] font-semibold  my-3 font-serif text-[20px]">
+                    Winners list 
+                    </h2>
+
+                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
+                    Stay Tuned... Will be updated very soon...
+                    </h1>
+            </div>
+
+            <div className="iframe1 flex justify-center">
+            
+            </div>
+
+            </div>
 
 
         </div>
