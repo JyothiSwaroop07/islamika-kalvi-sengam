@@ -234,6 +234,7 @@ const Contest1 = () => {
                     if (contestDetails.date === previousDayString) { // Check if document exists for previous day
                         // Extract form questions
                         setForm(contestDetails);
+                        console.log(contestDetails)
                         console.log(form);
                         setShouldDisplayTodayForm(true);
                     }
@@ -246,6 +247,7 @@ const Contest1 = () => {
                     if (contestDetails.date === currentDateString) { // Check if document exists for current day
                         // Extract form questions
                         setForm(contestDetails);
+                        
                         setShouldDisplayTodayForm(true);
                     }
                 });

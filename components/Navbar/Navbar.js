@@ -143,7 +143,8 @@ const Navbar = () => {
           </div>
 
           {/* Donate button for desktop */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block ">
+          <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white mx-2" onClick={() => router.push("/Announcements")}>Announcements</button>
             <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white" onClick={togglePopup}>Donate</button>
           </div>
 
@@ -196,9 +197,10 @@ const Navbar = () => {
                 </ul>
                 )}
                 </div>
-
+                <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => router.push("/Announcements")}>Announcements</a></li>
                 <li><a href="#footer" className="block py-2 text-black hover:text-[#2dad5c] rounded">Contact Us</a></li>
                 <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={togglePopup}>Donate</a></li>
+              
           </ul>
          
         </div>

@@ -5,7 +5,8 @@ import {db} from '../../firebase';
 import { firestore } from '../../firebase'; 
 import { collection, getDoc, doc } from 'firebase/firestore';
 import { ElevatorSharp } from "@mui/icons-material";
-
+import firebase from 'firebase/app';
+import 'firebase/database';
 import WhatWeDoCard from '../../components/WhatWeDoCard/WhatWeDoCard'
 import AdPopup from "@/components/AdPopup/AdPopup";
 import Footer from "@/components/Footer/Footer";
@@ -16,6 +17,7 @@ import Ramadan from "@/components/Ramadan/Ramadan";
 import BannerCard from "@/components/BannerCard/BannerCard";
 import DonatePopup from "@/components/DonatePopup/DonatePopup";
 import { CiMail } from "react-icons/ci";
+import { useRouter } from "next/router";
 import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 const values = [
     {
@@ -140,6 +142,11 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  const router = useRouter();
+ 
 
     useEffect(() => {
         const fetchSponsors = async () => {
@@ -278,7 +285,8 @@ const Home = () => {
 
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
-        <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-36 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
+        <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5" onClick={() => router.push("/Announcements")}>Announcements</button>
+        <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-12 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
         <h3 className="text-black text-xl my-8">
         The Islamic Foundation is primarily a 
         charity dedicated to research, publications, education, community support and inter-faith dialogue. we aim for:
@@ -353,6 +361,10 @@ const Home = () => {
 <h3 className="text-center text-[#696855] text-xl font-semibold w-[80vw] mx-auto mb-8">
 ‘The believers, in their love, mutual kindness, and close ties, are like one body; when any part complains, the whole body responds to it with wakefulness and fever.‘ 
 </h3>
+
+    <div className="flex justify-center mb-3">
+      <h2 className="text-[#2dad5c] font-bold">Number of Visitors: {visitorCount}</h2>
+    </div>
 
 <div id="footer">
 <Footer />
