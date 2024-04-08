@@ -18,7 +18,7 @@ export default function Document() {
         />
            <meta property="og:title" content="IslamiyaKalviSengam" />
           <meta property="og:description" content="" />
-          <meta property="og:image" content="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg" />
+          <meta property="og:image" content="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" />
           <meta property="og:url" content="https://www.islamiyakalvisangam.org/" />
           <meta property="og:type" content="website" />
       </Head>
