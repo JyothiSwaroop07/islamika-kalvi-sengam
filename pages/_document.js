@@ -7,9 +7,9 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="180x180" href="/layout/favicon/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/layout/favicon/favicon-16x16.png"/>
-        <link rel="manifest" href="public/layout/favicon/android-chrome-512x512.png"/>
-        <link rel="mask-icon" href="public/layout/favicon/android-chrome-512x512.png" color="#5bbad5"/>
-        <link rel='shortcut icon' href='public/layout/favicon/android-chrome-512x512.png' />
+        <link rel="manifest" href="/layout/favicon/android-chrome-512x512.png"/>
+        <link rel="mask-icon" href="/layout/favicon/android-chrome-512x512.png" color="#5bbad5"/>
+        <link rel='shortcut icon' href='/layout/favicon/android-chrome-512x512.png' />
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="theme-color" content="#ffffff"/>
         <meta
@@ -18,7 +18,7 @@ export default function Document() {
         />
           <meta property="og:title" content="Islamiya Kalvi Sangam" />
           <meta property="og:description" content="GIVE HOPE THROUGH YOUR SADAQAH AND ZAKAT" />
-          <meta property="og:image" content="public/layout/favicon/android-chrome-512x512.png" />
+          <meta property="og:image" content="/layout/favicon/android-chrome-512x512.png" />
           <meta property="og:url" content="https://www.islamiyakalvisangam.org/" />
           <meta property="og:type" content="website" />
       </Head>
