@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 var getYouTubeID = require('get-youtube-id');
 import { useEffect } from "react";
+import Image from 'next/image'
 import {db} from '../../firebase'
 
 const url1 = "4lUkSgvmTYM";
 
 const Announcements = () => {
     
-    const [links, setLinks] = useState([]);
+    const [links, setLinks] = useState({});
 
   useEffect(() => {
     const fetchLinks = async () => {
@@ -18,15 +19,16 @@ const Announcements = () => {
 
       if (doc.exists) {
         const linksData = doc.data().announcementDetails;
+        console.log(linksData)
         const linksArray = Object.values(linksData);
-        setLinks(linksArray);
-        console.log(linksArray)
+        setLinks(linksData);
       } else {
         console.log('No such document!');
       }
     };
 
     fetchLinks();
+    console.log(links)
   }, []);
 
 
@@ -43,12 +45,12 @@ const Announcements = () => {
             <Navbar />
 
            <div className="px-3 md:px-8">
-            <div className="flex justify-center my-8 md:my-14">
+            <div className="flex flex-col items-center justify-center my-8 md:my-14">
                 <h1 className="text-center text-[#2dad5c] font-bold text-[22px] font-serif">
-                 Announcement - அறிவிப்பு 
+                    Announcement - அறிவிப்பு 
                 </h1>
 
-                
+                <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1712562412/WhatsApp_Image_2024-04-08_at_00.02.35_beknxr.jpg" height={350} width={300} className="" />    
             </div>
 
             <div className="flex flex-col items-center md:items-start">
@@ -62,11 +64,13 @@ const Announcements = () => {
 
             <div className="iframe1 flex justify-center">
             <iframe
-                    className="h-[40vh] sm:h-[50vh] w-[95vh] my-6"
-                    src={`https://www.youtube.com/embed/TpHorJYoaEc`}
+                    className=" my-6"
+                    src={`https://www.youtube.com/embed/${links.link1}`}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
+                    width="560"
+                    height="315"
                 ></iframe>
             </div>
 
@@ -78,13 +82,26 @@ const Announcements = () => {
                     Winners list - வெற்றியாளர்கள் பட்டியல்
                     </h2>
 
-                    <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                    Stay Tuned... Will be updated very soon...
-                    </h1>
+                    
             </div>
 
-            <div className="iframe1 flex justify-center">
-            
+            <div className="iframe2 flex justify-center">
+                    { 
+                        links.link2 ? (
+                            <iframe
+                                title="YouTube Video"
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${links.link2}`}
+                                allowFullScreen
+                            ></iframe>
+                        ) :
+                        (
+                            <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                            Stay Tuned... Will be updated very soon...
+                            </h1>
+                        )
+                    }
             </div>
 
 
@@ -96,13 +113,26 @@ const Announcements = () => {
                         Correct answers list - சரியான பதில்களின் பட்டியல்
                     </h2>
 
-                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
-                    Stay Tuned... Will be updated very soon...
-                    </h1>
+                   
             </div>
 
-            <div className="iframe1 flex justify-center">
-            
+            <div className="iframe3 flex justify-center">
+            { 
+                        links.link3 ? (
+                            <iframe
+                                title="YouTube Video"
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${links.link3}`}
+                                allowFullScreen
+                            ></iframe>
+                        ) :
+                        (
+                            <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                            Stay Tuned... Will be updated very soon...
+                            </h1>
+                        )
+                    }
             </div>
 
             <div className="flex flex-col items-center md:items-start my-8">
@@ -113,13 +143,26 @@ const Announcements = () => {
                     Winners list - வெற்றியாளர்கள் பட்டியல்
                     </h2>
 
-                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
-                    Stay Tuned... Will be updated very soon...
-                    </h1>
+                    
             </div>
 
-            <div className="iframe1 flex justify-center">
-           
+            <div className="iframe4 flex justify-center">
+            { 
+                        links.link4 ? (
+                            <iframe
+                                title="YouTube Video"
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${links.link4}`}
+                                allowFullScreen
+                            ></iframe>
+                        ) :
+                        (
+                            <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                            Stay Tuned... Will be updated very soon...
+                            </h1>
+                        )
+                    }
             </div>
 
 
@@ -131,13 +174,26 @@ const Announcements = () => {
                     All participants Calligraphy slide
                     </h2>
 
-                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
-                    Stay Tuned... Will be updated very soon...
-                    </h1>
+                    
             </div>
 
-            <div className="iframe1 flex justify-center">
-           
+            <div className="iframe5 flex justify-center">
+            { 
+                        links.link5 ? (
+                            <iframe
+                                title="YouTube Video"
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${links.link5}`}
+                                allowFullScreen
+                            ></iframe>
+                        ) :
+                        (
+                            <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                            Stay Tuned... Will be updated very soon...
+                            </h1>
+                        )
+                    }
             </div>
 
             <div className="flex flex-col items-center md:items-start my-8">
@@ -148,13 +204,26 @@ const Announcements = () => {
                     Winners list 
                     </h2>
 
-                    <h1 className="text-center text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
-                    Stay Tuned... Will be updated very soon...
-                    </h1>
+                    
             </div>
 
-            <div className="iframe1 flex justify-center">
-            
+            <div className="iframe6 flex justify-center">
+            { 
+                        links.link6 ? (
+                            <iframe
+                                title="YouTube Video"
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${links.link6}`}
+                                allowFullScreen
+                            ></iframe>
+                        ) :
+                        (
+                            <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
+                            Stay Tuned... Will be updated very soon...
+                            </h1>
+                        )
+                    }
             </div>
 
             </div>
