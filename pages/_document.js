@@ -16,7 +16,7 @@ export default function Document() {
           name='msapplication-config'
           content='/layout/favicon/browserconfig.xml'
         />
-          <meta property="og:title" content="IslamiyaKalvisangam" />
+          <meta property="og:title" content="Islamiya Kalvi Sangam" />
           <meta property="og:description" content="GIVE HOPE THROUGH YOUR SADAQAH AND ZAKAT" />
           <meta property="og:image" content="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" />
           <meta property="og:url" content="https://www.islamiyakalvisangam.org/" />
