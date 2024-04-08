@@ -102,7 +102,7 @@ const Announcements = () => {
                             </h1>
                         )
                     }
-            </div>
+            </div> 
 
 
             <div className="flex flex-col items-center md:items-start my-8">
@@ -190,7 +190,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                           Will be released on - ஒளிபரப்பாகும் நேரம் - April 8 - 9:30pm
+                           Will be released on - ஒளிபரப்பாகும் நேரம் - April 9 - 4.30 AM
                             </h1>
                         )
                     }
