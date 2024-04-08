@@ -16,6 +16,11 @@ export default function Document() {
           name='msapplication-config'
           content='/layout/favicon/browserconfig.xml'
         />
+           <meta property="og:title" content="IslamiyaKalviSengam" />
+          <meta property="og:description" content="" />
+          <meta property="og:image" content="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg" />
+          <meta property="og:url" content="https://www.islamiyakalvisangam.org/" />
+          <meta property="og:type" content="website" />
       </Head>
       <body className=' max-h-1'>
         <Main />

@@ -98,7 +98,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                            Stay Tuned... Will be updated very soon...
+                            Will be released on - ஒளிபரப்பாகும் நேரம் - April 8 10:30pm
                             </h1>
                         )
                     }
@@ -129,7 +129,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                            Stay Tuned... Will be updated very soon...
+                            Will be released on - ஒளிபரப்பாகும் நேரம் - April 8, 5pm
                             </h1>
                         )
                     }
@@ -159,7 +159,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                            Stay Tuned... Will be updated very soon...
+                            Will be released on - ஒளிபரப்பாகும் நேரம் - April 9 5pm
                             </h1>
                         )
                     }
@@ -190,7 +190,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                            Stay Tuned... Will be updated very soon...
+                           Will be released on - ஒளிபரப்பாகும் நேரம் - April 8 - 9:30pm
                             </h1>
                         )
                     }
@@ -220,7 +220,7 @@ const Announcements = () => {
                         ) :
                         (
                             <h1 className="text-center text-[#2c5c2d] font-bold  my-5 font-serif text-[20px]">
-                            Stay Tuned... Will be updated very soon...
+                            Will be released on - ஒளிபரப்பாகும் நேரம் - April 9 9:30pm
                             </h1>
                         )
                     }
