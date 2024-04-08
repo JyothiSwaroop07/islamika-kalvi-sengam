@@ -307,122 +307,122 @@ const Contest1 = () => {
     //   }
 
     return(
-        <>
+//         <>
 
-        {isLoading && <TailSpin
-            visible={true}
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-            />}
+//         {isLoading && <TailSpin
+//             visible={true}
+//             height="80"
+//             width="80"
+//             color="#4fa94d"
+//             ariaLabel="tail-spin-loading"
+//             radius="1"
+//             wrapperStyle={{}}
+//             wrapperClass=""
+//             />}
         
-        {!isLoading && <div className="px-5">
-            <Navbar />
+//         {!isLoading && <div className="px-5">
+//             <Navbar />
 
-            <div className="bg-gray-100">
+//             <div className="bg-gray-100">
 
-      {/* Ad Popup */}
-      {adPopupVisible && (
-        <AdPopup
-          title={ads[adNumber].title}
-          description={ads[adNumber].description}
-          onClose={closeAdPopup}
-          adLink={ads[adNumber].image}
-          videoLink={ads[adNumber].video}
-        />
-      )}
-    </div>
+//       {/* Ad Popup */}
+//       {adPopupVisible && (
+//         <AdPopup
+//           title={ads[adNumber].title}
+//           description={ads[adNumber].description}
+//           onClose={closeAdPopup}
+//           adLink={ads[adNumber].image}
+//           videoLink={ads[adNumber].video}
+//         />
+//       )}
+//     </div>
 
-            {/* <div class="w-[90vw] mx-auto">
+//             {/* <div class="w-[90vw] mx-auto">
 
-                <div id="default-carousel" class="relative" data-carousel="static">
+//                 <div id="default-carousel" class="relative" data-carousel="static">
                     
-                    <div class="overflow-hidden relative h-[30vh] rounded-lg sm:h-[30vh] xl:h-[50vh]">
+//                     <div class="overflow-hidden relative h-[30vh] rounded-lg sm:h-[30vh] xl:h-[50vh]">
                         
                         
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src={bannerImages[0]} class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200} />
-                        </div>
+//                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
+//                             <img src={bannerImages[0]} class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200} />
+//                         </div>
 
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src={bannerImages[1]}  class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200}/>
-                        </div>
+//                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
+//                             <img src={bannerImages[1]}  class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200}/>
+//                         </div>
 
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src={bannerImages[2]}  class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200}/>
-                        </div>
-                    </div>
+//                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
+//                             <img src={bannerImages[2]}  class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." width={300} height={200}/>
+//                         </div>
+//                     </div>
                     
-                    <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                    </div>
+//                     <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+//                         <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+//                         <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+//                         <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+//                     </div>
                     
-                    <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
-                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                            <span class="hidden">Previous</span>
-                        </span>
-                    </button>
-                    <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
-                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            <span class="hidden">Next</span>
-                        </span>
-                    </button>
-                </div>
+//                     <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+//                         <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+//                             <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+//                             <span class="hidden">Previous</span>
+//                         </span>
+//                     </button>
+//                     <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+//                         <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+//                             <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+//                             <span class="hidden">Next</span>
+//                         </span>
+//                     </button>
+//                 </div>
 
 
-    <a class="text-blue-600 hover:underline"
-        href="https://flowbite.com/docs/getting-started/introduction/" target="_blank"></a>.
+//     <a class="text-blue-600 hover:underline"
+//         href="https://flowbite.com/docs/getting-started/introduction/" target="_blank"></a>.
 
-<script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-            </div> */}
+// <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+//             </div> */}
 
-            {/* {giveSelectContestOption && (
-                <div className="flex items-center mx-auto text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
-                    <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button>
-                    <button className="bg-blue-400 text-white width-[195px] h-[48px]">View Previous Contests</button>
-                </div>
-            )} */}
+//             {/* {giveSelectContestOption && (
+//                 <div className="flex items-center mx-auto text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
+//                     <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button>
+//                     <button className="bg-blue-400 text-white width-[195px] h-[48px]">View Previous Contests</button>
+//                 </div>
+//             )} */}
 
-            <div className="">
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 1 | தொடர் பயான்</h1>
-            </div>
+//             <div className="">
+//                 <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 1 | தொடர் பயான்</h1>
+//             </div>
 
-            {giveSelectContestOption && (
-                <div className="flex justify-around items-center mx-auto text-center my-8  mx-auto p-6  shadow-md rounded-md">
-                    {/* <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button> */}
+//             {giveSelectContestOption && (
+//                 <div className="flex justify-around items-center mx-auto text-center my-8  mx-auto p-6  shadow-md rounded-md">
+//                     {/* <button className="bg-blue-400 text-white width-[195px] h-[48px]" >Go To Today's Contest</button> */}
  
-                    <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png"  height={200} width={200} alt="img" className="h-[60px] w-[60px]" />
+//                     <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png"  height={200} width={200} alt="img" className="h-[60px] w-[60px]" />
 
-                    <button className="bg-[#2dad5c] h-[48px] w-[145px] border-1 rounded-md text-white" onClick={handlePrevContClick}>முந்திய நாள் கேள்விகள்</button>
+//                     <button className="bg-[#2dad5c] h-[48px] w-[145px] border-1 rounded-md text-white" onClick={handlePrevContClick}>முந்திய நாள் கேள்விகள்</button>
                 
                    
-                </div> 
-            )}
+//                 </div> 
+//             )}
 
-            {shouldDisplayTodayForm && <div className="flex flex-col items-center border-2 border-[#2dad5c] text-center my-8 mx-auto p-3 bg-gray-100 shadow-md rounded-md">
-                <div className="w-[100%] overflow-x-hidden max-w-4xl mx-auto mt-8">
-                <iframe
-        className="w-full h-96"
-        src={`https://www.youtube.com/embed/${form.video}`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-                    </div>
-                    <hr className="tect-blue-500 my-8 border-2   border-[#2dad5c] border-t w-[100%]" />
+//             {shouldDisplayTodayForm && <div className="flex flex-col items-center border-2 border-[#2dad5c] text-center my-8 mx-auto p-3 bg-gray-100 shadow-md rounded-md">
+//                 <div className="w-[100%] overflow-x-hidden max-w-4xl mx-auto mt-8">
+//                 <iframe
+//         className="w-full h-96"
+//         src={`https://www.youtube.com/embed/${form.video}`}
+//         title="YouTube video player"
+//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//         allowFullScreen
+//       ></iframe>
+//                     </div>
+//                     <hr className="tect-blue-500 my-8 border-2   border-[#2dad5c] border-t w-[100%]" />
                 
-                <h1 className="text-2xl font-semibold mb-4">Today&#39;s Contest</h1>
-                <h1 className="text-2xl text-[#2dad5c] font-semibold mb-4">contest Day: {form.contestDay}</h1>
+//                 <h1 className="text-2xl font-semibold mb-4">Today&#39;s Contest</h1>
+//                 <h1 className="text-2xl text-[#2dad5c] font-semibold mb-4">contest Day: {form.contestDay}</h1>
                 
-                <form onSubmit={handleSubmit}>
+//                 <form onSubmit={handleSubmit}>
                     
 
                     
@@ -430,19 +430,25 @@ const Contest1 = () => {
                     
 
                    
-                    <h1>{form.date}</h1>
-                    <iframe src={form.formLink} width="900" className="w-[90vw] min-h-[900px] max-h-[2200px] bg-white" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+//                     <h1>{form.date}</h1>
+//                     <iframe src={form.formLink} width="900" className="w-[90vw] min-h-[900px] max-h-[2200px] bg-white" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-                    </form>
-                </div>}
+//                     </form>
+//                 </div>}
     
 
             
 
             
-        </div> }
+//         </div> }
 
-        <Footer />
+//         <Footer />
+//         </>
+
+        <>
+            <div className="h-[100vh] w-[100vw] flex justify-center items-center text-[#2dad5c] font-bold font-serif">
+                <h1 className="text">போட்டிகள் முடிவடைந்தது - Contests have been closed</h1>
+            </div>
         </>
         
     )
