@@ -26,7 +26,7 @@ const Registration = () => {
 
                    
                     {/* <h1>{form.date}</h1> */}
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf2xNn9QYSz9T48Xg5WOamzlldKPHJVqFJkwQblO7qBAHJG0A/viewform?embed=true" width="900" className="w-[100vw] min-h-[1000px] max-h-[2200px]" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf2xNn9QYSz9T48Xg5WOamzlldKPHJVqFJkwQblO7qBAHJG0A/viewform?embed=true" width="900" className="w-[1800vw] min-h-[100px] max-h-[2200px]" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
             </form>
            
