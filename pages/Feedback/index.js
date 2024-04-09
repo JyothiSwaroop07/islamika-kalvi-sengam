@@ -14,7 +14,7 @@ const Feedback = () => {
             </h1>
 
             <h1 className="text-[#2c5c2d] font-bold text-[20px] my-5">
-            Please use this form to submit your comments and suggestions regarding Islamiya Kalvi Sangam's Ramadan Contests 2024.
+            Please use this form to submit your comments and suggestions regarding Islamiya Kalvi Sangam&apos;s Ramadan Contests 2024.
             </h1>
 
             <h1 className="text-[#2dad5c] font-bold text-[20px] my-5">
