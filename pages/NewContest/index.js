@@ -96,13 +96,9 @@ const NewContest = () => {
             // currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
             const currentDateString = currentDate.toISOString().split('T')[0];
             const currentTime = currentDate.getHours();
-            console.log(currentDate)
-            console.log(currentDateString);
-            console.log(currentTime);
             const currentDay = currentDate.getDay()
             
 
-            console.log(currentDay);
     
             // if (currentTime < 17) { // If current time is before 5:00 PM IST
             //     const previousDay = new Date(currentDate);
@@ -319,10 +315,10 @@ const NewContest = () => {
                 (!isEnabled && form.formLink) && (
                     <div className="flex flex-col p-3 bg-gray-100 items-center justify-center">
                         <h1 className="text-[#2c5c2d] font-bold text-center mb-5">
-                            {form.contestSeries} - {form.seriesSection} has been ended.
+                            {form.contestSeries} series - Section {form.seriesSection} has been ended.
                         </h1>
                         <h1 className="text-[#2c5c2d] font-bold text-center mb-5">
-                            {form.contestSeries} - {form.seriesSection} முடிவடைந்தது விட்டது.
+                            {form.contestSeries} தொடர் - பகுதி {form.seriesSection} முடிவடைந்து விட்டது.
                         </h1>
                     </div>
                 )
@@ -341,8 +337,8 @@ const NewContest = () => {
 
             {(shouldDisplayTodayForm && isEnabled) && <div className="flex flex-col items-center  text-center my-8  md:p-6 bg-gray-100 shadow-md rounded-md">
             <h1 className="text-2xl font-semibold mb-4"></h1>
-                <h1 className="text-2xl text-[#2c5c2d] font-semibold mb-4">Series - {form.contestSeries} - {form.seriesSection}</h1>
-                <h1 className="text-2xl text-[#2c5c2d] font-semibold mb-4">தொடர் - {form.contestSeries} - {form.seriesSection}</h1>
+                <h1 className="text-2xl text-[#2c5c2d] font-semibold mb-4"> {form.contestSeries} Series - section {form.seriesSection}</h1>
+                <h1 className="text-2xl text-[#2c5c2d] font-semibold mb-4"> {form.contestSeries} தொடர் - பகுதி {form.seriesSection}</h1>
                 <form onSubmit={handleSubmit}>
                     
 
