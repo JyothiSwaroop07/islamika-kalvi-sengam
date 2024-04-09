@@ -92,14 +92,15 @@ const NewContest = () => {
             const querySnapshot = await getDocs(q);
     
             const currentDate = new Date();
-            currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
+            
+            // currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
             const currentDateString = currentDate.toISOString().split('T')[0];
-            const currentTime = currentDate.getUTCHours();
-    
+            const currentTime = currentDate.getHours();
+            console.log(currentDate)
             console.log(currentDateString);
             console.log(currentTime);
-
             const currentDay = currentDate.getDay()
+            
 
             console.log(currentDay);
     
@@ -142,19 +143,22 @@ const NewContest = () => {
             previousSunday.setDate(currentDate.getDate() - currentDay); // Adjust to the previous Sunday
             const previousSundayString = previousSunday.toISOString().split('T')[0];
 
+            console.log(previousSundayString);
+
             querySnapshot.forEach((doc) => {
                 const contestData = doc.data();
                 const contestDetails = contestData.contestDetails;
     
                 if (contestDetails.date === previousSundayString) { // Check if document exists for the previous Sunday
                     setForm(contestDetails);
+                    console.log("here", contestDetails)
                     setShouldDisplayTodayForm(true);
                 }
             });
 
             if(currentDay>2 || (currentDay===2 && currentTime>=17)){
                 setIsEnabled(false);
-                return;
+                
             }
 
         } catch (error) {
@@ -264,7 +268,7 @@ const NewContest = () => {
 </div> */}
 
 
-<h1 className="text-red-500 mt-4 text-center">{errorMessage}</h1>
+{/* <h1 className="text-red-500 mt-4 text-center">{errorMessage}</h1> */}
 
             </div>
 
