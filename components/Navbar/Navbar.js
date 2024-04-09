@@ -119,7 +119,7 @@ const Navbar = () => {
                 </ul>
                 )}
                 </div>
-
+                
               <li><a href="#footer" className="text-black">Contact Us</a></li>
               
 
@@ -140,7 +140,7 @@ const Navbar = () => {
                 </div>
 
                 <li><a href="#" className="text-black hover:text-[#2dad5c]" onClick={() => router.push("/Board")}>Board Members</a></li>
-
+                <li><a href="#footer" className="text-black" onClick={() => router.push("/Feedback")}>Feedback</a></li>
             </ul>
           </div>
 
@@ -202,6 +202,7 @@ const Navbar = () => {
                 )}
                 </div>
                 <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => router.push("/Announcements")}>Announcements</a></li>
+                <li><a href="#footer" className="text-black" onClick={() => router.push("/Feedback")}>Feedback</a></li>
                 <li><a href="#footer" className="block py-2 text-black hover:text-[#2dad5c] rounded">Contact Us</a></li>
                 <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={togglePopup}>Donate</a></li>
               
