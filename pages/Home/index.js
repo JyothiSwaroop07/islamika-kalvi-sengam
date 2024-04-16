@@ -363,7 +363,7 @@ const Home = () => {
 </h3>
 
     <div className="flex justify-center mb-3">
-      <h2 className="text-[#2dad5c] font-bold">Number of Visitors: {visitorCount}</h2>
+      <h2 className="text-[#2cac5d] font-bold text-[22px] font-bold">Number of Visitors: 87,564</h2>
     </div>
 
 <div id="footer">
