@@ -102,10 +102,11 @@ const Navbar = () => {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <ul className="flex items-center space-x-8">
               <li><a href="#" className="text-black hover:text-[#2dad5c]" onClick={() => {router.push('/Home')}}>Home</a></li>
               <li><a href="#about" className="text-black hover:text-[#2dad5c]">About Us</a></li>
+              <li><a href="#about" className="text-[#2dad5c] hover:text-[#2c5c2d]" onClick={()=>router.push("/SummerCamp")}>Summer Camp</a></li>
 
               <div className='flex flex-col justify-center items-center'>
               <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
@@ -167,10 +168,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu */}
-        <div className={`mobile-menu lg:hidden ${menuVisible ? 'block' : 'hidden'} flex justify-start z-10 overflow-y-auto h-[100vh] transform ${menuVisible ? '-translate-x--10 ease-out' : 'translate-x-full ease-in'} transition-transform duration-300`}>
+        <div className={`mobile-menu xl:hidden ${menuVisible ? 'block' : 'hidden'} flex justify-start z-10 overflow-y-auto h-[100vh] transform ${menuVisible ? '-translate-x--10 ease-out' : 'translate-x-full ease-in'} transition-transform duration-300`}>
           <ul className="mt-8 w-[40vw] space-y-4 mx-0 m-auto">
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => {router.push('/Home')}}>Home</a></li>
             <li><a href="#about" className="block py-2 text-black hover:text-[#2dad5c] rounded">About Us</a></li>
+            <li><a href="#about" className="block py-2 text-[#2dad5c] hover:text-[#2c5c2d]" onClick={()=>router.push("/SummerCamp")}>Summer Camp</a></li>
             <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] rounded" onClick={() => toggleContestDropDown()}>நிகழ்ச்சி {isContestsMenuOpen ?  '↑' : '↓'}</a></li>
                 {isContestsMenuOpen && (
                   <ul className="left-0 bg-white border border-gray-300 w-36">

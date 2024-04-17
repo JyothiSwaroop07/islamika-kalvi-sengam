@@ -19,6 +19,7 @@ import DonatePopup from "@/components/DonatePopup/DonatePopup";
 import { CiMail } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
+import summercampImage from '../assets/summercamp.jpeg'
 const values = [
     {
         img: '/assets/Logo3.jpg',
@@ -283,10 +284,17 @@ const Home = () => {
 
         </div>
 
+        
+
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
         <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5" onClick={() => router.push("/Announcements")}>Announcements</button>
-        <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-12 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
+
+        <div className="w-[80vw]  my-12">
+            <Image src={summercampImage} className="w-[100%] h-[150px]" width={300} height={400} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
+        </div>
+
+        <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-8 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
         <h3 className="text-black text-xl my-8">
         The Islamic Foundation is primarily a 
         charity dedicated to research, publications, education, community support and inter-faith dialogue. we aim for:
