@@ -4,6 +4,7 @@ import Link from "next/link";
 import PeopleSection from "../PeopleSection/PeopleSection";
 import { FaWhatsapp, FaInstagram, FaFacebook, FaYoutube, FaSearch } from 'react-icons/fa';
 import { CiMail } from "react-icons/ci";
+import { SiGmail } from "react-icons/si";
 
 
 const Footer = () => {
@@ -40,26 +41,26 @@ const Footer = () => {
 
                 <div className="flex items-center justify-center gap-5 mt-3 logos">
                     <a href="https://wa.me/9976346062" target="_blank" >
-                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button className="mx-2 p-2 bg-[#25D366] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
                     </button>
                     </a>
-                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://youtube.com/@islamiyakalvisangam" target="_blank"><FaYoutube/></Link></button>
+                    <button className="mx-2 p-2 bg-[#FF0000] text-white rounded-full cursor-pointer"><Link href="https://youtube.com/@islamiyakalvisangam" target="_blank"><FaYoutube/></Link></button>
                     <a href="https://www.instagram.com/islamiya_kalvi_sangam" target="_blank" >
-                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button  className="mx-2 p-2 bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-full cursor-pointer">
                         <FaInstagram />
                     </button>
                     </a> 
                     <a href="https://www.facebook.com/islamiya.kalvi.sangam" target="_blank" >
-                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button  className="mx-2 p-2 bg-[#1877F2] text-white rounded-full cursor-pointer">
                         <FaFacebook />
                     </button>
                  </a>
                 </div>
 
                 <div className="mb-6 text-center  flex flex-row gap-5 mt-5">
-                        <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="mailto:islamiyakalvisangam@gmail.com"><CiMail/></Link></button>
-                        <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer"><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank"><FaSearch/></Link></button>
+                        <button className="mx-2 p-2 bg-white text-red-600 rounded-full cursor-pointer"><Link href="mailto:islamiyakalvisangam@gmail.com"><SiGmail /></Link></button>
+                        <button className="mx-2 p-2 bg-white text-black rounded-full cursor-pointer"><Link href="https://www.google.com/search?q=islamiya+kalvi+sangam" target="_blank"><FaSearch/></Link></button>
                     </div>
                
 

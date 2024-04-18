@@ -77,13 +77,13 @@ const Ramadan = () => {
 
 
       <div className="flex justify-center mt-16">
-        <button onClick={() => shareOnSocialMedia('whatsapp')} className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full">
+        <button onClick={() => shareOnSocialMedia('whatsapp')} className="mx-2 p-2 bg-[#25D366] text-white rounded-full">
           <FaWhatsapp />
         </button>
-        <button onClick={() => shareOnSocialMedia('instagram')} className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full">
+        <button onClick={() => shareOnSocialMedia('instagram')} className="mx-2 p-2 bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-full">
           <FaInstagram />
         </button>
-        <button onClick={() => shareOnSocialMedia('facebook')} className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full">
+        <button onClick={() => shareOnSocialMedia('facebook')} className="mx-2 p-2 bg-[#1877F2] text-white rounded-full">
           <FaFacebook />
         </button>
       </div> 

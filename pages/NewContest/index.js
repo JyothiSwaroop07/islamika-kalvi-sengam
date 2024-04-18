@@ -277,7 +277,10 @@ const NewContest = () => {
 
                 <div className="flex justify-between items-center mx-auto my-5 w-[90vw]">
 
-                <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" width={100} height={100} alt="img" />
+                <div className="flex flex-col items-center">
+            <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[60px] w-[60px]" width={100} height={100} alt="img" />
+            <h1 className="text-[8px] text-black font-serif">Islamiya Kalvi Sangam</h1>
+            </div>
 
                 <button className="bg-[#2dad5c] w-[155px] h-[55px] p-1    text-md text-white rounded-md" onClick={() => router.push("/")}>← Go to Home</button>
 

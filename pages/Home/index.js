@@ -20,6 +20,7 @@ import { CiMail } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 import summercampImage from '../assets/summercamp.jpeg'
+import { SiGmail } from "react-icons/si";
 const values = [
     {
         img: '/assets/Logo3.jpg',
@@ -222,7 +223,7 @@ const Home = () => {
             {/* <ResponsiveAppBar /> */}
             
             <div
-  className="bg-cover bg-center  relative flex items-start relative p-16 justify-end text-white"
+  className="bg-cover bg-center  relative flex items-start relative p-16 justify-center text-white"
   style={{
     backgroundImage: 'url("https://res.cloudinary.com/dchbfnlct/image/upload/v1711042512/mosque-615415_1280_vamdua.jpg")',
   }}
@@ -232,26 +233,26 @@ const Home = () => {
 <div className="absolute inset-0 bg-[#222226] py-10 px-8 opacity-70 "></div>
     
   {/* Overlay div for background image */}
-  <div className="absolute z-20  lg:py-10 lg:px-8 ">
+  <div className="absolute z-20  lg:py-4 lg:px-8 ">
 
-  <div className="flex items-center justify-center  inset-0 outline-none z-50 gap-5 mt-3 logos lg:justify-end">
+  <div className="flex items-center justify-center  inset-0 outline-none z-50 gap-5 logos">
                     <a href="https://wa.me/919487044247" target="_blank" >
-                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button className="mx-2 p-2 bg-[#25D366] text-white rounded-full cursor-pointer">
                         <FaWhatsapp />
                     </button>
                     </a>
                     <a href="mailto:islamiakalvisangam@gmail.com" target="_blank" >
-                    <button className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer ">
-                        <CiMail />
+                    <button className="mx-2 p-2 bg-white text-red-600 rounded-full cursor-pointer ">
+                    <SiGmail />
                     </button>
                     </a>
                     <a href="https://www.instagram.com/islamiya_kalvi_sangam" target="_blank" >
-                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button  className="mx-2 p-2 bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-full cursor-pointer">
                         <FaInstagram />
                     </button>
                     </a> 
                     <a href="https://www.facebook.com/islamiya.kalvi.sangam" target="_blank" >
-                    <button  className="mx-2 p-2 bg-[#2dad5c] text-white rounded-full cursor-pointer">
+                    <button  className="mx-2 p-2 bg-[#1877F2] text-white rounded-full cursor-pointer">
                         <FaFacebook />
                     </button>
                  </a>
@@ -263,7 +264,8 @@ const Home = () => {
 
   <div className="absolute sm:text-center sm:w-[100vw] flex flex-col justify-center  items-center relative ">
   <div className="flex justify-start relative mt-24">
-  <Image src="/assets/Logo8.png" className="h-[100px] align-start w-[300px] mt-4 mb-45" width={100} height={100} alt="img" />
+  {/* <Image src="/assets/Logo8.png" className="h-[100px] align-start w-[300px] mt-4 mb-45" width={100} height={100} alt="img" /> */}
+  <h1 className="text-black text-[36px] font-extrabold font-serif">﷽</h1>
   </div>
   <div className="flex flex-col justif-center items-center">
     <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[250px] w-[250px] mt-4" width={150} height={100} alt="img" />
@@ -271,7 +273,7 @@ const Home = () => {
     <p className="text-xltext-white">
         Seeking Excellence In Islamic Knowledge and Practice.
     </p>
-    <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white" onClick={togglePopup}>Donate</button>
+    <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white hover:scale-105" onClick={togglePopup}>Donate</button>
     {showPopup && <DonatePopup onClosePopup={togglePopup} />}
     </div>
 
@@ -288,10 +290,10 @@ const Home = () => {
 
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
-        <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5" onClick={() => router.push("/Announcements")}>Announcements</button>
+        <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5 hover:scale-105" onClick={() => router.push("/Announcements")}>Announcements</button>
 
         <div className="w-[80vw]  my-12">
-            <Image src={summercampImage} className="w-[100%] h-[150px] lg:h-[220px]" width={300} height={400} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
+            <Image src={summercampImage} className="w-[100%] cursor-pointer hover:scale-105 h-[130px] lg:h-[260px]" width={300} height={400} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
         </div>
 
         <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-8 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
