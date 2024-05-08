@@ -291,17 +291,18 @@ const NewContest = () => {
                 </div>
 
             <div className="flex flex-col">
-                <h1 className="text-[#2c5c2d] text-lg text-center my-5 font-bold text-[20px]">அறிவோம் ஐந்து</h1>
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">ஒவ்வொரு வாரமும் ஞாயிற்றுக்கிழமை அன்று மாலை 5 மணிக்கு</h1>
+                <h1 className="text-[#2c5c2d] text-lg text-center my-0.5 font-bold text-[15px]">அறிவோம் ஐந்து</h1>
+                <h1 className="text-[#2dad5c] text-lg text-center my-0.5 font-bold">ஒவ்வொரு வாரமும் ஞாயிற்றுகிழமைகளில்...</h1>
 
-                <h1 className="text-black text-lg text-center my-5 font-bold">பதிவு செய்த பிறகு போட்டியில் கலந்துக்கொள்ளவும்</h1>
-                <h1 className="text-gray-700 text-lg text-center my-5 font-bold">Compete after Registration</h1>
+                <h1 className="text-black text-lg text-center my-1">பதிவு செய்த பிறகு போட்டியில் கலந்துக்கொள்ளவும்</h1>
+                    
+                // <h1 className="text-gray-700 text-lg text-center my-5 font-bold">Compete after Registration</h1>
 
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">👇🏼👇🏼👇🏼</h1>
+                // <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">👇🏼👇🏼👇🏼</h1>
 
                 <button className="bg-[#2dad5c] w-[155px] h-[55px] p-1  mx-auto  text-md text-white rounded-md" onClick={() => router.push("/Registration")}>Register</button>
 
-                <h1 className="text-black text-lg text-center my-5 font-bold">Every week on Sunday at 5pm.</h1>
+                <h1 className="text-black text-lg text-center my-1 font-bold">If registered already, Please access the form below</h1>
             </div>
 
 
