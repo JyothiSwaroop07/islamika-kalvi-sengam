@@ -293,7 +293,7 @@ const Home = () => {
         <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5 hover:scale-105" onClick={() => router.push("/Announcements")}>Announcements</button>
 
         <div className="w-[80vw]  my-12">
-            <Image src={summercampImage} className="w-[100%] cursor-pointer hover:scale-105 h-[130px] lg:h-[260px]" width={300} height={400} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
+            <Image src={summercamp2Image} className="w-[100%] cursor-pointer hover:scale-105 h-[130px] lg:h-[260px]" width={300} height={400} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
         </div>
 
         <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-8 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
