@@ -1,15 +1,66 @@
 import React from "react";
 import Navbar from "@/components/Navbar/Navbar";
+import { useRouter } from "next/router";
 
 const RejectWaqf = () => {
+    const handleSpeak = (text) => {
+        const speech = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(speech);
+    };
+    const router = useRouter();
     return (
         <>
             <Navbar />
+
+
+            {/* New section added here */}
+            <div className="flex items-center justify-between p-4 bg-gray-100">
+                {/* Image and Title */}
+                <div className="flex items-center">
+                    <img
+                        src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png"
+                        className="h-[60px] w-[60px] mr-3"
+                        width={100}
+                        height={100}
+                        alt="img"
+                    />
+                    <h1 className="text-[12px] text-black font-serif">
+                        Islamiya Kalvi Sangam
+                    </h1>
+                </div>
+
+                {/* Home Button */}
+                <button
+                    className="bg-[#2dad5c] w-[155px] h-[55px] p-1 text-md text-white rounded-md"
+                    onClick={() => router.push("/")}
+                >
+                    ← Go to Home
+                </button>
+
+                {/* Contact Information */}
+                <div className="flex flex-col items-center font-bold text-xl ml-3">
+                    <h1 className="text-[10px] text-black font-normal leading-snug">
+                        For ads/sponsorship <br /> contact 9500489492
+                    </h1>
+                </div>
+            </div>
+            {/* End of the new section */}
+            
             <main style={styles.main}>
                 <header style={styles.header}>
-                    <h1 style={styles.title}>
-                        Reject Waqf Amendment Bill 2024
-                    </h1>
+                <h1 style={{ fontSize: "2em", fontWeight: "bold", display: "inline-block", marginRight: "10px" }}>
+                Reject Waqf Amendment Bill 2024
+            </h1>
+            <button onClick={() => handleSpeak("Reject Waqf Amendment Bill 2024")} 
+            style={{ cursor: "pointer",
+                    cursor: "pointer",
+                    fontSize: "1.5em", 
+                    backgroundColor: "transparent",
+                    border: "none"
+             }}>
+                🔊
+            </button>
+
                 </header>
                 <section style={styles.description}>
                     <p style={styles.paragraph}>
@@ -37,13 +88,25 @@ const RejectWaqf = () => {
                         At least 5 million Muslims of India should send their rejection of the Waqf Amendment Bill. 
                         As Muslims of India, we will be held accountable if we do not prevent the Muslim Waqf properties from being taken away from the Ummah.
                         <br /><br />
-                        Send your Rejection by scanning this QR Code. You can send your rejection to Waqf Bill to Joint Parliamentary Committee.
+                        <span style={styles.date}>Due Date: 13th Sept 2024</span>
                         <br /><br />
                         <a href="https://waqfbill2024.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
-                            Visit https://waqfbill2024.com
+                            Courtesy: <br/> https://waqfbill2024.com
                         </a>
-                        <br /><br />
-                        <span style={styles.date}>Due Date: 13th Sept 2024</span>
+                        <button 
+                    onClick={() => handleSpeak("Courtesy: waqfbill2024 dot com")} 
+                    style={{
+                        cursor: "pointer",
+                        fontSize: "1.5em", 
+                        backgroundColor: "transparent",
+                        border: "none"
+                    }}
+                    aria-label="Listen to the URL"
+                >
+                    🔊
+                </button>
+                        
+                      
                     </p>
                 </section>
                 <section style={styles.iframeContainer}>
@@ -120,6 +183,7 @@ const styles = {
         width: '100%',
         borderRadius: '8px'
     }
+    
 };
 
 export default RejectWaqf;
