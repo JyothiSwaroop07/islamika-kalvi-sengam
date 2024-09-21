@@ -88,9 +88,9 @@ const Navbar = () => {
             {/* Desktop menu */}
             <div className="hidden xl:flex flex-grow items-center justify-center space-x-6">
               <ul className="flex items-center space-x-4">
-                <li><a href="#" className="text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => { router.push('/Home') }}>Home</a></li>
+                <li><a href="#" className="text-black hover:text-[#2dad5c] whitespace-nowrap " onClick={() => { router.push('/Home') }}>Home</a></li>
                 <li><a href="#about" className="text-black hover:text-[#2dad5c] whitespace-nowrap">About Us</a></li>
-                <li><a href="#about" className="text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li>
+             {/*   <li><a href="#about" className="text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li> */}
 
                 <div className='flex flex-col items-center'>
                   <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap rounded" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ? '↑' : '↓'}</a></li>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 </div>
 
                 <li><a href="#" className="text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/Board")}>Board Members</a></li>
-                <li><a href="#footer" className="text-black whitespace-nowrap" onClick={() => router.push("/Feedback")}>Feedback</a></li>
+               { /* <li><a href="#footer" className="text-black whitespace-nowrap" onClick={() => router.push("/Feedback")}>Feedback</a></li> */}
                 <li><a href="#rejectwaqf" className="text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/RejectWaqf")}>Reject Waqf</a></li>
 
                 <div className='flex flex-col items-center'>
@@ -156,7 +156,7 @@ const Navbar = () => {
               <ul className="space-y-2">
                 <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => { router.push('/Home') }}>Home</a></li>
                 <li><a href="#about" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap">About Us</a></li>
-                <li><a href="#about" className="block py-2 text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li>
+               {/* <li><a href="#about" className="block py-2 text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li> */}
 
                 <div className='flex flex-col'>
                   <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ? '↑' : '↓'}</a></li>
@@ -172,7 +172,7 @@ const Navbar = () => {
                 </div>
 
                 <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/Board")}>Board Members</a></li>
-                <li><a href="#footer" className="block py-2 text-black whitespace-nowrap" onClick={() => router.push("/Feedback")}>Feedback</a></li>
+              {/*  <li><a href="#footer" className="block py-2 text-black whitespace-nowrap" onClick={() => router.push("/Feedback")}>Feedback</a></li> */}
                 <li><a href="#rejectwaqf" className="text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/RejectWaqf")}>Reject Waqf</a></li>
 
                 <div className='flex flex-col'>
