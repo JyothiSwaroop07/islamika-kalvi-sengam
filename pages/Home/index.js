@@ -290,11 +290,11 @@ const Home = () => {
 
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
-        <button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5 hover:scale-105" onClick={() => router.push("/Announcements")}>Announcements</button>
+        { /*<button className="text-white bg-[#2dad5c] rounded-md w-[130px] h-[40px] mt-5 hover:scale-105" onClick={() => router.push("/Announcements")}>Announcements</button> */}
 
-        <div className="w-[80vw]  my-12">
+       { /* <div className="w-[80vw]  my-12">
             <Image src={summercamp2Image} className="w-[100%] cursor-pointer hover:scale-105 h-[500px] lg:h-[630px]" width={913} height={1280} alt="summercamp banner" onClick={()=>router.push("/SummerCamp")}/>
-        </div>
+        </div> */ }
 
         <h1 className="text-bold text-[45px] text-[#2dad5c] font-bold mt-8 md:mt-24 mb-8 sm:mr-auto">Our Mission</h1>
         <h3 className="text-black text-xl my-8">
