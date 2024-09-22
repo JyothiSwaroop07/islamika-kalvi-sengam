@@ -76,10 +76,10 @@ const Announcements = () => {
           </div>
 
           {/* Announcement Title */}
-          <h1 className="text-left text-[#2dad5c] font-bold text-[22px] font-serif">
+          <h1 className="text-left text-[#2dad5c] font-bold text-[22px] font-serif ">
             Announcement - அறிவிப்பு
           </h1>
-          <h1 className="text-left text-[#00000] font-bold text-[22px] font-serif">
+          <h1 className="text-left text-[#00000] font-bold text-[22px] font-serif mt-5">
             {title || 'Announcement - அறிவிப்பு'}
           </h1>
 
@@ -104,16 +104,10 @@ const Announcements = () => {
             </div>
           )}
 
-          {/* Video 1 */}
-          <div className="flex flex-col items-start my-8">
-            <h1 className="text-left text-[#2c5c2d] font-bold my-3 font-serif text-[22px]">
-              தொடர் பயான் நிகழ்ச்சி
-            </h1>
-            <h2 className="text-left text-[#2dad5c] font-normal my-3 font-serif text-[22px]">
-              Correct answers list - சரியான பதில்களின் பட்டியல்
-            </h2>
-          </div>
+          {/* The YouTube links display and logic are commented out */}
 
+          {/* Video 1 */}
+          {/*
           {links.link1 && (
             <div className="iframe1 flex justify-center">
               <iframe
@@ -127,14 +121,10 @@ const Announcements = () => {
               />
             </div>
           )}
-
-          <div className="flex flex-col items-start my-8">
-            <h2 className="text-left text-[#2dad5c] font-semibold my-3 font-serif text-[20px]">
-              Winners list - வெற்றியாளர்கள் பட்டியல்
-            </h2>
-          </div>
+          */}
 
           {/* Video 2 */}
+          {/*
           {links.link2 ? (
             <div className="iframe2 flex justify-center">
               <iframe
@@ -150,17 +140,10 @@ const Announcements = () => {
               Will be released on - April 8 10:30pm
             </h1>
           )}
-
-          <div className="flex flex-col items-start my-8">
-            <h1 className="text-left text-[#2c5c2d] font-bold my-3 font-serif text-[20px]">
-              தினம் ஒரு கேள்வி
-            </h1>
-            <h2 className="text-left text-[#2dad5c] font-normal my-3 font-serif text-[20px]">
-              Correct answers list - சரியான பதில்களின் பட்டியல்
-            </h2>
-          </div>
+          */}
 
           {/* Video 3 */}
+          {/*
           {links.link3 ? (
             <div className="iframe3 flex justify-center">
               <iframe
@@ -176,14 +159,10 @@ const Announcements = () => {
               Will be released on - April 8, 5pm
             </h1>
           )}
+          */}
 
           {/* Video 4 */}
-          <div className="flex flex-col items-start my-8">
-            <h2 className="text-left text-[#2dad5c] font-semibold my-3 font-serif text-[20px]">
-              Winners list - வெற்றியாளர்கள் பட்டியல்
-            </h2>
-          </div>
-
+          {/*
           {links.link4 ? (
             <div className="iframe4 flex justify-center">
               <iframe
@@ -199,17 +178,10 @@ const Announcements = () => {
               Will be released on - April 9, 5pm
             </h1>
           )}
+          */}
 
           {/* Video 5 */}
-          <div className="flex flex-col items-start my-8">
-            <h1 className="text-left text-[#2c5c2d] font-bold my-3 font-serif text-[20px]">
-              Arabic calligraphy
-            </h1>
-            <h2 className="text-left text-[#2dad5c] font-normal my-3 font-serif text-[20px]">
-              All participants Calligraphy slide
-            </h2>
-          </div>
-
+          {/*
           {links.link5 ? (
             <div className="iframe5 flex justify-center">
               <iframe
@@ -225,14 +197,10 @@ const Announcements = () => {
               Will be released on - April 9 - 4:30 AM
             </h1>
           )}
+          */}
 
           {/* Video 6 */}
-          <div className="flex flex-col items-start my-8">
-            <h2 className="text-left text-[#2dad5c] font-semibold my-3 font-serif text-[20px]">
-              Winners list
-            </h2>
-          </div>
-
+          {/*
           {links.link6 ? (
             <div className="iframe6 flex justify-center">
               <iframe
@@ -248,6 +216,7 @@ const Announcements = () => {
               Will be released on - April 9 9:30pm
             </h1>
           )}
+          */}
         </div>
       </div>
     </div>

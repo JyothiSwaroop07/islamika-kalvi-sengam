@@ -86,8 +86,8 @@ const Navbar = () => {
             </div>
 
             {/* Desktop menu */}
-            <div className="hidden xl:flex flex-grow items-center justify-center space-x-6">
-              <ul className="flex items-center space-x-4">
+            <div className="hidden xl:flex flex-grow items-center justify-center space-x-8"> {/* Increased space-x-6 to space-x-8 */}
+              <ul className="flex items-center space-x-8"> {/* Increased space-x-4 to space-x-8 */}
                 <li><a href="#" className="text-black hover:text-[#2dad5c] whitespace-nowrap " onClick={() => { router.push('/Home') }}>Home</a></li>
                 <li><a href="#about" className="text-black hover:text-[#2dad5c] whitespace-nowrap">About Us</a></li>
              {/*   <li><a href="#about" className="text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li> */}
@@ -129,81 +129,110 @@ const Navbar = () => {
             </div>
 
             {/* Donate and Announcements buttons for desktop */}
-            <div className="hidden lg:flex items-center space-x-4 ml-auto">
+            <div className="hidden lg:flex items-center space-x-6 ml-auto"> {/* Increased space-x-4 to space-x-6 */}
               <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white" onClick={() => router.push("/Announcements")}>Announcements</button>
-              <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white" onClick={togglePopup}>Donate</button>
+              <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 rounded-md text-white" onClick={() => togglePopup()}>Donate</button>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
-              <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
+            {/* Mobile menu */}
+            <div className="lg:hidden flex items-center">
+              <button
+                onClick={toggleMenu}
+                className="text-black focus:outline-none"
+              >
                 {menuVisible ? (
-                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 ) : (
-                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   </svg>
                 )}
               </button>
             </div>
           </div>
 
-          {/* Mobile menu */}
+          {/* Mobile menu dropdown */}
           {menuVisible && (
-            <div className="mobile-menu">
-              <ul className="space-y-2">
-                <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => { router.push('/Home') }}>Home</a></li>
-                <li><a href="#about" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap">About Us</a></li>
-               {/* <li><a href="#about" className="block py-2 text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li> */}
-
-                <div className='flex flex-col'>
-                  <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ? '↑' : '↓'}</a></li>
-                  {isContestsMenuOpen && (
-                    <ul className="bg-white border border-gray-300">
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Registration")}>Registration</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி - தொடர் பயான்</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி - தினம் ஒரு கேள்வி</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி - Arabic Calligraphy</a></li>
-                    </ul>
-                  )}
-                </div>
-
-                <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/Board")}>Board Members</a></li>
-              {/*  <li><a href="#footer" className="block py-2 text-black whitespace-nowrap" onClick={() => router.push("/Feedback")}>Feedback</a></li> */}
-                <li><a href="#rejectwaqf" className="text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => router.push("/RejectWaqf")}>Reject Waqf</a></li>
-
-                <div className='flex flex-col'>
-                  <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => departmentDropDown()}>Departments {isDepartmentOpen ? '↑' : '↓'}</a></li>
-                  {isDepartmentOpen && (
-                    <ul className="bg-white border border-gray-300">
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("healthandwelfare")}>Health and Welfare</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("educationdevelopment")}>Education Development</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("socialandpublicwelfare")}>Social and Public Welfare</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("bookpublication")}>Islamic Book and Publication</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("makthab")}>Makthab Education</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("it")}>Information Technology</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("law")}>Department of Law</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleDepartmentSelect("womenempowerment")}>Women Empowerment</a></li>
-                    </ul>
-                  )}
-                </div>
-
-                {/* Buttons for mobile */}
-                <div className="flex flex-col mt-4">
-                  <button className="bg-[#2dad5c] h-[40px] w-full border-1 rounded-md text-white mb-2" onClick={() => router.push("/Announcements")}>Announcements</button>
-                  <button className="bg-[#2dad5c] h-[40px] w-full border-1 rounded-md text-white" onClick={togglePopup}>Donate</button>
-                </div>
+            <div className="lg:hidden mt-4">
+              <ul className="flex flex-col space-y-4">
+                <li>
+                  <a
+                    href="#home"
+                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
+                    onClick={() => { router.push('/Home'); toggleMenu(); }}
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
+                    onClick={() => { router.push('/About'); toggleMenu(); }}
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#announcements"
+                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
+                    onClick={() => { router.push('/Announcements'); toggleMenu(); }}
+                  >
+                    Announcements
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#feedback"
+                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
+                    onClick={() => { router.push('/Feedback'); toggleMenu(); }}
+                  >
+                    Feedback
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#departments"
+                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
+                    onClick={() => { router.push('/Departments'); toggleMenu(); }}
+                  >
+                    Departments
+                  </a>
+                </li>
               </ul>
             </div>
           )}
         </nav>
       </header>}
 
-      {/* Donate Popup */}
-      {showPopup && <DonatePopup togglePopup={togglePopup} />}
+      {showPopup && (
+        <DonatePopup closePopup={togglePopup} />
+      )}
     </>
   );
 };
