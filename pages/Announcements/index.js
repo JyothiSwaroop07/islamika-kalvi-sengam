@@ -44,6 +44,17 @@ const Announcements = () => {
 
   const { links, title, image, content } = announcement;
 
+  // Function to convert Google Drive link to direct URL
+  const convertDriveLink = (url) => {
+    const isDriveLink = url.includes('drive.google.com');
+    if (isDriveLink) {
+      const fileId = url.match(/d\/(.+?)\//)[1];
+      return `https://drive.google.com/uc?id=${fileId}`;
+    }
+    return url;
+  };
+
+
   return (
     <div>
       <Navbar />
@@ -87,7 +98,7 @@ const Announcements = () => {
           {image && (
             <div className="flex justify-center my-5">
               <Image
-                src={image}
+                src={convertDriveLink(image)}
                 alt="Announcement Image"
                 width={300}
                 height={350}
