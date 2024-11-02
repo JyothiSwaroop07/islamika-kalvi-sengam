@@ -89,7 +89,7 @@ const Navbar = () => {
             <div className="hidden xl:flex flex-grow items-center justify-center space-x-8"> {/* Increased space-x-6 to space-x-8 */}
               <ul className="flex items-center space-x-8"> {/* Increased space-x-4 to space-x-8 */}
                 <li><a href="#" className="text-black hover:text-[#2dad5c] whitespace-nowrap " onClick={() => { router.push('/Home') }}>Home</a></li>
-                <li><a href="#about" className="text-black hover:text-[#2dad5c] whitespace-nowrap">About Us</a></li>
+                <li><a href="#about" className="text-black hover:text-[#2dad5c] whitespace-nowrap"  /*onClick={() => { router.push('/About') }} */>About Us</a></li>
              {/*   <li><a href="#about" className="text-[#2dad5c] hover:text-[#2c5c2d] whitespace-nowrap" onClick={() => router.push("/SummerCamp")}>Summer Camp</a></li> */}
 
                 <div className='flex flex-col items-center'>
@@ -192,7 +192,7 @@ const Navbar = () => {
                   <a
                     href="#about"
                     className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
-                    onClick={() => { router.push('/About'); toggleMenu(); }}
+              /*      onClick={() => { router.push('/About'); toggleMenu(); }} */
                   >
                     About Us
                   </a>
