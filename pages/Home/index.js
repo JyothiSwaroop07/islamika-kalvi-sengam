@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 import summercamp2Image from '../assets/summercamp2.jpeg'
 import { SiGmail } from "react-icons/si";
+import { green } from "@mui/material/colors";
 const values = [
     {
         img: '/assets/Logo3.jpg',
@@ -286,7 +287,33 @@ const Home = () => {
 
         </div>
 
+        <div className="register-banner" 
+        style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
+        <img 
+          src="../assets/register-banner.jpg" 
+          alt="Your Image Description" 
+          style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
+        />
         
+        {/* Register Button Below the Image */}
+        <button 
+         
+          style={{
+            marginTop: '10px', 
+            padding: '10px 20px', 
+            fontSize: '16px', 
+            backgroundColor: '#2dad5c', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: '5px', 
+            cursor: 'pointer',
+            marginTop: '25px'
+          }}
+          onClick={() => router.push("/Competitions")}
+        >
+          Register
+        </button>
+      </div>
 
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
