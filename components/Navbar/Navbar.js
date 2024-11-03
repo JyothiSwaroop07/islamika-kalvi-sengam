@@ -206,6 +206,7 @@ const Navbar = () => {
                     Announcements
                   </a>
                 </li>
+                 {/*
                 <li>
                   <a
                     href="#feedback"
@@ -214,16 +215,96 @@ const Navbar = () => {
                   >
                     Feedback
                   </a>
-                </li>
+                </li> 
+                */ }
+                <div className="flex flex-col items-start">
                 <li>
                   <a
-                    href="#departments"
-                    className="block text-black hover:text-[#2dad5c] whitespace-nowrap"
-                    onClick={() => { router.push('/Departments'); toggleMenu(); }}
+                    href="#"
+                    className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap rounded"
+                    onClick={() => { departmentDropDown(); }}
                   >
-                    Departments
+                    Departments {isDepartmentOpen ? '↑' : '↓'}
                   </a>
                 </li>
+                {isDepartmentOpen && (
+                  <ul className="ml-4 mt-2 bg-white border border-gray-300 rounded-lg w-full">
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("healthandwelfare")}
+                      >
+                        Health and Welfare
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("educationdevelopment")}
+                      >
+                        Education Development
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("socialandpublicwelfare")}
+                      >
+                        Social and Public Welfare
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("bookpublication")}
+                      >
+                        Islamic Book and Publication
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("makthab")}
+                      >
+                        Makthab Education
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("it")}
+                      >
+                        Information Technology
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("law")}
+                      >
+                        Department of Law
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap"
+                        onClick={() => handleDepartmentSelect("womenempowerment")}
+                      >
+                        Women Empowerment
+                      </a>
+                    </li>
+                  </ul>
+                )}
+              </div>
+
               </ul>
             </div>
           )}
