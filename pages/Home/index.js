@@ -114,11 +114,14 @@ const Home = () => {
 
         
     ];
-
     const itemsPerPage = 3; // Number of images per page
+    const scrollInterval = 3000; // Time in milliseconds for automatic scroll
+
+
     const [currentPage, setCurrentPage] = useState(0);
     const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
 
+    // Function to display images based on the current page
     const displayImages = () => {
         const start = currentPage * itemsPerPage;
         const end = start + itemsPerPage;
@@ -126,7 +129,7 @@ const Home = () => {
             <Image
                 key={index}
                 src={imgSrc}
-                alt={`Gallery Image ${index + 1}`}
+                alt={`Gallery Image ${start + index + 1}`}
                 width={250}
                 height={200}
                 className="rounded-md"
@@ -134,14 +137,26 @@ const Home = () => {
         ));
     };
 
-    const handlePrevious = () => {
-        setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
-    };
-
+    // Function to go to the next page (infinite scroll effect)
     const handleNext = () => {
-        setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+        setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
     };
 
+    // Function to go to the previous page (infinite scroll effect)
+    const handlePrevious = () => {
+        setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
+    };
+
+    // useEffect to handle automatic scrolling every 3 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext(); // Move to the next page every 3 seconds
+        }, scrollInterval);
+
+        return () => clearInterval(interval); // Cleanup interval on unmount
+    }, [currentPage]); // This will restart the interval whenever currentPage changes
+
+     
 
     const togglePopup = () => {
       setShowPopup(!showPopup);
