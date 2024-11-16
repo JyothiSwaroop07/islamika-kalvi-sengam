@@ -115,48 +115,80 @@ const Home = () => {
         
     ];
     const itemsPerPage = 3; // Number of images per page
-    const scrollInterval = 3000; // Time in milliseconds for automatic scroll
+        const scrollInterval = 5000; // Time in milliseconds for automatic scroll
+        const pauseDuration = 15000; // Time in milliseconds to pause scroll after user interaction
 
+        const [currentPage, setCurrentPage] = useState(0);
+        const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
+        const [isPaused, setIsPaused] = useState(false); // State to track if scrolling is paused
 
-    const [currentPage, setCurrentPage] = useState(0);
-    const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
+        // Function to display images based on the current page
+        const displayImages = () => {
+            const start = currentPage * itemsPerPage;
+            const end = start + itemsPerPage;
+            return galleryImages.slice(start, end).map((imgSrc, index) => (
+                <div
+                    key={index}
+                    className="transition-transform duration-300 ease-in-out hover:scale-110"
+                    style={{
+                        overflow: 'hidden',
+                        display: 'inline-block',
+                    }}
+                >
+                    <Image
+                        src={imgSrc}
+                        alt={`Gallery Image ${start + index + 1}`}
+                        width={250}
+                        height={200}
+                        className="rounded-md"
+                    />
+                </div>
+            ));
+        };
 
-    // Function to display images based on the current page
-    const displayImages = () => {
-        const start = currentPage * itemsPerPage;
-        const end = start + itemsPerPage;
-        return galleryImages.slice(start, end).map((imgSrc, index) => (
-            <Image
-                key={index}
-                src={imgSrc}
-                alt={`Gallery Image ${start + index + 1}`}
-                width={250}
-                height={200}
-                className="rounded-md"
-            />
-        ));
-    };
+        // Function to go to the next page (infinite scroll effect)
+        const handleNext = () => {
+            setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
+            resetScrollTimer(); // Reset the scroll timer after user interaction
+        };
 
-    // Function to go to the next page (infinite scroll effect)
-    const handleNext = () => {
-        setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
-    };
+        // Function to go to the previous page (infinite scroll effect)
+        const handlePrevious = () => {
+            setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
+            resetScrollTimer(); // Reset the scroll timer after user interaction
+        };
 
-    // Function to go to the previous page (infinite scroll effect)
-    const handlePrevious = () => {
-        setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
-    };
+        // Function to reset the scroll timer when the user interacts
+        const resetScrollTimer = () => {
+            setIsPaused(true); // Pause scrolling
+            setTimeout(() => setIsPaused(false), pauseDuration); // Resume after 15 seconds
+        };
 
-    // useEffect to handle automatic scrolling every 3 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext(); // Move to the next page every 3 seconds
-        }, scrollInterval);
+        // useEffect to handle automatic scrolling
+        useEffect(() => {
+            if (isPaused) return; // Stop scrolling when paused
 
-        return () => clearInterval(interval); // Cleanup interval on unmount
-    }, [currentPage]); // This will restart the interval whenever currentPage changes
+            const interval = setInterval(() => {
+                handleNext(); // Move to the next page every scroll interval
+            }, scrollInterval);
 
-     
+            return () => clearInterval(interval); // Cleanup interval on unmount
+        }, [currentPage, isPaused]); // Restart interval whenever currentPage or isPaused changes
+
+        // useEffect to pause automatic scrolling when hovering over the gallery
+        useEffect(() => {
+            const galleryElement = document.getElementById("gallery"); // ID for the gallery container
+            const handleMouseEnter = () => setIsPaused(true); // Pause on hover
+            const handleMouseLeave = () => setIsPaused(false); // Resume on leave
+
+            galleryElement.addEventListener("mouseenter", handleMouseEnter);
+            galleryElement.addEventListener("mouseleave", handleMouseLeave);
+
+            return () => {
+                galleryElement.removeEventListener("mouseenter", handleMouseEnter);
+                galleryElement.removeEventListener("mouseleave", handleMouseLeave);
+            };
+        }, []);
 
     const togglePopup = () => {
       setShowPopup(!showPopup);
@@ -386,48 +418,50 @@ const Home = () => {
 
       {/* Gallery Section with Pagination */}
 
-      <h1 className="text-center my-6 text-[#2dad5c] text-2xl text-bold">Our Gallery</h1>
-                <div className="w-full flex flex-col justify-center items-center mb-6 px-4">
-                    <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">{displayImages()}</div>
-                    <div className="flex flex-wrap items-center gap-2 mt-4 sm:mt-6">
+            <h1 className="text-center my-6 text-[#2dad5c] text-2xl text-bold">Our Gallery</h1>
+        <   div className="w-full flex flex-col justify-center items-center mb-6 px-4" id="gallery">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+                {displayImages()}
+            </div>
+            <div className="flex flex-wrap items-center gap-2 mt-4 sm:mt-6">
+                <button
+                    onClick={handlePrevious}
+                    disabled={currentPage === 0}
+                    className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 font-sans text-xs sm:text-sm font-bold text-gray-900 uppercase transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
+                    type="button"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+                    </svg>
+                    Previous
+                </button>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                    {Array.from({ length: totalPages }, (_, i) => (
                         <button
-                            onClick={handlePrevious}
-                            disabled={currentPage === 0}
-                            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 font-sans text-xs sm:text-sm font-bold text-gray-900 uppercase transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
+                            key={i}
+                            onClick={() => setCurrentPage(i)}
+                            className={`h-8 w-8 sm:h-10 sm:w-10 rounded-full text-center text-xs font-medium uppercase transition-all ${
+                                currentPage === i ? 'bg-[#2dad5c] text-white shadow-md' : 'text-gray-900 hover:bg-gray-900/10'
+                            }`}
                             type="button"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
-                            </svg>
-                            Previous
+                            {i + 1}
                         </button>
-                        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
-                            {Array.from({ length: totalPages }, (_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setCurrentPage(i)}
-                                    className={`h-8 w-8 sm:h-10 sm:w-10 rounded-full text-center text-xs font-medium uppercase transition-all ${
-                                        currentPage === i ? 'bg-[#2dad5c] text-white shadow-md' : 'text-gray-900 hover:bg-gray-900/10'
-                                    }`}
-                                    type="button"
-                                >
-                                    {i + 1}
-                                </button>
-                            ))}
-                        </div>
-                        <button
-                            onClick={handleNext}
-                            disabled={currentPage === totalPages - 1}
-                            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 font-sans text-xs sm:text-sm font-bold text-gray-900 uppercase transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
-                            type="button"
-                        >
-                            Next
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
-                            </svg>
-                        </button>
-                    </div>
+                    ))}
                 </div>
+                <button
+                    onClick={handleNext}
+                    disabled={currentPage === totalPages - 1}
+                    className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 font-sans text-xs sm:text-sm font-bold text-gray-900 uppercase transition-all rounded-full select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
+                    type="button"
+                >
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
 
     <section id="about" className="flex flex-col m-auto justify-center items-center px-10 w-[85vw]">
