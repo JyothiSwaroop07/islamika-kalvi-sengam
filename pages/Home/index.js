@@ -121,6 +121,20 @@ const Home = () => {
         const [currentPage, setCurrentPage] = useState(0);
         const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
         const [isPaused, setIsPaused] = useState(false); // State to track if scrolling is paused
+        const [isPopupOpen, setIsPopupOpen] = useState(false);
+        const [popupImage, setPopupImage] = useState(null);
+
+
+        const openPopup = (imgSrc) => {
+            setIsPopupOpen(true);
+            setPopupImage(imgSrc);
+        };
+
+        const closePopup = () => {
+            setIsPopupOpen(false);
+            setPopupImage(null);
+        };
+    
 
         // Function to display images based on the current page
         const displayImages = () => {
@@ -130,6 +144,8 @@ const Home = () => {
                 <div
                     key={index}
                     className="transition-transform duration-300 ease-in-out hover:scale-110"
+                    onClick={() => openPopup(imgSrc)}
+
                     style={{
                         overflow: 'hidden',
                         display: 'inline-block',
@@ -435,6 +451,27 @@ const Home = () => {
                     </svg>
                     Previous
                 </button>
+
+                {isPopupOpen && (
+                <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-80">
+                    <div className="relative w-full max-w-lg px-4 py-6 bg-transparent rounded-lg shadow-lg">
+                        <button
+                            onClick={closePopup}
+                            className="absolute top-4 right-4 text-gray-600 text-2xl font-bold"
+                        >
+                            ×
+                        </button>
+                        <Image
+                            src={popupImage}
+                            alt="Popup Image"
+                            width={500}
+                            height={400}
+                            className="rounded-md"
+                        />
+                    </div>
+                </div>
+            )}
+
                 <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                     {Array.from({ length: totalPages }, (_, i) => (
                         <button
