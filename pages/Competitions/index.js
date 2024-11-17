@@ -26,8 +26,8 @@ const Competitions = () => {
                 </h1>
 
                 <div className="flex justify-center space-x-4 mb-6">
-                    <Image src="/assets/new-img-1.jpg" alt="Competition Image 1" width={400} height={300} className="rounded-md" />
-                    <Image src="/assets/new-img-2.jpg" alt="Competition Image 2" width={400} height={300} className="rounded-md" />
+                    <Image src="/assets/competitions-poster.jpeg" alt="Competition Image 1" width={600} height={300} className="rounded-md" />
+                  {/*  <Image src="/assets/new-img-2.jpg" alt="Competition Image 2" width={400} height={300} className="rounded-md" /> */}
                 </div>
 
                 <div className="space-y-4 mb-8">
