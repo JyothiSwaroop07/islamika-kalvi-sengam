@@ -121,8 +121,8 @@ const Home = () => {
         const [currentPage, setCurrentPage] = useState(0);
         const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
         const [isPaused, setIsPaused] = useState(false); // State to track if scrolling is paused
-        const [isPopupOpen, setIsPopupOpen] = useState(false);
-        const [popupImage, setPopupImage] = useState(null);
+       /* const [isPopupOpen, setIsPopupOpen] = useState(false);
+        const [popupImage, setPopupImage] = useState(null); 
 
 
         const openPopup = (imgSrc) => {
@@ -134,34 +134,44 @@ const Home = () => {
             setIsPopupOpen(false);
             setPopupImage(null);
         };
-    
+    */
 
         // Function to display images based on the current page
+        const [hoveredImageIndex, setHoveredImageIndex] = useState(null);
+
         const displayImages = () => {
             const start = currentPage * itemsPerPage;
             const end = start + itemsPerPage;
             return galleryImages.slice(start, end).map((imgSrc, index) => (
                 <div
                     key={index}
-                    className="transition-transform duration-300 ease-in-out hover:scale-110"
-                    onClick={() => openPopup(imgSrc)}
-
+                    className={`relative transition-transform duration-300 ease-in-out ${
+                        hoveredImageIndex === start + index ? "z-50 fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center" : ""
+                    }`}
+                    onMouseEnter={() => setHoveredImageIndex(start + index)}
+                    onMouseLeave={() => setHoveredImageIndex(null)}
                     style={{
-                        overflow: 'hidden',
-                        display: 'inline-block',
+                        overflow: "hidden",
+                        display: "inline-block",
                     }}
                 >
                     <Image
                         src={imgSrc}
                         alt={`Gallery Image ${start + index + 1}`}
-                        width={250}
-                        height={200}
-                        className="rounded-md"
+                        width={hoveredImageIndex === start + index ? 500 : 250}
+                        height={hoveredImageIndex === start + index ? 500 : 200}
+                        className={`rounded-md ${
+                            hoveredImageIndex === start + index ? "w-auto h-auto" : ""
+                        }`}
+                        style={{
+                            transition: "transform 0.3s ease-in-out",
+                            transform: hoveredImageIndex === start + index ? "scale(1)" : "scale(1.1)",
+                        }}
                     />
                 </div>
             ));
         };
-
+        
         // Function to go to the next page (infinite scroll effect)
         const handleNext = () => {
             setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
@@ -452,7 +462,7 @@ const Home = () => {
                     Previous
                 </button>
 
-                {isPopupOpen && (
+              {/*  {isPopupOpen && (
                 <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-80">
                     <div className="relative w-full max-w-lg px-4 py-6 bg-transparent rounded-lg shadow-lg">
                         <button
@@ -470,7 +480,7 @@ const Home = () => {
                         />
                     </div>
                 </div>
-            )}
+            )} */}
 
                 <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                     {Array.from({ length: totalPages }, (_, i) => (
