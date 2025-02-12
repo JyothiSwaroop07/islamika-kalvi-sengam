@@ -138,39 +138,56 @@ const Home = () => {
 
         // Function to display images based on the current page
         const [hoveredImageIndex, setHoveredImageIndex] = useState(null);
-
+        const [modalOpen, setModalOpen] = useState(false);
+        const [selectedImage, setSelectedImage] = useState(null);
+    
         const displayImages = () => {
             const start = currentPage * itemsPerPage;
             const end = start + itemsPerPage;
+    
             return galleryImages.slice(start, end).map((imgSrc, index) => (
                 <div
                     key={index}
-                    className={`relative transition-transform duration-300 ease-in-out ${
-                        hoveredImageIndex === start + index ? "z-50 fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center" : ""
-                    }`}
+                    className="relative transition-transform duration-300 ease-in-out"
                     onMouseEnter={() => setHoveredImageIndex(start + index)}
                     onMouseLeave={() => setHoveredImageIndex(null)}
+                    onClick={() => openModal(imgSrc)}
                     style={{
                         overflow: "hidden",
                         display: "inline-block",
+                        filter: hoveredImageIndex !== null && hoveredImageIndex !== start + index ? "blur(5px)" : "none",
                     }}
                 >
                     <Image
                         src={imgSrc}
                         alt={`Gallery Image ${start + index + 1}`}
-                        width={hoveredImageIndex === start + index ? 500 : 250}
-                        height={hoveredImageIndex === start + index ? 500 : 200}
-                        className={`rounded-md ${
-                            hoveredImageIndex === start + index ? "w-auto h-auto" : ""
+                        width={250}
+                        height={200}
+                        className={`rounded-md transition-all duration-300 ease-in-out ${
+                            hoveredImageIndex === start + index ? "scale-110" : ""
                         }`}
                         style={{
-                            transition: "transform 0.3s ease-in-out",
-                            transform: hoveredImageIndex === start + index ? "scale(1)" : "scale(1.1)",
+                            transform: hoveredImageIndex === start + index ? "scale(1.2)" : "scale(1)",
                         }}
                     />
                 </div>
             ));
         };
+    
+        const openModal = (imgSrc) => {
+            setSelectedImage(imgSrc);
+            setModalOpen(true);
+        };
+    
+        const closeModal = () => {
+            setModalOpen(false);
+            setSelectedImage(null);
+        };
+    
+        
+        
+        
+        
         
         // Function to go to the next page (infinite scroll effect)
         const handleNext = () => {
@@ -446,9 +463,39 @@ const Home = () => {
 
             <h1 className="text-center my-6 text-[#2dad5c] text-2xl text-bold">Our Gallery</h1>
         <   div className="w-full flex flex-col justify-center items-center mb-6 px-4" id="gallery">
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+        
+            {/* Gallery */}
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 transition-all duration-300">
                 {displayImages()}
             </div>
+
+            {/* Modal */}
+            {modalOpen && (
+                <div
+                    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-lg"
+                    onClick={closeModal}
+                    style={{ zIndex: 100 }}
+                >
+                    <div className="relative max-w-3xl p-4 bg-white rounded-lg">
+                        <Image
+                            src={selectedImage}
+                            alt="Enlarged Image"
+                            width={600}
+                            height={600}
+                            className="rounded-md"
+                        />
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-2 right-2 text-white text-2xl font-bold"
+                        >
+                            &times;
+                        </button>
+                    </div>
+                </div>
+            )}
+
+
+
             <div className="flex flex-wrap items-center gap-2 mt-4 sm:mt-6">
                 <button
                     onClick={handlePrevious}

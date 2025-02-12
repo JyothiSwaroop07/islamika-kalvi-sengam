@@ -118,7 +118,7 @@ const Announcements = () => {
           {/* The YouTube links display and logic are commented out */}
 
           {/* Video 1 */}
-          {/*
+          
           {links.link1 && (
             <div className="iframe1 flex justify-center">
               <iframe
@@ -132,10 +132,10 @@ const Announcements = () => {
               />
             </div>
           )}
-          */}
+          
 
           {/* Video 2 */}
-          {/*
+          
           {links.link2 ? (
             <div className="iframe2 flex justify-center">
               <iframe
@@ -151,10 +151,10 @@ const Announcements = () => {
               Will be released on - April 8 10:30pm
             </h1>
           )}
-          */}
+          
 
           {/* Video 3 */}
-          {/*
+          
           {links.link3 ? (
             <div className="iframe3 flex justify-center">
               <iframe
@@ -170,10 +170,10 @@ const Announcements = () => {
               Will be released on - April 8, 5pm
             </h1>
           )}
-          */}
+          
 
           {/* Video 4 */}
-          {/*
+          
           {links.link4 ? (
             <div className="iframe4 flex justify-center">
               <iframe
@@ -189,10 +189,10 @@ const Announcements = () => {
               Will be released on - April 9, 5pm
             </h1>
           )}
-          */}
+          
 
           {/* Video 5 */}
-          {/*
+          
           {links.link5 ? (
             <div className="iframe5 flex justify-center">
               <iframe
@@ -202,16 +202,18 @@ const Announcements = () => {
                 src={`https://www.youtube.com/embed/${links.link5}`}
                 allowFullScreen
               />
+              
             </div>
+            
           ) : (
             <h1 className="text-left text-[#2c5c2d] font-bold my-5 font-serif text-[20px]">
               Will be released on - April 9 - 4:30 AM
             </h1>
           )}
-          */}
+          
 
           {/* Video 6 */}
-          {/*
+          
           {links.link6 ? (
             <div className="iframe6 flex justify-center">
               <iframe
@@ -227,7 +229,7 @@ const Announcements = () => {
               Will be released on - April 9 9:30pm
             </h1>
           )}
-          */}
+          
         </div>
       </div>
     </div>
