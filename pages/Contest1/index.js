@@ -325,7 +325,7 @@ const Contest1 = () => {
 
 //             <div className="bg-gray-100">
 
-//       {/* Ad Popup */}
+//       {/* Ad Popup */} 
 //       {adPopupVisible && (
 //         <AdPopup
 //           title={ads[adNumber].title}

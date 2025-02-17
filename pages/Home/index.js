@@ -434,29 +434,28 @@ const Home = () => {
         <div className="register-banner" 
         style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
         <img 
-          src="../assets/register-banner.jpg" 
+          src="../assets/ikv-poster-image.jpg" 
           alt="Your Image Description" 
           style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
         />
         
         {/* Register Button Below the Image */}
         <button 
-         
-          style={{
-            marginTop: '10px', 
-            padding: '10px 20px', 
-            fontSize: '16px', 
-            backgroundColor: '#2dad5c', 
-            color: '#fff', 
-            border: 'none', 
-            borderRadius: '5px', 
-            cursor: 'pointer',
-            marginTop: '25px'
-          }}
-          onClick={() => router.push("/Competitions")}
-        >
-          Register
-        </button>
+  style={{
+    marginTop: '25px', 
+    padding: '10px 20px', 
+    fontSize: '16px', 
+    backgroundColor: '#2dad5c', 
+    color: '#fff', 
+    border: 'none', 
+    borderRadius: '5px', 
+    cursor: 'pointer'
+  }}
+  onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSfikhkZnAixvKmG5rSp-tHRUcoq74nYd6wxHg_L2yx7ywI7Qg/viewform", "_blank")}
+>
+  Register
+</button>
+
       </div>
 
       {/* Gallery Section with Pagination */}
