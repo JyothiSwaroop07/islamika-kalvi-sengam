@@ -101,6 +101,7 @@ const Navbar = () => {
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி - தொடர் பயான்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி - தினம் ஒரு கேள்வி</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி - Arabic Calligraphy</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest4")}>ஓர் அழகிய உபதேசம்</a></li>
                     </ul>
                   )}
                 </div>
@@ -206,6 +207,7 @@ const Navbar = () => {
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி - தொடர் பயான்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி - தினம் ஒரு கேள்வி</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி - Arabic Calligraphy</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest4")}>ஓர் அழகிய உபதேசம்</a></li>
                     </ul>
                   )}
                 </div>
