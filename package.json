@@ -15,7 +15,6 @@
     "@material-tailwind/react": "^2.1.9",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.12",
-    "@next/swc-win32-x64-msvc": "^15.1.7",
     "firebase": "^10.8.1",
     "flowbite": "^2.3.0",
     "get-youtube-id": "^1.0.1",
