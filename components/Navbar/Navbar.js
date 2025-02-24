@@ -197,6 +197,19 @@ const Navbar = () => {
                     About Us
                   </a>
                 </li>
+                <div className='flex flex-col'>
+                  <li><a href="#" className="block py-2 text-black hover:text-[#2dad5c] whitespace-nowrap rounded" onClick={() => toggleContestDropDown()}>Contests {isContestsMenuOpen ? '↑' : '↓'}</a></li>
+                  {isContestsMenuOpen && (
+                    <ul className="absolute top-16 ml-16 bg-white border border-gray-300 w-36">
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Registration")}>Registration</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி - தொடர் பயான்</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி - தினம் ஒரு கேள்வி</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி - Arabic Calligraphy</a></li>
+                    </ul>
+                  )}
+                </div>
+
                 <li>
                   <a
                     href="#announcements"
