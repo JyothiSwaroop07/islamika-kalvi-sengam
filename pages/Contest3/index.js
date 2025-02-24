@@ -35,6 +35,7 @@ const Contest3 = () => {
                   >
                     Loading…
                   </iframe>
+                </div>
         </div>
 
        /* <>
