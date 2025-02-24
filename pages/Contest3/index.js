@@ -10,7 +10,7 @@ const Contest3 = () => {
     const router = useRouter();
 
     return (
-        <div className="">
+        <div className="flex justify-center">
 
                 <Navbar /> 
 
