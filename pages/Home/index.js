@@ -216,7 +216,7 @@ const Home = () => {
             }, scrollInterval);
 
             return () => clearInterval(interval); // Cleanup interval on unmount
-        }, [currentPage, isPaused]); // Restart interval whenever currentPage or isPaused changes
+        }, [currentPage, isPaused,handleNext,scrollInterval]); // Restart interval whenever currentPage or isPaused changes
 
         // useEffect to pause automatic scrolling when hovering over the gallery
         useEffect(() => {
@@ -433,7 +433,7 @@ const Home = () => {
 
         <div className="register-banner" 
         style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
-        <img 
+        <Image 
           src="../assets/ikv-poster-image.jpg" 
           alt="Your Image Description" 
           style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
