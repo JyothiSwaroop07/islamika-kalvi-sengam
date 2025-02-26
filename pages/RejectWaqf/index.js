@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const RejectWaqf = () => {
     const handleSpeak = (text) => {
@@ -17,7 +18,7 @@ const RejectWaqf = () => {
             <div className="flex items-center justify-between p-4 bg-gray-100">
                 {/* Image and Title */}
                 <div className="flex items-center">
-                    <img
+                    <Image
                         src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png"
                         className="h-[60px] w-[60px] mr-3"
                         width={100}
