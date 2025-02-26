@@ -22,6 +22,7 @@ import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 import summercamp2Image from '../assets/summercamp2.jpeg'
 import { SiGmail } from "react-icons/si";
 import { green } from "@mui/material/colors";
+
 const values = [
     {
         img: '/assets/Logo3.jpg',
@@ -434,8 +435,10 @@ const Home = () => {
         <div className="register-banner" 
         style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
         <Image 
-          src="../assets/ikv-poster-image.jpg" 
-          alt="Your Image Description" 
+          src="/assets/ikv-poster-image.jpg" 
+          alt="Your Image Description"
+          width = {600}
+          height = {600}
           style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
         />
         

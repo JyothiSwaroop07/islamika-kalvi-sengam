@@ -21,20 +21,24 @@ const Contest3 = () => {
                 <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 4: Arabic Calligraphy</h1>
             </div>
                 <div className="banner flex justify-center my-5">
-                    <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" alt="img" /> 
+                    <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" alt="img" />  
                 </div>
-                 {/* Embedded Google Form */}
-                <div className="w-full max-w-4xl h-[800px] mt-5 shadow-lg border rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform?embedded=true"
-                    width="100%"
-                    height="100%"
-                    className="border-none"
-                    title="Google Form"
-                  >
-                    Loading…
-                  </iframe>
- 
+                <div className=" flex justify-center my-5">
+                <button 
+                    style={{
+                        marginTop: '25px', 
+                        padding: '10px 20px', 
+                        fontSize: '16px', 
+                        backgroundColor: '#2dad5c', 
+                        color: '#fff', 
+                        border: 'none', 
+                        borderRadius: '5px', 
+                        cursor: 'pointer'
+                    }}
+                    onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform"}
+                    >
+                    Register
+                    </button>
                 </div>
             </div>
 
