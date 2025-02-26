@@ -18,13 +18,12 @@ const Contest3 = () => {
             <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Home")}>Go Back</button>
             </div>
             <div className="">
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">போட்டிகள் முடிவடைந்தது - Arabic Calligraphy</h1>
+                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 4: Arabic Calligraphy</h1>
             </div>
                 <div className="banner flex justify-center my-5">
                     <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" alt="img" /> 
                 </div>
-
-                {/* Embedded Google Form */}
+                 {/* Embedded Google Form */}
                 <div className="w-full max-w-4xl h-[800px] mt-5 shadow-lg border rounded-lg overflow-hidden">
                   <iframe
                     src="https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform"
@@ -35,7 +34,7 @@ const Contest3 = () => {
                   >
                     Loading…
                   </iframe>
-                </div>
+ 
         </div>
 
        /* <>

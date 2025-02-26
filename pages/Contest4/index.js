@@ -366,9 +366,12 @@ const Contest4 = () => {
                     <button className="bg-blue-400 text-white width-[195px] h-[48px]">View Previous Contests</button>
                 </div>
             )} */}
-
+            <div className="flex justify-center items-center">
+                      <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Home")}>Go Back</button>
+            </div>
+            
             <div className="">
-                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 2 | தினம் ஒரு கேள்வி</h1>
+                <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 3: ஓர் அழகிய உபதேசம்</h1>
             </div>
 
 

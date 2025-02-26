@@ -441,7 +441,6 @@ const Home = () => {
         
         {/* Register Button Below the Image */}
         <button 
-         
           style={{
             marginTop: '10px', 
             padding: '10px 20px', 
@@ -457,7 +456,6 @@ const Home = () => {
         >
           Register
         </button>
-
       </div>
 
       {/* Gallery Section with Pagination */}

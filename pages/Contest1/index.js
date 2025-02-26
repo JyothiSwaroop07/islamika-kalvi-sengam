@@ -263,9 +263,13 @@ const Contest1 = () => {
                         )}
                     </div>
 
+                    <div className="flex justify-center items-center">
+                      <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Home")}>Go Back</button>
+                    </div>
+
                     <div className="text-center">
                         <h1 className="text-[#2dad5c] text-lg my-5 font-bold">
-                            நிகழ்ச்சி 1 | தொடர் பயான்
+                        நிகழ்ச்சி 1: ரமலான் தொடர் பயான்
                         </h1>
                     </div>
 

@@ -35,7 +35,7 @@ const Ramadan = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-4xl text-[#2dad5c] font-extrabold mb-6">Ramadan Contribution</h2>
         <p className="text-xl mb-8">
-          THE MONTH OF BLESSINGS. RAMADHAN 2024.
+          THE MONTH OF BLESSINGS. RAMADHAN 2025.
         </p>
         <p className="text-xl mb-8">
           Assalamu&#39;alaikum Warahmatullahi Wabarakatuh, Dear brothers and sisters,
