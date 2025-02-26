@@ -26,7 +26,7 @@ const Contest3 = () => {
                  {/* Embedded Google Form */}
                 <div className="w-full max-w-4xl h-[800px] mt-5 shadow-lg border rounded-lg overflow-hidden">
                   <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform?embedded=true"
                     width="100%"
                     height="100%"
                     className="border-none"
