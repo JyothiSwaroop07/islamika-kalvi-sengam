@@ -1,6 +1,6 @@
 // AdPopup.js
 import React from 'react';
-import img from './donate.jpg';
+import img from './Donate.png';
 import Image from 'next/image';
 
 const DonatePopup = ({onClosePopup}) => {

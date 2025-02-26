@@ -440,22 +440,22 @@ const Home = () => {
         />
         
         {/* Register Button Below the Image */}
-       <button  
-         style={{
-           marginTop: '10px', 
-           padding: '10px 20px', 
-           fontSize: '16px', 
-           backgroundColor: '#2dad5c', 
-           color: '#fff', 
-           border: 'none', 
-           borderRadius: '5px', 
-           cursor: 'pointer',
-           marginTop: '25px'
-         }}
-         onClick={() => router.push("/ProgramRegistration")}
-       >
-         Register
-       </button>
+        <button 
+          style={{
+            marginTop: '10px', 
+            padding: '10px 20px', 
+            fontSize: '16px', 
+            backgroundColor: '#2dad5c', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: '5px', 
+            cursor: 'pointer',
+            marginTop: '25px'
+          }}
+          onClick={() => router.push("/ProgramRegistration")}
+        >
+          Register
+        </button>
       </div>
 
       {/* Gallery Section with Pagination */}
