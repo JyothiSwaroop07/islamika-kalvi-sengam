@@ -37,7 +37,7 @@ const Contest3 = () => {
                     }}
                     onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSe2wZA2nwGze-BpMLhcOBVCPz7XCsSADd1RHUJF3MwQb7t_Iw/viewform"}
                     >
-                    Register
+                    Submission
                     </button>
                 </div>
             </div>
