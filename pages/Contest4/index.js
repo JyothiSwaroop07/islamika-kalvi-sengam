@@ -149,7 +149,7 @@ const Contest4 = () => {
     const handleTodaysContestClick = async() => {
         try {
             // Fetch all documents in the Contest1 collection
-            const contestRef = collection(db, 'Contest1');
+            const contestRef = collection(db, 'Contest3');
             const q = query(contestRef);
             const querySnapshot = await getDocs(q);
     
@@ -203,56 +203,55 @@ const Contest4 = () => {
 
     const fetchContestDetails = useCallback(async () => {
         try {
-            // Fetch all documents in the Contest1 collection
             const contestRef = collection(db, 'Contest2');
             const q = query(contestRef);
             const querySnapshot = await getDocs(q);
     
-            const currentDate = new Date();
-            currentDate.setUTCHours(currentDate.getUTCHours() + 5, currentDate.getUTCMinutes() + 30, 0, 0); // Set current date in IST (UTC +5:30)
-            const currentDateString = currentDate.toISOString().split('T')[0];
-            const currentTime = currentDate.getUTCHours();
+            // Get current IST time (UTC +5:30)
+            const currentIST = new Date();
+            currentIST.setUTCHours(currentIST.getUTCHours() + 5, currentIST.getUTCMinutes() + 30, 0, 0);
+            
+            const currentTimeHours = currentIST.getUTCHours();
+            const currentTimeMinutes = currentIST.getUTCMinutes();
+            const currentDateString = currentIST.toISOString().split('T')[0]; // YYYY-MM-DD
     
-            console.log(currentDateString);
-            console.log(currentTime);
+            let targetDate;
     
-            if (currentTime < 17) { // If current time is before 5:00 PM IST
-                const previousDay = new Date(currentDate);
-                previousDay.setUTCDate(currentDate.getUTCDate() - 1);
-                const previousDayString = previousDay.toISOString().split('T')[0];
-                console.log(previousDayString, "check")
+            // Check if the time is before 4:30 AM IST
+            if (currentTimeHours < 4 || (currentTimeHours === 4 && currentTimeMinutes < 30)) {
+                // Consider previous day as the contest day
+                targetDate = new Date(currentIST);
+                targetDate.setUTCDate(currentIST.getUTCDate() - 1);
+            } else {
+                // Consider today as the contest day
+                targetDate = currentIST;
+            }
     
-                querySnapshot.forEach((doc) => {
-                    const contestData = doc.data();
-                    const contestDetails = contestData.contestDetails;
-                    console.log(contestDetails);
+            const targetDateString = targetDate.toISOString().split('T')[0]; // YYYY-MM-DD
+            console.log(`Target Date for Contest: ${targetDateString}`);
     
-                    if (contestDetails.date == previousDayString) { // Check if document exists for previous day
-                        // Extract form questions
-                        setForm(contestDetails);
-                        console.log(form);
-                        setShouldDisplayTodayForm(true);
-                    }
-                });
-            } else { // If current time is after 5:00 PM IST
-                querySnapshot.forEach((doc) => {
-                    const contestData = doc.data();
-                    const contestDetails = contestData.contestDetails;
-                    console.log(contestDetails);
+            let foundContest = false;
     
-                    if (contestDetails.date == currentDateString) { // Check if document exists for current day
-                        // Extract form questions
-                        setForm(contestDetails);
-                        console.log(form);
-                        setShouldDisplayTodayForm(true);
-                    }
-                });
+            querySnapshot.forEach((doc) => {
+                const contestData = doc.data();
+                const contestDetails = contestData.contestDetails;
+    
+                if (contestDetails.date === targetDateString) {
+                    setForm(contestDetails);
+                    setShouldDisplayTodayForm(true);
+                    foundContest = true;
+                }
+            });
+    
+            if (!foundContest) {
+                setErrorMessage("No Contests available for Today");
             }
         } catch (error) {
             console.error('Error fetching contest details:', error);
-            setErrorMessage("No Contests available for Today");
+            setErrorMessage("Error fetching contest details");
         }
     }, []);
+    
     
     useEffect(() => {
         fetchContestDetails();
@@ -281,7 +280,7 @@ const Contest4 = () => {
       const router = useRouter();
 
       const handlePrevContClick = () => {
-        router.push("/PreviousContest2");
+        router.push("/PreviousContest3");
       }
 
     return(
