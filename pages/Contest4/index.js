@@ -176,7 +176,7 @@ const Contest4 = () => {
     
                   // Extract form questions
                  setForm(contestDetails);
-                 console.log(form) 
+                 
                   setShouldDisplayTodayForm(true);
                  }
               });
@@ -199,11 +199,12 @@ const Contest4 = () => {
           } catch (error) {
             console.error('Error fetching contest details:', error);
           }
+           
     }
 
     const fetchContestDetails = useCallback(async () => {
         try {
-            const contestRef = collection(db, 'Contest2');
+            const contestRef = collection(db, 'Contest3');
             const q = query(contestRef);
             const querySnapshot = await getDocs(q);
     
@@ -387,6 +388,17 @@ const Contest4 = () => {
             )}
 
             {shouldDisplayTodayForm && <div className="flex flex-col items-center  text-center my-8 w-[100vw] mx-auto p-6 bg-gray-100 shadow-md rounded-md">
+                <div className="w-[100%] overflow-x-hidden max-w-4xl mx-auto mt-8">
+                                        <iframe
+                                            className="w-full h-96"
+                                            src={`https://www.youtube.com/embed/${form.video}`}
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        ></iframe>
+                </div>
+                <hr className="text-blue-500 my-8 border-2 border-[#2dad5c] border-t w-[100%]" />
+
             <h1 className="text-2xl font-semibold mb-4">Today&#39;s Contest</h1>
                 <h1 className="text-2xl text-[#2dad5c] font-semibold mb-4">contest Day: {form.contestDay}</h1>
                 <form onSubmit={handleSubmit}>
