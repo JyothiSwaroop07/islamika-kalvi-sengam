@@ -342,7 +342,7 @@ const Home = () => {
                 clearInterval(adPopupInterval); // Clear the interval after showing the ad popup three times
                 console.log("xero")
             }
-        }, 240* 1000);
+        }, 120* 1000);
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
     }, [adNumber]); 
