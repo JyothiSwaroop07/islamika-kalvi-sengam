@@ -97,12 +97,12 @@ const Navbar = () => {
                   {isContestsMenuOpen && (
                     <ul className="absolute top-16 ml-16 bg-white border border-gray-300 w-63">
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("ProgramRegistration")}>Registration</a></li>
-                      {/* <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li> */}
+                      <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li> 
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1: ரமலான் தொடர் பயான்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2: தினம் ஒரு கேள்வி</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest4")}>நிகழ்ச்சி 3: ஓர் அழகிய உபதேசம்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 4: Arabic Calligraphy</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Feedback")}>Feedback</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Feedback")}>Feedback Ramadan’25</a></li>
                     </ul>
                   )}
                 </div>
@@ -204,12 +204,12 @@ const Navbar = () => {
                   {isContestsMenuOpen && (
                     <ul className="absolute top-16 ml-32 bg-white border border-gray-300 w-66">
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("ProgramRegistration")}>Registration</a></li>
-                     {/* <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap text-[10px]" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li> */}
+                      <li><a href="#" className="block py-2 px-4 text-[#2dad5c] hover:text-[#2dad5c] whitespace-nowrap text-[10px]" onClick={() => handleContestSelect("NewContest")}>அறிவோம் ஐந்து</a></li> 
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Contest1")}>நிகழ்ச்சி 1: ரமலான் தொடர் பயான்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Contest2")}>நிகழ்ச்சி 2: தினம் ஒரு கேள்வி</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Contest4")}>நிகழ்ச்சி 3: ஓர் அழகிய உபதேசம்</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 4: Arabic Calligraphy</a></li>
-                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Feedback")}>Feedback</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Feedback")}>Feedback Ramadan’25</a></li>
                     </ul>
                   )}
                 </div>
