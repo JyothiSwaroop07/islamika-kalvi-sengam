@@ -222,9 +222,10 @@ const Contest1 = () => {
 
     useEffect(() => {
         const checkContestEnd = () => {
+            const contestEndDate = new Date('2025-03-28T22:30:00+05:30'); // March 28, 2025 at 10:30 PM IST
             const currentDate = new Date();
-            const endDate = new Date('2025-12-31'); // Set your contest end date here
-            if (currentDate > endDate) {
+            
+            if (currentDate > contestEndDate) {
                 setContestEnded(true);
             }
         };
@@ -275,7 +276,8 @@ const Contest1 = () => {
 
                     {contestEnded ? (
                         <div className="h-[100vh] w-[100vw] flex justify-center items-center text-[#2dad5c] font-bold font-serif">
-                            <h1 className="text">போட்டிகள் முடிவடைந்தது - Contests have been closed</h1>
+                            <h1 className="text">போட்டிகள் முடிவடைந்தது - Contest has been closed as of March 28, 2025 10:30 PM</h1>
+                            <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Results")}>Check Results</button>
                         </div>
                     ) : (
                         <>
