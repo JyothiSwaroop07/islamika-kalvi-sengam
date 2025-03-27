@@ -32,6 +32,42 @@ const Results = () => {
     result8: new Date('2025-03-30T22:30:00')  // March 30, 10:30 PM
   };
 
+  const videoDetails = {
+    1: {
+      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - சரியான பதில்கள்",
+      release: "Will be released on 28th March - 10:30PM",
+    },
+    2: {
+      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 29th March - 10:30PM",
+    },
+    3: {
+      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - சரியான பதில்கள்",
+      release: "Will be released on 29th March - 5:00PM",
+    },
+    4: {
+      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 30th March - 5:00PM",
+    },
+    5: {
+      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - சரியான பதில்கள்",
+      release: "Will be released on 29th March - 4:30AM",
+    },
+    6: {
+      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 30th March - 4:30AM",
+    },
+    7: {
+      title: "Arabic Calligraphy Contest - சரியான பதில்கள்",
+      release: "Will be released on 30th March - 1:30PM",
+    },
+    8: {
+      title: "Arabic Calligraphy Contest - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 30th March - 10:30PM",
+    }
+  };
+  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -146,7 +182,7 @@ const Results = () => {
                     <span className="bg-[#2dad5c] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
                       {videoNumber}
                     </span>
-                    Result Video {videoNumber}
+                      {videoDetails[videoNumber].title}
                   </h2>
                   
                   { videoId? (
@@ -168,8 +204,9 @@ const Results = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       <p className="text-gray-500 text-lg text-center">
-                        Result {videoNumber} will be available on {videoSchedule[key].toLocaleDateString('en-IN')}<br />
-                        at {videoSchedule[key].toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
+                        {/* Result {videoNumber} will be available on {videoSchedule[key].toLocaleDateString('en-IN')} at {videoSchedule[key].toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}*/}
+                        {videoDetails[videoNumber].release} 
+                        
                       </p>
                     </div>
                       
@@ -179,7 +216,7 @@ const Results = () => {
                         <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
-                        <p className="text-gray-500 text-lg">Result {videoNumber} coming soon</p>
+                        <p className="text-gray-500 text-lg">{videoDetails[videoNumber].release}!</p>
                       </div>
                   )}
                 </div>
