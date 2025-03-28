@@ -222,7 +222,7 @@ const Contest1 = () => {
 
     useEffect(() => {
         const checkContestEnd = () => {
-            const contestEndDate = new Date('2025-03-29T00:00:00+05:30'); // March 28, 2025 at 10:30 PM IST
+            const contestEndDate = new Date('2025-03-28T22:30:00+05:30'); // March 28, 2025 at 10:30 PM IST
             const currentDate = new Date();
             
             if (currentDate > contestEndDate) {
