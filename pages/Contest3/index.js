@@ -42,7 +42,8 @@ const Contest3 = () => {
         //             Submission
         //             </button>
             <div className="h-[100vh] w-[100vw] flex justify-center items-center text-[#2dad5c] font-bold font-serif">
-                <h1 className="text">போட்டிகள் முடிவடைந்தது - Contests have been closed</h1>
+                <h1 className="text">போட்டிகள் முடிவடைந்தது - Contests have been closed</h1> <br/>
+                    <button className="bg-[#2dad5c] text-white w-[145px] h-[42px] rounded-md" onClick={() => router.push("/Results")}>Results</button>
             </div>
     </div>
     )
