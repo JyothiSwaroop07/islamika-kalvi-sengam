@@ -20,7 +20,7 @@ const Contest3 = () => {
        <div className="">
        <h1 className="text-[#2dad5c] text-lg text-center my-5 font-bold">நிகழ்ச்சி 4: Arabic Calligraphy</h1>
        </div>
-         </div>
+         
         //     </div>
         // <div className="banner flex justify-center my-5">
         //             <Image src={img} width={400} height={400} className="max-h-[70vh] max-w-[90vw]" alt="img" />  
@@ -44,6 +44,7 @@ const Contest3 = () => {
             <div className="h-[100vh] w-[100vw] flex justify-center items-center text-[#2dad5c] font-bold font-serif">
                 <h1 className="text">போட்டிகள் முடிவடைந்தது - Contests have been closed</h1>
             </div>
+    </div>
     )
 } 
 
