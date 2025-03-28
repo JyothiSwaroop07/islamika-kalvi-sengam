@@ -38,28 +38,28 @@ const Results = () => {
       release: "Will be released on 28th March - 10:30PM",
     },
     2: {
-      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 29th March - 10:30PM",
+      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - சரியான பதில்கள்",
+      release: "Will be released on 29th March - 4:30AM",
     },
     3: {
       title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - சரியான பதில்கள்",
       release: "Will be released on 29th March - 5:00PM",
     },
     4: {
-      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 30th March - 5:00PM",
+      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 29th March - 10:30PM",
     },
     5: {
-      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - சரியான பதில்கள்",
-      release: "Will be released on 29th March - 4:30AM",
-    },
-    6: {
       title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
       release: "Will be released on 30th March - 4:30AM",
     },
-    7: {
-      title: "Arabic Calligraphy Contest - சரியான பதில்கள்",
+    6: {
+      title: "Arabic Calligraphy Contest - Overall Participants Video",
       release: "Will be released on 30th March - 1:30PM",
+    },
+    7: {
+      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
+      release: "Will be released on 30th March - 5:00PM",
     },
     8: {
       title: "Arabic Calligraphy Contest - வெற்றியாளர்கள் பட்டியல்",
