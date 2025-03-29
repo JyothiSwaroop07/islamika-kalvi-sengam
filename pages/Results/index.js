@@ -7,74 +7,37 @@ import Image from 'next/image';
 
 const Results = () => {
   const router = useRouter();
-  const [results, setResults] = useState({
-    result1: '',
-    result2: '',
-    result3: '',
-    result4: '',
-    result5: '',
-    result6: '',
-    result7: '',
-    result8: ''
-  });
+  const [results, setResults] = useState({});
   const [loading, setLoading] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  // Schedule for each video
-  const videoSchedule = {
-    result1: new Date('2025-03-28T22:30:00'), // March 28, 10:30 PM
-    result2: new Date('2025-03-29T04:30:00'), // March 29, 4:30 AM
-    result3: new Date('2025-03-29T17:00:00'), // March 29, 5:00 PM
-    result4: new Date('2025-03-29T22:30:00'), // March 29, 10:30 PM
-    result5: new Date('2025-03-30T04:30:00'), // March 30, 4:30 AM
-    result6: new Date('2025-03-30T13:30:00'), // March 30, 1:30 PM
-    result7: new Date('2025-03-30T17:00:00'), // March 30, 5:00 PM
-    result8: new Date('2025-03-30T22:30:00')  // March 30, 10:30 PM
+  // Convert to IST (India Standard Time)
+  const getCurrentIST = () => {
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000; // IST = UTC +5:30
+    return new Date(now.getTime() + istOffset);
   };
-
-  const videoDetails = {
-    1: {
-      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - சரியான பதில்கள்",
-      release: "Will be released on 28th March - 10:30PM",
-    },
-    2: {
-      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - சரியான பதில்கள்",
-      release: "Will be released on 29th March - 4:30AM",
-    },
-    3: {
-      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - சரியான பதில்கள்",
-      release: "Will be released on 29th March - 5:00PM",
-    },
-    4: {
-      title: "ரமலான் தொடர் பயான் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 29th March - 10:30PM",
-    },
-    5: {
-      title: "ஓர் அழகிய உபதேசம் நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 30th March - 4:30AM",
-    },
-    6: {
-      title: "Arabic Calligraphy Contest - Overall Participants Video",
-      release: "Will be released on 30th March - 1:30PM",
-    },
-    7: {
-      title: "தினம் ஒரு கேள்வி நிகழ்ச்சி - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 30th March - 5:00PM",
-    },
-    8: {
-      title: "Arabic Calligraphy Contest - வெற்றியாளர்கள் பட்டியல்",
-      release: "Will be released on 30th March - 10:30PM",
-    }
-  };
-  
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000); // Update current time every minute
+      setCurrentTime(getCurrentIST());
+      console.log("Updated IST Time:", getCurrentIST().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
+    }, 60000); // Update IST time every minute
 
     return () => clearInterval(timer);
   }, []);
+
+  // Scheduled video release times in IST
+  const videoSchedule = {
+    result1: new Date('2025-03-28T22:30:00+05:30'),
+    result2: new Date('2025-03-29T04:30:00+05:30'),
+    result3: new Date('2025-03-29T17:00:00+05:30'),
+    result4: new Date('2025-03-29T22:30:00+05:30'),
+    result5: new Date('2025-03-30T04:30:00+05:30'),
+    result6: new Date('2025-03-30T13:30:00+05:30'),
+    result7: new Date('2025-03-30T17:00:00+05:30'),
+    result8: new Date('2025-03-30T22:30:00+05:30')
+  };
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -84,23 +47,10 @@ const Results = () => {
         
         if (docSnap.exists()) {
           const data = docSnap.data();
-          console.log("Firestore data:", data);
-          
-          const announcementDetails = data.videoLinks || {};
-          console.log("announcementDetails:", announcementDetails);
-          
-          setResults({
-            result1: announcementDetails.video1 || '',
-            result2: announcementDetails.video2 || '',
-            result3: announcementDetails.video3 || '',
-            result4: announcementDetails.video4 || '',
-            result5: announcementDetails.video5 || '',
-            result6: announcementDetails.video6 || '',
-            result7: announcementDetails.video7 || '',
-            result8: announcementDetails.video8 || ''
-          });
+          console.log("Fetched Video Links:", data.videoLinks); // Debugging log
+          setResults(data.videoLinks || {});
         } else {
-          console.log("No document found at Announcements/announcements");
+          console.log("No document found");
         }
       } catch (error) {
         console.error("Error fetching results:", error);
@@ -110,22 +60,18 @@ const Results = () => {
     };
 
     fetchResults();
-  }, []);
+  }, [currentTime]); // Fetch again whenever IST updates
 
+  // Extract YouTube Video ID from URL
   const getYouTubeId = (url) => {
     if (!url) return null;
-    
-    if (url.includes('youtu.be/')) {
-      return url.split('youtu.be/')[1].split(/[?&#]/)[0];
-    }
-    
-    const regExp = /^.*(youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    
-    return (match && match[2].length === 11) ? match[2] : null;
+    const match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([^#&?]*)/);
+    return match && match[1].length === 11 ? match[1] : null;
   };
 
+  // Check if video is available
   const isVideoAvailable = (videoKey) => {
+    console.log(`Checking video ${videoKey}: Scheduled - ${videoSchedule[videoKey]?.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}, Current IST - ${currentTime.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`);
     return currentTime >= videoSchedule[videoKey];
   };
 
@@ -170,27 +116,26 @@ const Results = () => {
         <div className="border-b-2 border-[#2dad5c] w-24 mx-auto mb-12"></div>
 
         <div className="space-y-12 max-w-4xl mx-auto">
-          {Object.entries(results).map(([key, url], index) => {
-            const videoId = getYouTubeId(url);
-            const videoNumber = key.replace('result', '');
+          {Object.entries(videoSchedule).map(([key, time], index) => {
+            const videoId = getYouTubeId(results[key]);
             const isAvailable = isVideoAvailable(key);
-            
+
             return (
               <div key={key} className="bg-white rounded-xl shadow-md overflow-hidden">
                 <div className="p-6">
                   <h2 className="text-2xl font-bold text-[#2c5c2d] mb-4 flex items-center">
                     <span className="bg-[#2dad5c] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                      {videoNumber}
+                      {index + 1}
                     </span>
-                      {videoDetails[videoNumber].title}
+                    Video {index + 1}
                   </h2>
-                  
-                  { videoId? (
-                     isAvailable? (
+
+                  {videoId ? (
+                    isAvailable ? (
                       <div className="relative pt-[56.25%] rounded-lg overflow-hidden bg-black">
                         <iframe
                           src={`https://www.youtube.com/embed/${videoId}`}
-                          title={`Result Video ${videoNumber}`}
+                          title={`Result Video ${index + 1}`}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           className="absolute top-0 left-0 w-full h-full"
@@ -198,26 +143,16 @@ const Results = () => {
                         />
                       </div>
                     ) : (
-
-                        <div className="w-full h-64 bg-gray-100 rounded-lg flex flex-col items-center justify-center">
-                      <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <p className="text-gray-500 text-lg text-center">
-                        {/* Result {videoNumber} will be available on {videoSchedule[key].toLocaleDateString('en-IN')} at {videoSchedule[key].toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}*/}
-                        {videoDetails[videoNumber].release} 
-                        
-                      </p>
-                    </div>
-                      
+                      <div className="w-full h-64 bg-gray-100 rounded-lg flex flex-col items-center justify-center">
+                        <p className="text-gray-500 text-lg">
+                          Video will be available on {time.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
+                        </p>
+                      </div>
                     )
                   ) : (
                     <div className="w-full h-64 bg-gray-100 rounded-lg flex flex-col items-center justify-center">
-                        <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        <p className="text-gray-500 text-lg">{videoDetails[videoNumber].release}!</p>
-                      </div>
+                      <p className="text-gray-500 text-lg">Video link not available yet.</p>
+                    </div>
                   )}
                 </div>
               </div>
