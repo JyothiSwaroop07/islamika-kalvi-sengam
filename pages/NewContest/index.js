@@ -409,7 +409,6 @@ const NewContest = () => {
       const contestRef = collection(db, 'WeeklyContest');
       const q = query(contestRef);
       const querySnapshot = await getDocs(q);
-
       const currentDate = new Date();
       const currentDay = currentDate.getDay(); // 0 (Sunday) to 6 (Saturday)
       const currentHour = currentDate.getHours();
@@ -425,22 +424,33 @@ const NewContest = () => {
       const allForms = [];
       querySnapshot.forEach((doc) => {
         const contestData = doc.data().contestDetails;
-        allForms.push({
-          id: doc.id,
-          ...contestData
-        });
+        if (contestData) {
+          allForms.push({
+            id: doc.id,
+            ...contestData
+          });
+        }
       });
 
-      // Sort forms by thodar name and part number
+      // Sort forms by thodar name and part number, with proper null checks
       allForms.sort((a, b) => {
-        if (a.thodarName === b.thodarName) {
-          return parseInt(a.partNumber) - parseInt(b.partNumber);
+        const thodarNameA = a?.thodarName || '';
+        const thodarNameB = b?.thodarName || '';
+        
+        if (thodarNameA === thodarNameB) {
+          const partA = parseInt(a?.partNumber || '0', 10);
+          const partB = parseInt(b?.partNumber || '0', 10);
+          return partA - partB;
         }
-        return a.thodarName.localeCompare(b.thodarName);
+        return thodarNameA.localeCompare(thodarNameB);
       });
       
-      // Find all unique series
-      const seriesList = [...new Set(allForms.map(form => form.thodarName))];
+      // Find all unique series that have valid thodarName
+      const seriesList = [...new Set(
+        allForms
+          .filter(form => form && form.thodarName)
+          .map(form => form.thodarName)
+      )];
       
       if (seriesList.length > 0) {
         // Get the latest series
@@ -448,8 +458,10 @@ const NewContest = () => {
         setCurrentSeries(latestSeries);
         
         // Get all forms for this series (parts 1-4)
-        const seriesForms = allForms.filter(form => form.thodarName === latestSeries);
+        const seriesForms = allForms.filter(form => form && form.thodarName === latestSeries);
         setForms(seriesForms);
+      } else {
+        setForms([]);
       }
 
       setIsLoading(false);
@@ -478,29 +490,45 @@ const NewContest = () => {
   }, []);
 
   const formatContestDate = (dateString) => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    if (!dateString) return 'Date not available';
+    
+    try {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return 'Invalid date';
+    }
   };
 
   const getContestStatus = (dateString) => {
-    const contestDate = new Date(dateString);
-    const currentDate = new Date();
+    if (!dateString) return "Unknown";
     
-    // Contest is active for 3 days (Sunday 11AM to Tuesday 5PM)
-    const contestEndDate = new Date(contestDate);
-    contestEndDate.setDate(contestDate.getDate() + 2); // Add 2 days to Sunday
-    contestEndDate.setHours(17, 0, 0, 0); // Set to Tuesday 5PM
-    
-    if (currentDate > contestEndDate) {
-      return "Completed";
-    } else if (currentDate >= contestDate) {
-      return "Active";
-    } else {
-      return "Upcoming";
+    try {
+      const contestDate = new Date(dateString);
+      const currentDate = new Date();
+      
+      // Contest is active for 3 days (Sunday 11AM to Tuesday 5PM)
+      const contestEndDate = new Date(contestDate);
+      contestEndDate.setDate(contestDate.getDate() + 2); // Add 2 days to Sunday
+      contestEndDate.setHours(17, 0, 0, 0); // Set to Tuesday 5PM
+      
+      if (currentDate > contestEndDate) {
+        return "Completed";
+      } else if (currentDate >= contestDate) {
+        return "Active";
+      } else {
+        return "Upcoming";
+      }
+    } catch (error) {
+      console.error("Error determining contest status:", error);
+      return "Unknown";
     }
   };
 
   const renderContestCard = (form) => {
+    if (!form) return null;
+    
     const status = getContestStatus(form.date);
     const isActive = status === "Active";
     const isCompleted = status === "Completed";
@@ -516,7 +544,7 @@ const NewContest = () => {
         <div className="flex justify-between items-start">
           <div>
             <h3 className="text-xl font-semibold text-[#2c5c2d]">
-              {form.thodarName} - Part {form.partNumber}
+              {form.thodarName || 'Unknown Series'} - Part {form.partNumber || 'Unknown'}
             </h3>
             <p className="text-gray-600 mt-1">
               Date: {formatContestDate(form.date)}
@@ -549,7 +577,7 @@ const NewContest = () => {
             <h4 className="font-medium text-gray-700">Results:</h4>
             <img 
               src={form.resultImageUrl} 
-              alt={`Results for ${form.thodarName} Part ${form.partNumber}`}
+              alt={`Results for ${form.thodarName || 'Contest'} Part ${form.partNumber || ''}`}
               className="mt-2 max-w-full h-auto rounded-md"
             />
           </div>
@@ -561,7 +589,9 @@ const NewContest = () => {
   return (
     <div className="font-serif w-[100vw]">
       {isLoading ? (
-        <TailSpin visible={true} height="80" width="80" color="#4fa94d" ariaLabel="tail-spin-loading" />
+        <div className="flex justify-center items-center h-screen">
+          <TailSpin visible={true} height="80" width="80" color="#4fa94d" ariaLabel="tail-spin-loading" />
+        </div>
       ) : (
         <div className="px-5">
           <Navbar />
@@ -569,11 +599,11 @@ const NewContest = () => {
           <div className="bg-gray-100">
             {adPopupVisible && (
               <AdPopup
-                title={ads[adNumber].title}
-                description={ads[adNumber].description}
+                title={ads[adNumber]?.title || ''}
+                description={ads[adNumber]?.description || ''}
                 onClose={closeAdPopup}
-                adLink={ads[adNumber].image}
-                videoLink={ads[adNumber].video}
+                adLink={ads[adNumber]?.image || ''}
+                videoLink={ads[adNumber]?.video || ''}
               />
             )}
           </div>
@@ -607,16 +637,23 @@ const NewContest = () => {
               <h1 className="text-[#2dad5c] text-lg">ஒவ்வொரு வாரமும் ஞாயிற்றுகிழமைகளில்...</h1>
               <h1 className="text-black text-lg">பதிவு செய்த பிறகு போட்டியில் கலந்துக்கொள்ளவும்</h1>
 
-              <button className="bg-[#2dad5c] w-[155px] h-[55px] text-md text-white rounded-md" onClick={() => router.push("/Registration")}>
+              <button 
+                className="bg-[#2dad5c] w-[155px] h-[55px] text-md text-white rounded-md my-4" 
+                onClick={() => router.push("/Registration")}
+              >
                 Register
               </button>
 
               <h1 className="text-black text-lg">If registered already, Please access the form below</h1>
             </div>
 
+            {errorMessage && (
+              <div className="text-red-500 text-center my-4">{errorMessage}</div>
+            )}
+
             {forms.length === 0 && !isLoading && (
-              <div className="flex flex-col p-3 bg-gray-100 items-center justify-center">
-                <h1 className="text-[#2c5c2d] font-bold text-center">
+              <div className="flex flex-col p-3 bg-gray-100 items-center justify-center my-8 rounded-lg">
+                <h1 className="text-[#2c5c2d] font-bold text-center py-8">
                   No Contest Right now. Stay tuned...
                 </h1>
               </div>
@@ -625,11 +662,11 @@ const NewContest = () => {
             {forms.length > 0 && (
               <div className="mb-8">
                 <h1 className="text-2xl text-center text-[#2c5c2d] font-semibold mb-6">
-                  {currentSeries} Series
+                  {currentSeries || 'Current'} Series
                 </h1>
                 
                 {/* Render all parts as cards */}
-                {forms.map((form) => renderContestCard(form))}
+                {forms.map((form) => form ? renderContestCard(form) : null)}
               </div>
             )}
           </div>
