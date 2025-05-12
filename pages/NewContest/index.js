@@ -501,6 +501,20 @@ const NewContest = () => {
     }
   };
 
+   // Function to convert Google Drive link to direct URL
+ const convertDriveLink = (url) => {
+    const isDriveLink = url.includes('drive.google.com');
+    if (isDriveLink) {
+        let fileIdMatch = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
+        const fileId = fileIdMatch?.[1];
+        if (fileId) {
+            return `https://drive.google.com/uc?export=view&id=${fileId}`;
+        }
+    }
+    return url;
+};
+
+
   const getContestStatus = (dateString) => {
     if (!dateString) return "Unknown";
     
@@ -528,7 +542,7 @@ const NewContest = () => {
 
   const renderContestCard = (form) => {
     if (!form) return null;
-    
+    console.log(form.resultImageUrl,'resultImage');
     const status = getContestStatus(form.date);
     const isActive = status === "Active";
     const isCompleted = status === "Completed";
@@ -560,6 +574,8 @@ const NewContest = () => {
             </span>
           </div>
           
+         {(isActive || isCompleted) && (
+        <div className="mt-4">
           {isActive && form.formLink && (
             <a 
               href={form.formLink} 
@@ -570,18 +586,23 @@ const NewContest = () => {
               Participate Now
             </a>
           )}
+
+          {isCompleted && form.resultImageUrl && (
+            <a
+              href={convertDriveLink(form.resultImageUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Results
+            </a>
+          )}
+        </div>
+      )}
         </div>
 
-        {isCompleted && form.resultImageUrl && (
-          <div className="mt-4">
-            <h4 className="font-medium text-gray-700">Results:</h4>
-            <img 
-              src={form.resultImageUrl} 
-              alt={`Results for ${form.thodarName || 'Contest'} Part ${form.partNumber || ''}`}
-              className="mt-2 max-w-full h-auto rounded-md"
-            />
-          </div>
-        )}
+        
+
       </div>
     );
   };
