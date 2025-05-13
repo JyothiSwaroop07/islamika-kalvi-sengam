@@ -489,6 +489,30 @@ const NewContest = () => {
     return () => clearInterval(adInterval);
   }, []);
 
+  const [winnerImages, setWinnerImages] = useState([]);
+
+  const fetchWinnerImages = useCallback(async () => {
+    try {
+      const winnerRef = collection(db, 'Winners'); // change to your collection name
+      const q = query(winnerRef);
+      const snapshot = await getDocs(q);
+
+      const images = snapshot.docs
+        .map(doc => doc.data()?.imageUrl)
+        .filter(url => url); // remove empty/null URLs
+
+      setWinnerImages(images);
+    } catch (error) {
+      console.error("Error fetching winner images:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+  fetchWinnerImages();
+}, [fetchWinnerImages]);
+
+
+
   const formatContestDate = (dateString) => {
     if (!dateString) return 'Date not available';
     
@@ -581,7 +605,7 @@ const NewContest = () => {
               href={form.formLink} 
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2dad5c] text-white px-4 py-2 rounded-md hover:bg-[#248f4a] transition-colors"
+                className="bg-[#2dad5c] text-white px-6 py-3 rounded-md hover:bg-[#248f4a] transition-colors text-sm sm:text-base w-full sm:w-auto block text-center"
             >
               Participate Now
             </a>
@@ -592,10 +616,16 @@ const NewContest = () => {
               href={convertDriveLink(form.resultImageUrl)}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="bg-[#2dad5c] text-white px-6 py-3 rounded-md hover:bg-[#248f4a] transition-colors text-sm sm:text-base w-full sm:w-auto block text-center"
             >
               View Results
             </a>
+          )}
+
+          {isCompleted && (!form.resultImageUrl) && (
+            
+              <p className="bg-[#2dad5c] text-white px-6 py-3 rounded-md hover:bg-[#248f4a] transition-colors text-sm sm:text-base w-full sm:w-auto block text-center">Results to be declared</p>
+             
           )}
         </div>
       )}
@@ -691,6 +721,28 @@ const NewContest = () => {
               </div>
             )}
           </div>
+
+          {winnerImages.length > 0 && (
+            <div className="my-10 text-center flex flex-col  justify-center items-center">
+              <h2 className="text-2xl font-bold text-[#2c5c2d] mb-4">🏆 Winners</h2>
+
+              <div className="grid  gap-6 ">
+                {winnerImages.map((url, index) => (
+                  <div key={index} className="bg-white shadow-md rounded-lg p-4 flex justify-center items-center">
+                    <Image
+                      src={convertDriveLink(url)}
+                      alt={`Winner Image ${index + 1}`}
+                      width={300}
+                      height={200}
+                      className="rounded-md object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          )}
+
 
           <Footer />
         </div>
