@@ -457,7 +457,7 @@ const Home = () => {
           }}
           onClick={() => router.push("/ProgramRegistration")}
         >
-          Register
+          For Bookings / முன்பதிவு செய்ய
         </button>
       </div>
 

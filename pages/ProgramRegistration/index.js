@@ -8,7 +8,7 @@ const GoogleFormPage = () => {
       <div className="px-3 md:px-8 flex flex-col items-center justify-center my-8 md:my-14">
         {/* Heading */}
         <h1 className="text-[#2dad5c] font-bold text-[22px] font-serif text-center">
-        Kurbani Pre-Booking Registration 
+        Kurbani Pre-Booking Form
         </h1>
 
         {/* Embedded Google Form */}
