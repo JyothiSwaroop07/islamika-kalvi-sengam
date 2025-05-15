@@ -435,7 +435,7 @@ const Home = () => {
         <div className="register-banner" 
         style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
         <Image 
-          src="/assets/ikv-poster-image.jpg" 
+          src="/assets/kurbani.jpg" 
           alt="Your Image Description"
           width = {600}
           height = {600}
