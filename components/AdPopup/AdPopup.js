@@ -1,7 +1,7 @@
 // AdPopup.js
 import React from 'react';
 import Image from 'next/image';
-import img from './donate_banner1.jpg';
+import img from './kurbani.jpg';
 
 const AdPopup = ({title, image, video, description, onClose, adLink }) => {
   return (
