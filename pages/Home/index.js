@@ -83,12 +83,13 @@ const ads = [
 
 const Home = () => {
 
-    const [sponsors, setSponsors] = useState([]);
+    const [sponsors, setSponsors] = useState('');
     const [adPopupVisible, setAdPopupVisible] = useState(false);
     const [adNumber, setAdNumber] = useState(0);
     const [adCount, setAdCount] = useState(0);
     const [adsDetails, setAdsDetails] = useState([])
     const [showPopup, setShowPopup] = useState(false);
+    
 
      // Sample gallery images (you can replace with actual image paths)
      const galleryImages = [
@@ -303,7 +304,7 @@ const Home = () => {
                 const sponsorsCollection = collection(db, "Web Content"); // Collection reference
                 const sponsorsDoc = doc(sponsorsCollection, "sponsors"); // Document reference
                 
-                console.log("hi");
+                 
 
                 const docSnapshot = await getDoc(sponsorsDoc);
 
@@ -346,6 +347,40 @@ const Home = () => {
     
         return () => clearInterval(adPopupInterval); // Cleanup function to clear the interval when component unmounts or rerenders
     }, [adNumber]); 
+
+
+
+    useEffect(() => {
+      const fetchSponsorData = async () => {
+        try {
+          const docRef = db.collection('Sponsors').doc('logos');
+          const doc = await docRef.get();
+    
+          if (doc.exists) {
+            const data = doc.data(); // Get the document data directly
+            console.log('Sponsor data:', data.footerLogo);
+            setSponsors(data.footerLogo);   // This will include headerLogo, footerLogo, etc.
+          } else {
+            console.log('No sponsor document found!');
+            setSponsors('');
+          }
+        } catch (error) {
+          console.error('Error fetching sponsor data:', error);
+        }
+      };
+    
+      fetchSponsorData();
+    }, []);
+    
+     const convertDriveLink = (url) => {
+        const isDriveLink = url.includes('drive.google.com');
+        if (isDriveLink) {
+          const fileId = url.match(/d\/(.+?)\//)[1];
+          return `https://drive.google.com/uc?id=${fileId}`;
+        }
+        return url;
+      };
+    
 
     return (
         <div className="bg-gray-100 overflow-x-hidden">
@@ -624,16 +659,22 @@ const Home = () => {
         {/* <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-x-auto"> */}
         <div className="flex justify-center overflow-x-auto">
 
-        {sponsors.length === 0 ? (
+        {sponsors === '' ? (
                 <p className="text-center text-[#696855] text-2xl lg:text-4xl font-semibold w-[80vw] mx-auto mb-8">
                     For Sponsorship/Ads: Contact 9500489492
                 </p>
                 ) : (
-                sponsors.map((each, idx) => (
-                    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8" key={idx}>
-                    <Image src="/" alt='Image' className="mx-auto mb-4 h-16 w-auto h-[150px] w-[175px]" width={300} height={200} />
+                
+                    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center mx-auto mx-8">
+                    <Image
+                                                    src={convertDriveLink(sponsors)}
+                                                    alt="sponsor logo"
+                                                    width={300}
+                                                    height={200}
+                                                    className=" shadow-lg"
+                                                  />
                     </div>
-                ))
+               
                 )}
         </div>
     </div>

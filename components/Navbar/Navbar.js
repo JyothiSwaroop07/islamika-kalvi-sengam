@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { db } from '../../firebase';
+import Image from 'next/image';
 import { TailSpin } from 'react-loader-spinner';
 import DonatePopup from '../DonatePopup/DonatePopup';
 
@@ -9,6 +11,7 @@ const Navbar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDepartmentOpen, setIsDepartmentOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [sponsorImage , setSponsorImage] = useState('');
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -60,6 +63,39 @@ const Navbar = () => {
     }
   };
 
+
+ useEffect(() => {
+  const fetchSponsorData = async () => {
+    try {
+      const docRef = db.collection('Sponsors').doc('logos');
+      const doc = await docRef.get();
+
+      if (doc.exists) {
+        const data = doc.data(); // Get the document data directly
+        console.log('Sponsor data:', data.headerLogo);
+        setSponsorImage(data.headerLogo);   // This will include headerLogo, footerLogo, etc.
+      } else {
+        console.log('No sponsor document found!');
+        setSponsorImage('');
+      }
+    } catch (error) {
+      console.error('Error fetching sponsor data:', error);
+    }
+  };
+
+  fetchSponsorData();
+}, []);
+
+ const convertDriveLink = (url) => {
+    const isDriveLink = url.includes('drive.google.com');
+    if (isDriveLink) {
+      const fileId = url.match(/d\/(.+?)\//)[1];
+      return `https://drive.google.com/uc?id=${fileId}`;
+    }
+    return url;
+  };
+
+
   return (
     <>
       {isLoading && (
@@ -77,11 +113,25 @@ const Navbar = () => {
         </div>
       )}
 
-      {!isLoading && <header className="bg-white sticky top-0 z-50 relative">
+      { !isLoading && <header className="bg-white sticky top-0 z-50 relative">
         <nav className="container mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="text-black flex flex-col items-center font-bold text-xl">
-              <h1 className='text-[8px] text-black font-normal'>Sponsored By</h1>
+              
+              {(sponsorImage=='') ? (
+                <h1 className="text-[8px] text-black font-normal">Sponsored By</h1>
+              ) : (
+                <Image
+                                src={convertDriveLink(sponsorImage)}
+                                alt="sponsor logo"
+                                width={30}
+                                height={50}
+                                className=" shadow-lg"
+                              />
+              
+              )}
+            
+
               {/* <img src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711042228/sdmslogo_pfcwpm.jpg" className='h-[55px] w-[63px]' /> */}
             </div>
 
