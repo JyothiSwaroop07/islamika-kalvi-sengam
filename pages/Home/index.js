@@ -22,6 +22,7 @@ import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 import summercamp2Image from '../assets/summercamp2.jpeg'
 import { SiGmail } from "react-icons/si";
 import { green } from "@mui/material/colors";
+import FacebookPage from "@/components/FacebookPage/FacebookPage";
 
 const values = [
     {
@@ -89,6 +90,12 @@ const Home = () => {
     const [adCount, setAdCount] = useState(0);
     const [adsDetails, setAdsDetails] = useState([])
     const [showPopup, setShowPopup] = useState(false);
+    const [announcementData, setAnnouncementData] = useState({
+        title: '',
+        imageUrl: '',
+        formUrl: ''
+    });
+    const [announcementImage, setAnnouncementImage] = useState('');
     
 
      // Sample gallery images (you can replace with actual image paths)
@@ -382,6 +389,25 @@ const Home = () => {
       };
     
 
+    // Simplified useEffect to only fetch image URL
+    useEffect(() => {
+        const fetchAnnouncementImage = async () => {
+            try {
+                const docRef = doc(db, 'HomeAnnouncements', 'announcementDetails');
+                const docSnap = await getDoc(docRef);
+                
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    setAnnouncementImage(data.imageUrl || '');
+                }
+            } catch (error) {
+                console.error("Error fetching announcement image:", error);
+            }
+        };
+
+        fetchAnnouncementImage();
+    }, []);
+
     return (
         <div className="bg-gray-100 overflow-x-hidden">
             <Navbar />
@@ -452,7 +478,7 @@ const Home = () => {
     <Image src="https://res.cloudinary.com/dchbfnlct/image/upload/v1711188558/fit_size_fit_xmjifp.png" className="h-[250px] w-[250px] mt-4" width={150} height={100} alt="img" />
     <p className="text-4xl text-white font-extrabold mb-4 mt-8">Islamiya Kalvi Sangam</p>
     <p className="text-xltext-white">
-        Seeking Excellence In Islamic Knowledge and Practice.
+        Seeking Excellence In Islamic Knowledge and Practice.
     </p>
     <button className="bg-[#2dad5c] h-[40px] w-[125px] border-1 mt-8 rounded-md text-white hover:scale-105" onClick={togglePopup}>Donate</button>
     {showPopup && <DonatePopup onClosePopup={togglePopup} />}
@@ -467,34 +493,56 @@ const Home = () => {
 
         </div>
 
+         
+            <div className="flex flex-col ">
+                <h1 className="text-center ">Islamiya Kalvi Sangam Facebook Updates</h1>
+                <div  className="flex justify-center">
+                    <iframe
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fislamiya.kalvi.sangam&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                    width="500"
+                    height="600"
+                    style={{ border: 'none', overflow: 'hidden' }}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    />
+
+                </div>
+                 
+            </div>
+         
+
         <div className="register-banner" 
         style = {{textAlign : 'center' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,margin : '30px'}}>
-        <Image 
-          src="/assets/kurbani.jpg" 
-          alt="Your Image Description"
-          width = {600}
-          height = {600}
-          style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
-        />
+        {announcementImage && (
+            <Image 
+                src={convertDriveLink(announcementImage)}
+                alt="Announcement Image"
+                width={600}
+                height={400}
+                style={{ width: '100%', maxWidth: '600px', height: 'auto'}}
+            />
+        )}
         
         {/* Register Button Below the Image */}
         <button 
-          style={{
-            marginTop: '10px', 
-            padding: '10px 20px', 
-            fontSize: '16px', 
-            backgroundColor: '#2dad5c', 
-            color: '#fff', 
-            border: 'none', 
-            borderRadius: '5px', 
-            cursor: 'pointer',
-            marginTop: '25px'
-          }}
-          onClick={() => router.push("/ProgramRegistration")}
+            style={{
+                marginTop: '10px', 
+                padding: '10px 20px', 
+                fontSize: '16px', 
+                backgroundColor: '#2dad5c', 
+                color: '#fff', 
+                border: 'none', 
+                borderRadius: '5px', 
+                cursor: 'pointer',
+                marginTop: '25px'
+            }}
+            onClick={() => router.push("/ProgramRegistration")}
         >
-          For Bookings / முன்பதிவு செய்ய
+            For Bookings / முன்பதிவு செய்ய
         </button>
-      </div>
+        </div>
 
       {/* Gallery Section with Pagination */}
 
@@ -681,7 +729,7 @@ const Home = () => {
 </section>
 
 <h3 className="text-center text-[#696855] text-xl font-semibold w-[80vw] mx-auto mb-8">
-‘The believers, in their love, mutual kindness, and close ties, are like one body; when any part complains, the whole body responds to it with wakefulness and fever.‘ 
+'The believers, in their love, mutual kindness, and close ties, are like one body; when any part complains, the whole body responds to it with wakefulness and fever.' 
 </h3>
 
     <div className="flex justify-center mb-3">
