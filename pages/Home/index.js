@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 // import ResponsiveAppBar from "@/components/Navbar/Navbar";
 import {db} from '../../firebase';
 import { firestore } from '../../firebase'; 
-import { collection, getDoc, doc } from 'firebase/firestore';
+import { collection, getDoc, doc, updateDoc, increment, setDoc } from 'firebase/firestore';
 import { ElevatorSharp } from "@mui/icons-material";
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -299,7 +299,7 @@ const Home = () => {
     };
   }, []);
 
-  const [visitorCount, setVisitorCount] = useState(0);
+  const [visitorCount, setVisitorCount] = useState(100000); // Start from 1 lakh
 
   const router = useRouter();
  
@@ -407,6 +407,72 @@ const Home = () => {
 
         fetchAnnouncementImage();
     }, []);
+
+    // Function to update visitor count
+    const updateVisitorCount = async () => {
+        try {
+            const docRef = doc(db, 'WebsiteStats', 'visitorCount');
+            const docSnap = await getDoc(docRef);
+
+            if (!docSnap.exists()) {
+                // If document doesn't exist, create it with initial count using setDoc
+                await setDoc(docRef, {
+                    count: 100000
+                });
+                setVisitorCount(100000);
+            } else {
+                // Increment the count if document exists
+                await updateDoc(docRef, {
+                    count: increment(1)
+                });
+                // Fetch the updated count
+                const updatedDoc = await getDoc(docRef);
+                if (updatedDoc.exists()) {
+                    setVisitorCount(updatedDoc.data().count);
+                }
+            }
+        } catch (error) {
+            console.error("Error updating visitor count:", error);
+        }
+    };
+
+    // Fetch initial visitor count and update on component mount
+    useEffect(() => {
+        const fetchAndUpdateVisitorCount = async () => {
+            try {
+                const docRef = doc(db, 'WebsiteStats', 'visitorCount');
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    setVisitorCount(docSnap.data().count);
+                    // Update the count for this visit
+                    await updateDoc(docRef, {
+                        count: increment(1)
+                    });
+                    // Fetch the updated count
+                    const updatedDoc = await getDoc(docRef);
+                    if (updatedDoc.exists()) {
+                        setVisitorCount(updatedDoc.data().count);
+                    }
+                } else {
+                    // Initialize with 1 lakh using setDoc
+                    await setDoc(docRef, {
+                        count: 100000
+                    });
+                    setVisitorCount(100000);
+                }
+            } catch (error) {
+                console.error("Error handling visitor count:", error);
+            }
+        };
+
+        fetchAndUpdateVisitorCount();
+    }, []);
+
+    // Format number with commas
+    const formatNumber = (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
 
     return (
         <div className="bg-gray-100 overflow-x-hidden">
@@ -733,7 +799,9 @@ const Home = () => {
 </h3>
 
     <div className="flex justify-center mb-3">
-      <h2 className="text-[#2c5c2d] font-bold text-[22px] font-bold">Number of Visitors: 87,564</h2>
+      <h2 className="text-[#2c5c2d] font-bold text-[22px]">
+        Number of Visitors: {formatNumber(visitorCount)}
+      </h2>
     </div>
 
 <div id="footer">
