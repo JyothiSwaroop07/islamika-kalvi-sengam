@@ -381,7 +381,7 @@ const Navbar = () => {
       </header>}
 
       {showPopup && (
-        <DonatePopup closePopup={togglePopup} />
+        <DonatePopup onClosePopup={togglePopup} />
       )}
     </>
   );
