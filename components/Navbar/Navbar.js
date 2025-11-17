@@ -154,6 +154,7 @@ const Navbar = () => {
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 4: Arabic Calligraphy</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Feedback")}>Feedback Ramadan’25</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("Results")}>Results</a></li>
+                      <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap" onClick={() => handleContestSelect("DistrictLevel2025")}>District level Islamic competition 2025</a></li>
                     </ul>
                   )}
                 </div>
@@ -262,6 +263,7 @@ const Navbar = () => {
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Contest3")}>நிகழ்ச்சி 4: Arabic Calligraphy</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Feedback")}>Feedback Ramadan’25</a></li>
                       <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("Results")}>Results</a></li>
+                                            <li><a href="#" className="block py-2 px-4 text-black hover:text-[#2dad5c] whitespace-nowrap text-[16px]" onClick={() => handleContestSelect("DistrictLevel2025")}>District level Islamic competition 2025</a></li>
                     </ul>
                   )}
                 </div>
