@@ -119,14 +119,14 @@ const DistrictLevel2025 = () => {
           )}
 
           {/* Registration Button */}
-          {registrationFormUrl && (
+          {/* {registrationFormUrl && (
             <button
               onClick={() => window.open(registrationFormUrl, "_blank")}
               className="bg-[#2dad5c] text-white px-6 py-3 rounded-md text-lg shadow-md hover:bg-[#24954f]"
             >
               Register 
             </button>
-          )}
+          )} */}
         </div>
 
         {/* ============================
