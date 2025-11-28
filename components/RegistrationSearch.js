@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 
 const RegistrationSearch = () => {
-    const [name, setName] = useState("");
     const [dob, setDob] = useState("");
-    const [searchResult, setSearchResult] = useState(null);
+    const [matchingRecords, setMatchingRecords] = useState([]);
+    const [selectedRecord, setSelectedRecord] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    const handleSearch = async () => {
+    const handleSearchByDOB = async () => {
         // Reset previous results
-        setSearchResult(null);
+        setMatchingRecords([]);
+        setSelectedRecord(null);
         setError("");
 
-        // Validate inputs
-        if (!name.trim() || !dob.trim()) {
-            setError("Please enter both Name and Date of Birth");
+        // Validate input
+        if (!dob.trim()) {
+            setError("Please enter Date of Birth");
             return;
         }
 
@@ -29,13 +30,13 @@ const RegistrationSearch = () => {
             // Combine both datasets
             const allData = [...boysData, ...girlsData];
 
-            // Search for matching record
-            const result = searchRecord(allData, name.trim(), dob.trim());
+            // Search for all records matching the DOB
+            const results = searchByDOB(allData, dob.trim());
 
-            if (result) {
-                setSearchResult(result);
+            if (results.length > 0) {
+                setMatchingRecords(results);
             } else {
-                setError("No registration found with the provided details. Please check your Name and Date of Birth.");
+                setError("No registrations found for the provided Date of Birth. Please check the date format (DD/MM/YYYY).");
             }
         } catch (err) {
             console.error("Search error:", err);
@@ -59,14 +60,13 @@ const RegistrationSearch = () => {
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
             // The actual headers are on row 3 (index 2)
-            // Row 1: Title, Row 2: Subtitle, Row 3: Headers, Row 4: Category, Row 5+: Data
-            const headers = jsonData[2]; // Row 3 contains the actual headers
-            const dataStartRow = 4; // Data starts from row 5 (index 4)
+            const headers = jsonData[2];
+            const dataStartRow = 4;
 
             const rows = jsonData.slice(dataStartRow);
 
             return rows
-                .filter(row => row && row[0] && row[0].toString().startsWith('AIE-')) // Filter valid registration rows
+                .filter(row => row && row[0] && row[0].toString().startsWith('AIE-'))
                 .map(row => {
                     const obj = {};
                     headers.forEach((header, index) => {
@@ -89,7 +89,7 @@ const RegistrationSearch = () => {
 
     // Convert Excel serial date to DD/MM/YYYY
     const excelSerialToDate = (serial) => {
-        const excelEpoch = new Date(1899, 11, 30); // Excel's epoch
+        const excelEpoch = new Date(1899, 11, 30);
         const days = Math.floor(serial);
         const date = new Date(excelEpoch.getTime() + days * 86400000);
 
@@ -100,34 +100,19 @@ const RegistrationSearch = () => {
         return `${day}/${month}/${year}`;
     };
 
-    const searchRecord = (data, searchName, searchDob) => {
-        // Normalize search inputs
-        const normalizedSearchName = searchName.toLowerCase().trim();
+    const searchByDOB = (data, searchDob) => {
         const normalizedSearchDob = searchDob.trim();
 
-        // Find matching record
-        return data.find(record => {
-            // Get the name field - the column is called "NAMES" in the Excel files
-            const recordName = (
-                record["NAMES"] ||
-                record["NAME"] ||
-                record["Name"] ||
-                record["STUDENT NAME"] ||
-                record["Student Name"] ||
-                ""
-            ).toString().toLowerCase().trim();
-
-            // Get the DOB field - the column is called "DATE OF BIRTH"
+        // Find all records matching the DOB
+        return data.filter(record => {
             const recordDob = (
                 record["DATE OF BIRTH"] ||
                 record["DOB"] ||
                 record["Date of Birth"] ||
-                record["D.O.B"] ||
                 ""
             ).toString().trim();
 
-            // Check if both name and DOB match
-            return recordName.includes(normalizedSearchName) && recordDob === normalizedSearchDob;
+            return recordDob === normalizedSearchDob;
         });
     };
 
@@ -138,24 +123,15 @@ const RegistrationSearch = () => {
         return "N/A";
     };
 
+    const handleSelectRecord = (record) => {
+        setSelectedRecord(record);
+    };
+
     return (
         <div className="w-full">
             <div className="bg-white p-6 rounded-lg shadow-md">
                 {/* Search Form */}
                 <div className="space-y-4">
-                    <div>
-                        <label className="block text-gray-700 font-medium mb-2">
-                            Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Enter your full name"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2dad5c]"
-                        />
-                    </div>
-
                     <div>
                         <label className="block text-gray-700 font-medium mb-2">
                             Date of Birth (DD/MM/YYYY) <span className="text-red-500">*</span>
@@ -164,18 +140,23 @@ const RegistrationSearch = () => {
                             type="text"
                             value={dob}
                             onChange={(e) => setDob(e.target.value)}
-                            placeholder="e.g., 31/07/2010"
+                            placeholder="e.g., 30/09/2018"
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2dad5c]"
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleSearchByDOB();
+                                }
+                            }}
                         />
                     </div>
 
                     <button
-                        onClick={handleSearch}
+                        onClick={handleSearchByDOB}
                         disabled={loading}
                         className={`w-full bg-[#2dad5c] text-white px-6 py-3 rounded-md text-lg font-medium shadow-md hover:bg-[#24954f] transition-colors ${loading ? "opacity-50 cursor-not-allowed" : ""
                             }`}
                     >
-                        {loading ? "Searching..." : "Search Registration Number"}
+                        {loading ? "Searching..." : "Search by Date of Birth"}
                     </button>
                 </div>
 
@@ -186,42 +167,86 @@ const RegistrationSearch = () => {
                     </div>
                 )}
 
-                {/* Search Result */}
-                {searchResult && (
-                    <div className="mt-6 p-6 bg-green-50 border-2 border-green-300 rounded-lg">
-                        <h3 className="text-xl font-bold text-[#2dad5c] mb-4">
-                            Registration Found! ✓
+                {/* Matching Names List */}
+                {matchingRecords.length > 0 && !selectedRecord && (
+                    <div className="mt-6">
+                        <h3 className="text-lg font-bold text-[#2dad5c] mb-3">
+                            Found {matchingRecords.length} registration(s) for this date of birth:
                         </h3>
-                        <div className="space-y-2">
-                            <div className="flex">
-                                <span className="font-semibold text-gray-700 w-40">Registration No:</span>
-                                <span className="text-gray-900 font-bold text-lg">
-                                    {getFieldValue(searchResult, ["REGISTER NO", "REGISTRATION NO", "Registration No", "Reg No"])}
-                                </span>
-                            </div>
-                            <div className="flex">
-                                <span className="font-semibold text-gray-700 w-40">Name:</span>
-                                <span className="text-gray-900">
-                                    {getFieldValue(searchResult, ["NAMES", "NAME", "Name", "STUDENT NAME"])}
-                                </span>
-                            </div>
-                            <div className="flex">
-                                <span className="font-semibold text-gray-700 w-40">Date of Birth:</span>
-                                <span className="text-gray-900">
-                                    {getFieldValue(searchResult, ["DATE OF BIRTH", "DOB", "Date of Birth"])}
-                                </span>
-                            </div>
-                            <div className="flex">
-                                <span className="font-semibold text-gray-700 w-40">Events:</span>
-                                <span className="text-gray-900">
-                                    {getFieldValue(searchResult, ["COMPETITIONS", "EVENTS", "Events", "COMPETITION"])}
-                                </span>
-                            </div>
-                            <div className="flex">
-                                <span className="font-semibold text-gray-700 w-40">Institution:</span>
-                                <span className="text-gray-900">
-                                    {getFieldValue(searchResult, ["MADHARASA / SCHOOL", "INSTITUTION", "Institution", "SCHOOL"])}
-                                </span>
+                        <div className="space-y-2 max-h-96 overflow-y-auto">
+                            {matchingRecords.map((record, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleSelectRecord(record)}
+                                    className="w-full text-left p-4 bg-gray-50 hover:bg-green-50 border border-gray-200 hover:border-green-300 rounded-lg transition-colors"
+                                >
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <p className="font-semibold text-gray-900">
+                                                {getFieldValue(record, ["NAMES", "NAME", "Name"])}
+                                            </p>
+                                            <p className="text-sm text-gray-600">
+                                                {getFieldValue(record, ["REGISTER NO", "REGISTRATION NO"])}
+                                            </p>
+                                        </div>
+                                        <svg className="w-5 h-5 text-[#2dad5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Selected Record Details */}
+                {selectedRecord && (
+                    <div className="mt-6">
+                        <button
+                            onClick={() => setSelectedRecord(null)}
+                            className="mb-4 text-[#2dad5c] hover:text-[#24954f] font-medium flex items-center"
+                        >
+                            <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Back to list
+                        </button>
+
+                        <div className="p-6 bg-green-50 border-2 border-green-300 rounded-lg">
+                            <h3 className="text-xl font-bold text-[#2dad5c] mb-4">
+                                Registration Details ✓
+                            </h3>
+                            <div className="space-y-3">
+                                <div className="flex flex-col sm:flex-row">
+                                    <span className="font-semibold text-gray-700 sm:w-40 mb-1 sm:mb-0">Registration No:</span>
+                                    <span className="text-gray-900 font-bold text-lg">
+                                        {getFieldValue(selectedRecord, ["REGISTER NO", "REGISTRATION NO", "Registration No"])}
+                                    </span>
+                                </div>
+                                <div className="flex flex-col sm:flex-row">
+                                    <span className="font-semibold text-gray-700 sm:w-40 mb-1 sm:mb-0">Name:</span>
+                                    <span className="text-gray-900">
+                                        {getFieldValue(selectedRecord, ["NAMES", "NAME", "Name", "STUDENT NAME"])}
+                                    </span>
+                                </div>
+                                <div className="flex flex-col sm:flex-row">
+                                    <span className="font-semibold text-gray-700 sm:w-40 mb-1 sm:mb-0">Date of Birth:</span>
+                                    <span className="text-gray-900">
+                                        {getFieldValue(selectedRecord, ["DATE OF BIRTH", "DOB", "Date of Birth"])}
+                                    </span>
+                                </div>
+                                <div className="flex flex-col sm:flex-row">
+                                    <span className="font-semibold text-gray-700 sm:w-40 mb-1 sm:mb-0">Events:</span>
+                                    <span className="text-gray-900">
+                                        {getFieldValue(selectedRecord, ["COMPETITIONS", "EVENTS", "Events", "COMPETITION"])}
+                                    </span>
+                                </div>
+                                <div className="flex flex-col sm:flex-row">
+                                    <span className="font-semibold text-gray-700 sm:w-40 mb-1 sm:mb-0">Institution:</span>
+                                    <span className="text-gray-900">
+                                        {getFieldValue(selectedRecord, ["MADHARASA / SCHOOL", "INSTITUTION", "Institution", "SCHOOL"])}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
