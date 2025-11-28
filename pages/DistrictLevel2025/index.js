@@ -4,6 +4,7 @@ import Image from "next/image";
 import { db } from "../../firebase";
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
+import RegistrationSearch from "@/components/RegistrationSearch";
 
 const DistrictLevel2025 = () => {
   const router = useRouter();
@@ -21,6 +22,8 @@ const DistrictLevel2025 = () => {
     set3Heading: "",
     set3FormUrl: "",
   });
+
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -134,41 +137,60 @@ const DistrictLevel2025 = () => {
         ============================ */}
         <div className="mt-10 flex flex-col gap-10 items-center">
 
-        {/* --- SET 1 --- */}
-        <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
+          {/* --- SET 1 --- */}
+          <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
             <h2 className="text-[#2dad5c] text-xl font-bold font-serif">{set1Heading}</h2>
 
             <button
-            onClick={() => window.open(set1FormUrl, "_blank")}
-            className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
+              onClick={() => window.open(set1FormUrl, "_blank")}
+              className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
             >
-            Google Form Link
+              Google Form Link
             </button>
-        </div>
+          </div>
 
-        {/* --- SET 2 --- */}
-        <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
+          {/* --- SET 2 --- */}
+          <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
             <h2 className="text-[#2dad5c] text-xl font-bold font-serif">{set2Heading}</h2>
 
             <button
-            onClick={() => window.open(set2FormUrl, "_blank")}
-            className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
+              onClick={() => window.open(set2FormUrl, "_blank")}
+              className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
             >
-            Google Form Link
+              Google Form Link
             </button>
-        </div>
+          </div>
 
-        {/* --- SET 3 --- */}
-        <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
+          {/* --- SET 3 --- */}
+          <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
             <h2 className="text-[#2dad5c] text-xl font-bold font-serif">{set3Heading}</h2>
 
             <button
-            onClick={() => window.open(set3FormUrl, "_blank")}
-            className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
+              onClick={() => window.open(set3FormUrl, "_blank")}
+              className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block"
             >
-            Google Form Link
+              Google Form Link
             </button>
-        </div>
+          </div>
+
+          {/* --- REGISTRATION SEARCH SECTION --- */}
+          <div className="bg-gray-100 shadow p-6 rounded-lg w-[90%] md:w-[60%] text-center">
+            <h2 className="text-[#2dad5c] text-xl font-bold font-serif">To find registration number</h2>
+
+            <button
+              onClick={() => setShowSearch(!showSearch)}
+              className="bg-[#2dad5c] text-white px-6 py-2 mt-4 rounded-md text-md hover:bg-[#24954f] mx-auto block transition-all"
+            >
+              {showSearch ? "Hide Search" : "Click here"}
+            </button>
+
+            {/* Search Dropdown */}
+            {showSearch && (
+              <div className="mt-6 text-left">
+                <RegistrationSearch />
+              </div>
+            )}
+          </div>
 
         </div>
 
